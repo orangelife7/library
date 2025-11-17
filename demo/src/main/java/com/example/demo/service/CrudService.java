@@ -52,3 +52,5 @@ public abstract class CrudService<T extends BaseEntity> {
 		getRepository().deleteById(id);
 	}
 }
+
+//////////////////////////////////////////////////////////////////////////
