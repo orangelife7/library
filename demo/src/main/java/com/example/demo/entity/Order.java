@@ -66,6 +66,11 @@ public class Order extends BaseEntity {
 	@JoinTable(name = "order_book", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "book_id"))
 	private List<Book> books;
 
+	@JsonIgnore
+	@ManyToMany
+	@JoinColumn(name = "employee_id")
+	private Employee employee;
+
 	public void refreshDeadline() {
 		if (loanDate != null) {
 			LocalDateTime deadline = loanDate.plusDays(90);
@@ -257,6 +262,14 @@ public class Order extends BaseEntity {
 
 	public void setMaximumDeadline(LocalDateTime maximumDeadline) {
 		this.maximumDeadline = maximumDeadline;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
 	}
 
 	@Override
