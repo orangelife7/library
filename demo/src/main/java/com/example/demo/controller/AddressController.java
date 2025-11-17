@@ -12,13 +12,6 @@ import com.example.demo.service.CrudService;
 @RequestMapping("/address")
 public class AddressController extends CrudController<Address> {
 
-	/*
-	 * private final AddressService addressService;
-	 * 
-	 * public AddressController(AddressService addressService) { this.addressService
-	 * = addressService; }
-	 */
-
 	@Autowired
 	private AddressService addressService;
 
