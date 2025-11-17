@@ -70,6 +70,8 @@ public class Order extends BaseEntity {
 	@ManyToMany
 	@JoinColumn(name = "employee_id")
 	private Employee employee;
+	
+//	Metody
 
 	public void refreshDeadline() {
 		if (loanDate != null) {
