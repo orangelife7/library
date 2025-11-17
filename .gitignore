@@ -1,0 +1,5 @@
+/demo/.mvn/wrapper/maven-wrapper.properties
+/demo/.gitattributes
+/demo/mvnw
+/demo/mvnw.cmd
+/demo/src/main/resources/application.properties
