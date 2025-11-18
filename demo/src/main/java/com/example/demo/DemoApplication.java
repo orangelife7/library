@@ -14,10 +14,12 @@ import com.example.demo.entity.Address;
 import com.example.demo.entity.Book;
 import com.example.demo.entity.Customer;
 import com.example.demo.entity.Order;
+import com.example.demo.entity.PhysicalBook;
 import com.example.demo.service.AddressService;
 import com.example.demo.service.BookService;
 import com.example.demo.service.CustomerService;
 import com.example.demo.service.OrderService;
+import com.example.demo.service.PhysicalBookService;
 
 @SpringBootApplication
 public class DemoApplication {
@@ -37,6 +39,9 @@ public class DemoApplication {
 
 	@Autowired
 	private AddressService addressService;
+	
+	@Autowired
+	private PhysicalBookService physicalBookService;
 
 	@Bean
 	public CommandLineRunner commandLineRunner() {
@@ -74,6 +79,10 @@ public class DemoApplication {
 					Book book2 = createBook (new Book("Alfons", "Aleksanda Sarna", 2025, "84784jH45"));
 					Book book3 = createBook (new Book("Księga upadłych aniołów", "Emilia J.Lee", 2024, "947362K06"));
 					
+					PhysicalBook physicalBook1 = createPhysicalBook(new PhysicalBook(book1, "PB/1")); 
+					PhysicalBook physicalBook2 = createPhysicalBook(new PhysicalBook(book2, "PB/2")); 
+					PhysicalBook physicalBook3 = createPhysicalBook(new PhysicalBook(book3, "PB/3")); 
+					
 		//			Orders
 					
 					
@@ -81,19 +90,19 @@ public class DemoApplication {
 					Order order1 = new Order();
 					order1.setCustomer(customer1);
 		
-					List<Book> books1 = new ArrayList<>();
-					books1.add(book1);
-					books1.add(book2);
-					order1.setBooks(books1);
+					List<PhysicalBook> books1 = new ArrayList<>();
+					books1.add(physicalBook1);
+					books1.add(physicalBook2);
+					order1.setPhysicalBooks(books1);
 					createOrder(order1);
 		
 		//			Order2
 					Order order2 = new Order();
 					order2.setCustomer(customer2);
 		
-					List<Book> books2 = new ArrayList<>();
-					books2.add(book2);
-					order2.setBooks(books2);
+					List<PhysicalBook> books2 = new ArrayList<>();
+					books2.add(physicalBook2);
+					order2.setPhysicalBooks(books2);
 					createOrder(order2);
 		
 					System.out.println("Utworzono zamówienia: ");
@@ -101,6 +110,11 @@ public class DemoApplication {
 					System.out.println(order2);
 	}
 	
+	private PhysicalBook createPhysicalBook(PhysicalBook pb) {
+		return physicalBookService.save(pb);
+		
+	}
+
 	public Address createAddress(Address address) {
 		return addressService.save(address);
 	}
