@@ -67,7 +67,7 @@ public class Order extends BaseEntity {
 	private List<Book> books;
 
 	@JsonIgnore
-	@ManyToMany
+	@ManyToOne
 	@JoinColumn(name = "employee_id")
 	private Employee employee;
 	
