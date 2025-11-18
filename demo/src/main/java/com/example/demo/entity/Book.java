@@ -2,10 +2,13 @@ package com.example.demo.entity;
 
 import java.util.List;
 
+import com.example.demo.enumerable.BookState;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -28,6 +31,10 @@ public class Book extends BaseEntity {
 	@JsonIgnore
 	@OneToMany(mappedBy = "book")
 	private List<PhysicalBook> physicalBooks;
+	
+	@Column(name = "state")
+	@Enumerated(EnumType.STRING)
+	private BookState state;
 
 //	Konstruktory
 
