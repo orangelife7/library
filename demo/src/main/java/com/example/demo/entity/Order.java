@@ -116,6 +116,9 @@ public class Order extends BaseEntity {
 		}
 
 		if (returnDate != null) {
+			if (maximumDeadline != null && returnDate.isAfter(maximumDeadline)) {
+				return OrderStatus.HIGH_PENALTY;
+			}
 			if (returnDate.isAfter(deadline)) {
 				return OrderStatus.RETURN_AFTER_DEADLINE;
 			}
@@ -126,10 +129,8 @@ public class Order extends BaseEntity {
 			return OrderStatus.ON_LOAN;
 		}
 
-		if (maximumDeadline != null) {
-			if (LocalDateTime.now().isAfter(maximumDeadline)) {
-				return OrderStatus.HIGH_PENALTY;
-			}
+		if (maximumDeadline != null && LocalDateTime.now().isAfter(maximumDeadline)) {
+			return OrderStatus.HIGH_PENALTY;
 		}
 		return OrderStatus.UNRETURNED;
 
