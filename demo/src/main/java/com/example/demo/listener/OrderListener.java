@@ -12,7 +12,7 @@ public class OrderListener {
 	public void handle(Order order) {
 		order.refreshDeadline();
 		order.refreshStatus();
-		order.refresAmountToPay();
-		order.maximumDeadline();
+		order.refreshAmountToPay();
+		order.refreshMaximumDeadline();
 	}
 }
