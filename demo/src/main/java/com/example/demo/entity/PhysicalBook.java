@@ -19,7 +19,7 @@ public class PhysicalBook extends BaseEntity {
 
 	@NotNull
 	@Column(name = "catalog_number", unique = true)
-	private Long catalogNumber;
+	private String catalogNumber;
 
 	@Column(name = "description")
 	private String description;
@@ -34,18 +34,18 @@ public class PhysicalBook extends BaseEntity {
 	@ManyToMany(mappedBy = "physicalBooks")
 	private List<Order> orders;
 	
-	public PhysicalBook(Long catalogNumber, String description) {
+	public PhysicalBook(Book book, String catalogNumber) {
+		this.book = book;
 		this.catalogNumber = catalogNumber;
-		this.description = description;
 	}
 
 	
 	
-	public Long getCatalogNumber() {
+	public String getCatalogNumber() {
 		return catalogNumber;
 	}
 
-	public void setCatalogNumber(Long catalogNumber) {
+	public void setCatalogNumber(String catalogNumber) {
 		this.catalogNumber = catalogNumber;
 	}
 
