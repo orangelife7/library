@@ -31,7 +31,7 @@ public class Book extends BaseEntity {
 	@JsonIgnore
 	@OneToMany(mappedBy = "book")
 	private List<PhysicalBook> physicalBooks;
-	
+
 	@Column(name = "state")
 	@Enumerated(EnumType.STRING)
 	private BookState state;
@@ -92,6 +92,14 @@ public class Book extends BaseEntity {
 
 	public void setPhysicalBooks(List<PhysicalBook> physicalBooks) {
 		this.physicalBooks = physicalBooks;
+	}
+
+	public BookState getState() {
+		return state;
+	}
+
+	public void setState(BookState state) {
+		this.state = state;
 	}
 
 }
