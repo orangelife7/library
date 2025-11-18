@@ -6,17 +6,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "book")
-public class Book extends BaseEntity{
+public class Book extends BaseEntity {
 
-	
 	@Column(name = "title")
 	private String title;
 
@@ -30,8 +26,8 @@ public class Book extends BaseEntity{
 	private String isbn;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "books")
-	private List<Order> orders;
+	@OneToMany(mappedBy = "book")
+	private List<PhysicalBook> physicalBooks;
 
 //	Konstruktory
 
@@ -46,7 +42,6 @@ public class Book extends BaseEntity{
 	}
 
 //	Gettery i Settery
-	
 
 	public String getTitle() {
 		return title;
@@ -80,22 +75,16 @@ public class Book extends BaseEntity{
 		this.isbn = isbn;
 	}
 
-	public List<Order> getOrders() {
-		return orders;
-	}
-
-	public void setOrders(List<Order> orders) {
-		this.orders = orders;
-	}
-
 	public boolean isPublishedAfter2010() {
 		return yearOfPublication > 2010;
 	}
 
-	@Override
-	public String toString() {
-		return "Book [title=" + title + ", author=" + author + ", yearOfPublication=" + yearOfPublication
-				+ ", isbn=" + isbn + ", orders=" + orders + "]";
+	public List<PhysicalBook> getPhysicalBooks() {
+		return physicalBooks;
+	}
+
+	public void setPhysicalBooks(List<PhysicalBook> physicalBooks) {
+		this.physicalBooks = physicalBooks;
 	}
 
 }
