@@ -29,10 +29,10 @@ public class PhysicalBook extends BaseEntity {
 	@JoinColumn(name = "book_id")
 	private Book book;
 
-//
-//	@JsonIgnore
-//	@ManyToMany(mappedBy = "physicalBooks")
-//	private List<Order> orders;
+
+	@JsonIgnore
+	@ManyToMany(mappedBy = "physicalBooks")
+	private List<Order> orders;
 	
 	public PhysicalBook(Long catalogNumber, String description) {
 		this.catalogNumber = catalogNumber;
