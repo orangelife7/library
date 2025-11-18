@@ -83,7 +83,7 @@ public class Order extends BaseEntity {
 
 	}
 
-	public void maximumDeadline() {
+	public void refreshMaximumDeadline() {
 		if (deadline != null) {
 			LocalDateTime maxDeadline = deadline.plusDays(180);
 			setMaximumDeadline(maxDeadline);
@@ -99,7 +99,7 @@ public class Order extends BaseEntity {
 		setStatus(status);
 	}
 
-	public void refresAmountToPay() {
+	public void refreshAmountToPay() {
 		BigDecimal amount = calculateAmountToPay();
 		setAmountToPay(amount);
 	}
