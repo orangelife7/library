@@ -63,14 +63,14 @@ public class Order extends BaseEntity {
 
 	@JsonIgnore
 	@ManyToMany
-	@JoinTable(name = "order_book", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "book_id"))
-	private List<Book> books;
+	@JoinTable(name = "order_physical_book", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "physical_book_id"))
+	private List<PhysicalBook> physicalBooks;
 
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "employee_id")
 	private Employee employee;
-	
+
 //	Metody
 
 	public void refreshDeadline() {
@@ -202,12 +202,12 @@ public class Order extends BaseEntity {
 		this.customer = customer;
 	}
 
-	public List<Book> getBooks() {
-		return books;
+	public List<PhysicalBook> getPhysicalBooks() {
+		return physicalBooks;
 	}
 
-	public void setBooks(List<Book> books) {
-		this.books = books;
+	public void setPhysicalBooks(List<PhysicalBook> physicalBooks) {
+		this.physicalBooks = physicalBooks;
 	}
 
 	public Boolean getCancelled() {
@@ -272,13 +272,6 @@ public class Order extends BaseEntity {
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
-	}
-
-	@Override
-	public String toString() {
-		return "Order [loanDate=" + loanDate + ", deadline=" + deadline + ", returnDate=" + returnDate + ", cancelled="
-				+ cancelled + ", prepared=" + prepared + ", status=" + status + ", customer=" + customer + ", books="
-				+ books + "]";
 	}
 
 }
