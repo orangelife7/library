@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 import com.example.demo.entity.Address;
 import com.example.demo.entity.Book;
@@ -22,6 +23,7 @@ import com.example.demo.service.OrderService;
 import com.example.demo.service.PhysicalBookService;
 
 @SpringBootApplication
+@EnableScheduling
 public class DemoApplication {
 
 	public static void main(String[] args) {
