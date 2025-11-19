@@ -16,6 +16,7 @@ public class OrderTask {
 	
 	@Scheduled(cron = "*/10 * * * * *")
 	public void run() {
+		orderService.refreshStatus();
 		System.out.println("Task execution at: " + LocalDateTime.now());
 	}
 }
