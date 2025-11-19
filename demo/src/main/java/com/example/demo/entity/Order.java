@@ -145,28 +145,30 @@ public class Order extends BaseEntity {
 		if (date == null) {
 			date = LocalDateTime.now();
 		}
-		if (deadline != null) {
-			long days = ChronoUnit.DAYS.between(deadline, date);
-			BigDecimal dailyAmount = BigDecimal.ONE;
-			if (days > 0) {
-				BigDecimal x = dailyAmount.multiply(BigDecimal.valueOf(days));
-				sum = sum.add(x);
-			}
-
-			if (maximumDeadline != null) {
-				long maxDays = ChronoUnit.DAYS.between(maximumDeadline, LocalDateTime.now());
-				BigDecimal dailyAmountAfterMax = BigDecimal.TWO;
-				if (days > 0) {
-					BigDecimal y = dailyAmountAfterMax.multiply(BigDecimal.valueOf(maxDays));
-					sum = sum.add(y);
-				}
-			}
-		}
+		BigDecimal amountByDays = getAmountByDays(date, deadline, maximumDeadline);
+		sum = sum.add(amountByDays);
 
 		if (Boolean.TRUE.equals(damaged)) {
 			sum = sum.add(BigDecimal.valueOf(50));
 		}
 		return sum;
+	}
+
+	private BigDecimal getAmountByDays(LocalDateTime date, LocalDateTime deadline, LocalDateTime maxDeadline) {
+		if (date == null || deadline == null || maximumDeadline == null) {
+			return BigDecimal.ZERO;
+		}
+		if (date.isBefore(deadline)) {
+			return BigDecimal.ZERO;
+		}
+		if (date.isAfter(maxDeadline)) {
+			long daysBetweenDeadlineAndMaxDeadline = ChronoUnit.DAYS.between(deadline, maxDeadline) * 1;
+			long daysBetwenDateAndMaxDeadline = ChronoUnit.DAYS.between(maxDeadline, date) * 2;
+			long sum = daysBetweenDeadlineAndMaxDeadline + daysBetwenDateAndMaxDeadline;
+			return BigDecimal.valueOf(sum);
+		}
+		long daysBetweenDateAndDeadline = ChronoUnit.DAYS.between(deadline, date) * 1;
+		return BigDecimal.valueOf(daysBetweenDateAndDeadline);
 	}
 
 //	Gettery i Settery
