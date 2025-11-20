@@ -8,13 +8,9 @@ import org.junit.jupiter.api.Test;
 
 import com.example.demo.entity.Order;
 import com.example.demo.enumerable.OrderStatus;
+import com.example.demo.factory.OrderFactory;
 
 public class OrderStatusTest {
-
-	private void _assertEquals(Order order, OrderStatus expectedStatus) {
-		order.refreshStatus();
-		assertEquals(expectedStatus, order.getStatus());
-	}
 
 	@Test
 	public void testCancelled() {
@@ -47,45 +43,38 @@ public class OrderStatusTest {
 
 	@Test
 	public void testReturned() {
-		Order order = new Order();
-		LocalDateTime loanDateTime = LocalDateTime.of(2025, 10, 24, 0, 0);
-		order.setLoanDate(loanDateTime);
-		order.refreshDeadline();
+		LocalDateTime loanDate = LocalDateTime.of(2025, 10, 24, 0, 0);
 		LocalDateTime returnDate = LocalDateTime.of(2025, 11, 10, 0, 0);
-		order.setReturnDate(returnDate);
+		Order order = OrderFactory.get(loanDate, returnDate);
 		_assertEquals(order, OrderStatus.RETURNED);
 	}
 
 	@Test
 	public void testReturnAfterDeadline() {
-		Order order = new Order();
-		LocalDateTime loanDateTime = LocalDateTime.of(2025, 10, 24, 0, 0);
-		order.setLoanDate(loanDateTime);
-		order.refreshDeadline();
+		LocalDateTime loanDate = LocalDateTime.of(2025, 10, 24, 0, 0);
 		LocalDateTime returnDate = LocalDateTime.of(2026, 01, 28, 0, 0);
-		order.setReturnDate(returnDate);
+		Order order = OrderFactory.get(loanDate, returnDate);
 		_assertEquals(order, OrderStatus.RETURN_AFTER_DEADLINE);
 	}
 
 	@Test
 	public void testHighPenalty() {
-		Order order = new Order();
-		LocalDateTime loanDateTime = LocalDateTime.of(2025, 10, 15, 0, 0);
-		order.setLoanDate(loanDateTime);
-		order.refreshDeadline();
-		order.setMaximumDeadline(order.getDeadline());
+		LocalDateTime loanDate = LocalDateTime.of(2025, 10, 15, 0, 0);
 		LocalDateTime returnDate = LocalDateTime.of(2026, 11, 12, 0, 0);
-		order.setReturnDate(returnDate);
+		Order order = OrderFactory.get(loanDate, returnDate);
 		_assertEquals(order, OrderStatus.HIGH_PENALTY);
 	}
 
 	@Test
 	public void testUnreturned() {
-		Order order = new Order();
 		LocalDateTime loanDate = LocalDateTime.of(2025, 4, 20, 0, 0);
-		order.setLoanDate(loanDate);
-		order.refreshDeadline();
-		order.refreshMaximumDeadline();
+		Order order = OrderFactory.get(loanDate);
 		_assertEquals(order, OrderStatus.UNRETURNED);
 	}
+
+	private void _assertEquals(Order order, OrderStatus expectedStatus) {
+		order.refreshStatus();
+		assertEquals(expectedStatus, order.getStatus());
+	}
+
 }
