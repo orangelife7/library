@@ -9,7 +9,7 @@ import com.example.demo.service.AddressService;
 import com.example.demo.service.CrudService;
 
 @RestController
-@RequestMapping("/address")
+@RequestMapping("/api/address")
 public class AddressController extends CrudController<Address> {
 
 	@Autowired

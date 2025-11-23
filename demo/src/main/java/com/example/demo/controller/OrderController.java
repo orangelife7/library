@@ -17,7 +17,7 @@ import com.example.demo.service.OrderService;
 import jakarta.persistence.EntityNotFoundException;
 
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/api/order")
 public class OrderController extends CrudController<Order> {
 
 	@Autowired

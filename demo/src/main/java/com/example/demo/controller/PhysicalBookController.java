@@ -9,7 +9,7 @@ import com.example.demo.service.CrudService;
 import com.example.demo.service.PhysicalBookService;
 
 @RestController
-@RequestMapping("/physicalBook")
+@RequestMapping("/api/physical-book")
 public class PhysicalBookController extends CrudController<PhysicalBook> {
 
 	@Autowired

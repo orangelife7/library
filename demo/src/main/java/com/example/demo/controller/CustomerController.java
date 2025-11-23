@@ -9,7 +9,7 @@ import com.example.demo.service.CrudService;
 import com.example.demo.service.CustomerService;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/api/customer")
 public class CustomerController extends CrudController<Customer> {
 
 	@Autowired

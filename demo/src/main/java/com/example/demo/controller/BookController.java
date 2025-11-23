@@ -17,7 +17,7 @@ import com.example.demo.service.CrudService;
 import jakarta.persistence.EntityNotFoundException;
 
 @RestController
-@RequestMapping("/book")
+@RequestMapping("/api/book")
 public class BookController extends CrudController<Book> {
 
 	@Autowired
