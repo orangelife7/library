@@ -72,9 +72,9 @@
 	   
 	    <p><strong>Zadanie 10</strong></p>
 	     
-	    <div hello-box username="Miki"></div> /*atrybut*/
+	    <div hello-box username="Miki"></div> <!-- atrybut -->
 	    
-	    <!-- <hello-box username="Miki" /> --> /*element*/
+	    <!-- <hello-box username="Miki" /> --> <!-- element -->
 	    <hr />
 	    
 	    
@@ -90,7 +90,19 @@
 	    <p> <strong>Miasto:</strong> {{ person.city }}</p>
 	    <delete-button on-delete="remove($index)"/>
 	    </div>
+	    <hr>
+	    <hr>
 	    
+	     <!-- KOMPONENTY ZADANIA -->
+	      <p><strong>Zadanie 1-2</strong></p>
+	     <div><person-data item="person" /> </div>
+	     <hr>
+
+	     <p><strong>Zadanie 3-7</strong></p>
+	     <div>
+	     	<person-data-list />
+	     </div>
+	     
 	     
 	    
 	</div>

@@ -24,13 +24,14 @@ app.controller('HelloController', function($scope, $http) {
 	};
 	
 	//Zadanie 7
-	$scope.activate = function(){
+	
+	/* $scope.activate = function(){
 		$scope.isActive = true;
 	};
 	
 	$scope.deactivate = function() {
 	$scope.isActive = false;
-	};
+	}; */
 	
 	
 	$scope.activationCount = 0;
@@ -80,6 +81,11 @@ app.controller('HelloController', function($scope, $http) {
 	*/
 	
 	//
+	
+	/* KOMPONENTY - ZADANIA */
+			
+			//Zadanie 1
+			$scope.person = {};
 	
 });
 

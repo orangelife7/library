@@ -1,0 +1,9 @@
+<div style="height: 50px;">
+	<input ng-model="$ctrl.item.name" ng-disabled="$ctrl.item.saved" placeholder="Imie" />
+	<input type="number" ng-model="$ctrl.item.age" ng-disabled="$ctrl.item.saved" placeholder="Wiek" />
+	<input ng-model="$ctrl.item.city" ng-disabled="$ctrl.item.saved" placeholder="Miasto" />
+	<input type="checkbox" ng-model="$ctrl.item.saved" />
+	<button class="btn btn-sm btn-success" ng-if="!$ctrl.item.saved" ng-click="$ctrl.save()">Zapisz</button>
+	<button class="btn btn-sm btn-primary" ng-if="$ctrl.item.saved" ng-click="$ctrl.edit()">Edytuj</button>
+	<button class="btn btn-danger" ng-click="$ctrl.remove()">Usun</button>
+</div>

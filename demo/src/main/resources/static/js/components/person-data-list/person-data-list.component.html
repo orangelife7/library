@@ -1,0 +1,8 @@
+<div>
+	<button class="btn btn-info" ng-click="$ctrl.createPerson()">Utworz</button>
+	<button class="btn btn-primary" ng-click="$ctrl.editAll()">Edytuj wszystkie</button>
+	<button class="btn btn-primary" ng-click="$ctrl.saveAll()">Zapisz wszystkie</button>
+</div>
+<div ng-repeat="person in $ctrl.people track by $index" >
+	<person-data item="person" index="$index">
+</div>
