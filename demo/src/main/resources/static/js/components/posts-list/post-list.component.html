@@ -1,0 +1,58 @@
+<div>
+	<h3>Lista postów</h3>
+
+	<!--  <ul>
+		<li ng-repeat="post in $ctrl.posts">
+			{{ post.title }}
+		</li>
+	</ul> -->
+	<button class="btn btn-primary" ng-click="$ctrl.download()">Pobierz</button>
+	<style>
+		th { background-color: #e0e0e0; }
+	</style>
+	
+	<br><br>
+	<table border="1" cellpadding="6" cellspacing="0">
+		<thead>
+			<tr>
+				<th>User ID</th>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Body</th>
+				<th>Action</th>
+				<th>Comments</th>
+			</tr>
+		</thead>
+	
+		<tbody>
+			<tr ng-repeat="post in $ctrl.posts">
+				<td>{{ post.userId }}</td>
+				<td>{{ post.id }}</td>
+				<td>{{ post.title }}</td>
+				<td>{{ post.body}}</td>
+			<td>
+				<button class="btn btn-info btn-xs" style="padding: 0 6px;" ng-click="$ctrl.loadComments(post)">Pokaz komentarze</button>
+			</td>
+			
+			<td>
+				<div ng-if="post.comments">
+					<ul>
+						<li ng-repeat="comment in post.comments">
+							<b>{{ comment.name }}</b><br>
+							<i>{{ comment.email }}<i/><br>
+							{{ comment.body }}
+						</li>
+					</ul>
+				</div>
+				
+				<div ng-if="!post.comments">
+					- brak danych -
+				</div>
+			</td>
+				
+				
+				
+			</tr>
+		</tbody>
+	</table>
+</div>
