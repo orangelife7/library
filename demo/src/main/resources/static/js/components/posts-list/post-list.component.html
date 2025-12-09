@@ -35,7 +35,7 @@
 			</td>
 			
 			<td>
-				<div ng-if="post.comments">
+				<div ng-if="post.comments.length > 0">
 					<ul>
 						<li ng-repeat="comment in post.comments">
 							<b>{{ comment.name }}</b><br>
@@ -45,7 +45,7 @@
 					</ul>
 				</div>
 				
-				<div ng-if="!post.comments">
+				<div ng-if="post.downloaded && post.comments.length == 0">
 					- brak danych -
 				</div>
 			</td>

@@ -50,6 +50,8 @@ app.component('postList', {
 			})
 			.catch(function(error) {
 				console.error('Blad pobierania komentarzy: ' + error);
+			}).finally(r => {
+				post.downloaded = true;
 			});
 		}
 		
