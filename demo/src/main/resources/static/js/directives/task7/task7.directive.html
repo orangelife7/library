@@ -1,0 +1,10 @@
+<div>
+	<p> isActive: {{ isActive }} </p>
+	    <button class="btn btn-success" ng-click="activate()" ng-disabled="isActive"><b>Aktywuj</b></button>
+	    <button class="btn btn-danger" ng-click="deactivate()" ng-disabled="!isActive"><b>Dezaktywuj</b></button>
+	    <hr>
+	    <div ng-if="isActive" class="alert" ng-class="activationCount >= 3 ? 'alert-success' : 'alert-warning'">Panel jest aktywny!</div>
+	    <div ng-if="!isActive" class="alert" ng-class="deactivationCount >= 3 ? 'alert-danger' : 'alert-warning'">Panel jest nieaktywny!</div>
+		<p>Panel aktywowany: {{ activationCount }}</p>
+	    <p>Panel dezaktywowany: {{ deactivationCount }}</p>
+</div>

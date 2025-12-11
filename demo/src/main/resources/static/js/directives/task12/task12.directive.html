@@ -1,0 +1,6 @@
+<div ng-repeat="person in people track by $index" class="well" style="width: fit-content">
+	<p> <strong>Imie:</strong> {{ person.name }}</p>
+	<p> <strong>Wiek:</strong> {{ person.age }}</p>
+	<p> <strong>Miasto:</strong> {{ person.city }}</p>
+	<delete-button on-delete="remove($index)"/>
+</div>

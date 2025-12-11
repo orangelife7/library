@@ -10,6 +10,5 @@ app.directive('deleteButton', function() {
 				alert("Usunieto!");			
 			}	
 		}
-		
 	};
 });

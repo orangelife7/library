@@ -4,7 +4,5 @@ app.directive('helloBoxNew', function() {
 		restrict: 'E',
 		scope: {user: '<'},
 		templateUrl: '/js/directives/hello-box-new/hello-box-new.directive.html'
-		
-			
 	};
 });

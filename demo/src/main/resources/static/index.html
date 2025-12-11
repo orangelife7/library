@@ -1,123 +1,47 @@
 <!DOCTYPE html>
 <html ng-app="app">
 <head>
+	<meta charset="UTF-8">
 	<link rel="stylesheet" href="/webjars/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="/webjars/jquery/2.2.4/jquery.min.js"></script>
     <script src="/webjars/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <script src="/webjars/angularjs/1.8.2/angular.min.js"></script>
+    <script src="webjars/angularjs/1.8.2/angular-route.js"></script>
     <script src="/project.js"></script>
 </head>
 <body>
-		<p> <strong>Zadanie 1</strong></p>
-	<div ng-controller="HelloController">
-	    <p> {{ message }}</p>
-	    <hr>
-	    
-	    <p> <strong>Zadanie 2</strong></p>
-	    <p> Czesc, {{username}}!</p>
-	    <input ng-model="username" placeholder="Wpisz nazwe uzytkownika">
-	    <hr>
-	    
-	   <p><strong> Zadanie 3</strong></p>
-	    <input type="checkbox" ng-model="showPanel"> <label>Pokaz panel</label>
-	    
-	    <div ng-if="showPanel"> Panel ng-if</div>
-	    <div ng-show="showPanel"> Panel ng-show</div>
-	    <hr>
-	    
-	    <p> <strong>Zadanie 4</strong></p>
-	    <button class="btn" ng-class="Active ? 'btn-primary' : 'btn-warning'">Przycisk</button>
-	    <hr>
-	    
-	   <p> <strong>Zadanie 5</strong></p>
-	    <p>
-	    <input type="text" ng-disabled="isBlocked" placeholder="Pole tekstowe">
-	    	
-	    		<input type="checkbox" ng-model="isBlocked"><label> Zablokuj</label>
-	    </p>
-	    <hr>
-	    
-	    <p><strong> Zadanie 6</strong></p>
-	    <p> Licznik: {{ counter }}</p>
-	    <button class="btn btn-primary" ng-click="incrementCounter()">Zwieksz licznik</button>
-	    <hr>
-	    
-	    <p><strong>Zadanie 7</strong></p>
-	    <p> isActive: {{ isActive }} </p>
-	    <button class="btn btn-success" ng-click="activate()" ng-disabled="isActive">Aktywuj</button>
-	    <button class="btn btn-danger" ng-click="deactivate()" ng-disabled="!isActive">Dezaktywuj</button>
-	    <hr>
-	    <div ng-if="isActive" class="alert" ng-class="activationCount >= 3 ? 'alert-success' : 'alert-warning'">Panel jest aktywny!</div>
-	    <div ng-if="!isActive" class="alert" ng-class="deactivationCount >= 3 ? 'alert-danger' : 'alert-warning'">Panel jest nieaktywny!</div>
-		<p>Panel aktywowany: {{ activationCount }}</p>
-	    <p>Panel dezaktywowany: {{ deactivationCount }}</p>
-	    <hr>
-	    
-	    <p><strong>Zadanie 8</strong></p>
-	    <p> <strong>Imie:</strong> {{ person.name }}</p>
-	  	<p> <strong>Wiek:</strong> {{ person.age }}</p>
-	    <p> <strong>Miasto:</strong> {{ person.city }}</p>
-	    <hr>
-	    
-	    <p><strong>Zadanie 9</strong></p>
-	    <div ng-repeat="person in people track by $index" class="well" style="width: fit-content">
-	    <p> <strong>Imie:</strong> {{ person.name }}</p>
-	  	<p> <strong>Wiek:</strong> {{ person.age }}</p>
-	    <p> <strong>Miasto:</strong> {{ person.city }}</p>
-	    
-	    <button class="btn btn-danger"  ng-click="remove($index)">Usun</button>
-	    </div>
-	    <hr>
-	    
-	   
-	    <p><strong>Zadanie 10</strong></p>
-	     
-	    <div hello-box username="Miki"></div> <!-- atrybut -->
-	    
-	    <!-- <hello-box username="Miki" /> --> <!-- element -->
-	    <hr />
-	    
-	    
-	    <p><strong>Zadanie 11</strong></p>
-	    <div><hello-box-new user="person" /></div>
-	    <hr>
-	    
-	    
-	    <p><strong>Zadanie 12</strong></p>
-	    <div ng-repeat="person in people track by $index" class="well" style="width: fit-content">
-	    <p> <strong>Imie:</strong> {{ person.name }}</p>
-	  	<p> <strong>Wiek:</strong> {{ person.age }}</p>
-	    <p> <strong>Miasto:</strong> {{ person.city }}</p>
-	    <delete-button on-delete="remove($index)"/>
-	    </div>
-	    <hr>
-	    <hr>
-	    
-	     <!-- KOMPONENTY ZADANIA -->
-	      <p><strong>Zadanie 1-2</strong></p>
-	     <div><person-data item="person" /> </div>
-	     <hr>
 
-	     <p><strong>Zadanie 3-7</strong></p>
-	     <div>
-	     	<person-data-list />
-	     </div>
-	     
-	     <!-- $HTTP - ZADANIA -->
-	      <p><strong>Zadanie 1-6</strong></p>
-	      <div>
-	      <post-list>
-	      </div>
-	    	
+	<div class="row">
+		<div class="col-xs-3">
+			<h3>Nawigacja</h3>
+		     
+	   		 <ul style="list-style: none;">
+	   		 
+	   		 
+	        	<li><a href="#!/">Strona główna</a></li>
+	        	<li><a href="#!/task1">Zadanie 1 - Witaj</a></li>
+	        	<li><a href="#!/task2">Zadanie 2 - Cześć</a></li>
+	        	<li><a href="#!/task3">Zadanie 3 - Panel</a></li>
+	        	<li><a href="#!/task4">Zadanie 4 - Przycisk</a></li>
+	        	<li><a href="#!/task5">Zadanie 5 - Pole tekstowe</a></li>
+	        	<li><a href="#!/task6">Zadanie 6 - Licznik</a></li>
+	        	<li><a href="#!/task7">Zadanie 7 - Aktywuj/Dezaktywuj</a></li>
+	        	<li><a href="#!/task8">Zadanie 8 - Dane personalne</a></li>
+	        	<li><a href="#!/task9">Zadanie 9 - Lista</a></li>
+	        	<li><a href="#!/task10">Zadanie 10 - Witaj użytkowniku</a></li>
+	        	<li><a href="#!/task11">Zadanie 11 - Dane personalne - dyrektywa</a></li>
+	        	<li><a href="#!/task12">Zadanie 12 - Lista - usuwanie z alertem</a></li>
+	        	<li><a href="#!/task13">Zadanie 13 - Pole tekstowe - zapisz oraz usuń</a></li>
+	        	<li><a href="#!/task14">Zadanie 14 - Ludzie</a></li>
+	        	<li><a href="#!/task15">Zadanie 15 - Posty</a></li>
+	   		 </ul>
+		</div>
+		<div class="col-xs-9" ng-view></div>
+	</div>
+	
+	
+	<div class="row" style="padding-left: 30px;" ng-controller="HelloController">
 	    
 	</div>
-</body>
+</body>   
 </html>
-
-
-
-
-
-
-
-
