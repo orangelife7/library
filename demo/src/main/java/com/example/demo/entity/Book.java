@@ -5,6 +5,7 @@ import java.util.List;
 import com.example.demo.enumerable.BookState;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -29,7 +30,7 @@ public class Book extends BaseEntity {
 	private String isbn;
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "book")
+	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
 	private List<PhysicalBook> physicalBooks;
 
 	@Column(name = "state")

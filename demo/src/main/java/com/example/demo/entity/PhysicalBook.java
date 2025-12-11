@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
@@ -29,18 +28,18 @@ public class PhysicalBook extends BaseEntity {
 	@JoinColumn(name = "book_id")
 	private Book book;
 
-
 	@JsonIgnore
 	@ManyToMany(mappedBy = "physicalBooks")
 	private List<Order> orders;
-	
+
+	public PhysicalBook() {
+	}
+
 	public PhysicalBook(Book book, String catalogNumber) {
 		this.book = book;
 		this.catalogNumber = catalogNumber;
 	}
 
-	
-	
 	public String getCatalogNumber() {
 		return catalogNumber;
 	}

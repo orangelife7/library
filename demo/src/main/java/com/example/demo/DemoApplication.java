@@ -92,10 +92,10 @@ public class DemoApplication {
 					Order order1 = new Order();
 					order1.setCustomer(customer1);
 		
-					List<PhysicalBook> books1 = new ArrayList<>();
-					books1.add(physicalBook1);
-					books1.add(physicalBook2);
-					order1.setPhysicalBooks(books1);
+					List<PhysicalBook> order1Books = new ArrayList<>();
+					order1Books.add(physicalBook1);
+					order1Books.add(physicalBook2);
+					order1.setPhysicalBooks(order1Books);
 					createOrder(order1);
 		
 		//			Order2
