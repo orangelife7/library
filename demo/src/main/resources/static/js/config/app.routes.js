@@ -50,7 +50,10 @@ app.config(function($routeProvider) {
 		})	
 		.when('/book-list', {
 			template: '<book-list />'
-		})												 
+		})	
+		.when('/bootstrap-training', {
+			template: '<bootstrap-training />'	
+		})									 
         .otherwise({
             template: '<error/>'
         });

@@ -1,0 +1,186 @@
+<div class="text-center">
+	<h3>Etykiety przycisków</h3>
+	<button type="button" class="btn">Basic</button>
+	<button type="button" class="btn btn-default">Default</button>
+	<button type="button" class="btn btn-primary">Primary</button>
+	<button type="button" class="btn btn-success">Success</button>
+	<button type="button" class="btn btn-info">Info</button>
+	<button type="button" class="btn btn-warning">Warning</button>
+	<button type="button" class="btn btn-danger">Danger</button>
+	<button type="button" class="btn btn-link">Link</button>
+	<a href="#" class="btn btn-primary" role="button">Link do strony głównej</a>
+</div>
+<hr>
+<hr>
+
+
+<div class="text-center">
+	<h3>Rozwijana lista - Dropdown</h3>
+	 <div class="text-left" style="max-width: 600px; margin: 0 auto;">
+	<p>Klasa dropdown służy do wskazania menu rozwijanego</p>
+	<P>Użyj klasy dropdown do zbudowania menu rozwijanego </P>
+	<p>Aby otworzyć menu rozwijane, użyj przycisku lub łącza z klasą .dropdown-toggle i data-toggle="dropdown"</p>
+	</div>
+	<div class="dropdown" style="display: inline-block;">
+		<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Przykład dropdown
+		<span class="caret"></span></button>
+		<ul class="dropdown-menu">
+			<li><a href="#">HTML</a></li>
+			<li><a href="#">CSS</a>
+			<li><a href="#">JavaScript</a></li>
+		</ul>
+	</div>
+</div>
+<hr>
+<hr>
+
+<div class="text-center">
+	<h3>Collapsible</h3>
+	<p>Kliknij przycisk, aby przełączać się między wyświetlaniem i ukrywaniem treści</p>
+	<button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Collapsible</button>
+	 <div id="demo"  class="collapse">
+	 	Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+    	sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+    	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+	 </div>
+	 <hr>
+	 
+<div>
+	 <h3>Collapsible - Lista</h3>
+	 	<p>Kliknij panel, aby go otworzyć lub zamknąć</p>
+	 	<div class="panel-group">
+	 		<div class="panel panel-default">
+	 			<div class="panel-heading">
+	 				<h4 class="panel-title">
+	 					<a data-toggle="collapse" data-target="#collapse">Collapsible lista</a>
+	 				</h4>
+	 		<div id="collapse" class="panel-collapse collapse">
+	 			<ul class="list-group">
+	 				<li class="list-group-item">One</li>
+	 				<li class="list-group-item">Two</li>
+	 				<li class="list-group-item">Three</li>
+	 				<li class="list-group-item">Four</li>
+	 				</ul>
+	 					<div class="panel-footer">Footer</div>
+	 				</div>
+	 			</div>
+	 		</div>
+		</div>	 
+	 </div>
+	 <hr>
+	 <hr>
+	 
+	 <div>
+	 <h3>Wtyczka modalna</h3>
+	 	<p>Wtyczka modalna to okno dialogowe/wyskakujące okienko wyświetlane na górze bieżącej strony</p>
+	 	<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Otwórz Modal</button>
+	 	
+	 	<div class="modal fade" id="myModal" role="dialog">
+	 	
+	 	<div class="modal-content">
+	 		<div class="modal-header">
+	 			<button type="button" class="close" data-dismiss="modal">&times;</button>
+	 			<h4 class="modal-title">Nagłowek modalny</h4>
+	 		</div>
+	 		<div class="modal-body">
+	 			<p>Tekst w oknie modalnym.</p>
+	 		<div class="modal-footer">
+	 			<button type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
+	 		</div>
+	 		</div>
+	 	</div>
+	 </div>
+	</div>
+<hr>
+<hr>
+	
+<div>
+	<h3>Pasek Nawigacyjny- Navigation Bar</h3>
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#">WebSiteName</a>
+		</div>
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="#">Home</a></li>
+			<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Page1 <span class="caret"></span></a>
+		<ul class="dropdown-menu">
+			<li><a href="#">Page 1-1</a></li>
+          	<li><a href="#">Page 1-2</a></li>
+          	<li><a href="#">Page 1-3</a></li>
+		</ul>
+		</li>
+			<li><a href="#">Page 2</a></li>
+			<li><a href="#">Page 3</a></li>
+		</ul>
+			<form class="navbar-form navbar-left" action="#">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Search" name="search">
+					<div class="input-group-btn">
+						<button class="btn btn-default" type="submit">
+							<i class="glyphicon glyphicon-search"></i>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</nav>
+	
+	<div class="container">
+  		<h3>Navbar z Dropdown</h3>
+ 	    <p>Ten przykład dodaje menu rozwijane dla przycisku „Strona 1” na pasku nawigacyjnym</p>
+	</div>
+</div>
+<hr>
+<hr>
+
+<div>
+	<h3>Podpowiedź - Tooltip</h3>
+	<a href="#" data-toggle="tooltip" title="Wyświetlasz podpowiedź">Kliknij tutaj</a>
+
+</div>
+<hr>
+
+<div class="container">
+	<h3>Tooltip - Przykład</h3>
+	<p>Atrybut data-placement określa położenie podpowiedzi.</p>
+	<ul class="list-inline">
+		<li><a href="#" data-toggle="tooltip" data-placement="top" title="Podpowiedź 1">Góra</a></li>
+		<li><a href="#" data-toggle="tooltip" data-placement="bottom" title="Podpowiedź 2">Dół</a></li>
+		<li><a href="#" data-toggle="tooltip" data-placement="left" title="Podpowiedź 3">Lewo</a></li>
+		<li><a href="#" data-toggle="tooltip" data-placement="right" title="Podpowiedź 4">Prawo</a></li>
+	</ul>
+</div>
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();   
+});
+</script>
+<hr>
+<hr>
+
+<div>
+	<h3>Alerty Bootstrap</h3>
+	<div class="alert alert-success">
+   		 <strong>Success!</strong> Powinieneś <a href="#" class="alert-link">przeczytać tą wiadomość</a>.
+ 	</div>
+ 	<div class="alert alert-info">
+    	<strong>Info!</strong> Powinieneś <a href="#" class="alert-link">przeczytać tą wiadomość</a>.
+  	</div>
+  	<div class="alert alert-warning">
+   		 <strong>Warning!</strong> To pole ostrzegawcze może oznaczać ostrzeżenie, które wymaga uwagi.
+  	</div>
+  	<div class="alert alert-danger">
+   		 <strong>Danger!</strong> To pole ostrzegawcze może wskazywać na niebezpieczną lub potencjalnie negatywną akcję.
+</div>
+<hr>
+<hr>
+
+
+
+
+
+
+
+
