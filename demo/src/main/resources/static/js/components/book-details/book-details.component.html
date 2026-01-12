@@ -1,0 +1,53 @@
+<div>
+
+	<h3><strong>Detale książki</strong></h3>
+  <table border="1" cellpadding="6" cellspacing="0">
+    <tr>
+      <th style="width: 30mm;">Id</th>
+      <td>{{$ctrl.book.id}}</td>
+    </tr>
+    <tr>
+      <th>Tytuł</th>
+      <td>{{$ctrl.book.title}}</td>
+    </tr>
+    <tr>
+      <th>Autor</th>
+      <td>{{$ctrl.book.author}}</td>
+    </tr>
+    <tr>
+      <th>Rok publikacji</th>
+      <td>{{$ctrl.book.yearOfPublication}}</td>
+    </tr>
+    <tr>
+      <th>ISBN</th>
+      <td>{{$ctrl.book.isbn}}</td>
+    </tr>
+  </table>
+
+<div>
+<h3><strong>Lista książek</strong></h3>
+
+<table border="1" cellpadding="6" cellspacing="0">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Numer katalogowy</th>
+			<th>Opis</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng:repeat="item in $ctrl.book.physicalBooks">
+			<td>{{item.id}}</td>
+			<td>{{item.catalogNumber}}</td>
+			<td>{{item.description}}</td>
+			
+		</tr>
+	</tbody>
+</table>
+</div>
+<!-- 
+<physical-book-list book-id="$ctrl.book.id"></physical-book-list>
+
+ -->
+
+</div>

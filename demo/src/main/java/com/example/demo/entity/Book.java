@@ -29,7 +29,6 @@ public class Book extends BaseEntity {
 	@Column(name = "isbn")
 	private String isbn;
 
-	@JsonIgnore
 	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
 	private List<PhysicalBook> physicalBooks;
 

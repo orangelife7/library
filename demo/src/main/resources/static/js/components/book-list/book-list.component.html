@@ -14,6 +14,7 @@
 			<th style="width: 50mm; text-align: center;">Autor</th>
 			<th style="width: 30mm; text-align: center;">Rok publikacji</th>
 			<th style="width: 25mm; text-align: center;">ISBN</th>
+			<th style="width: 25mm; text-align: center;">Detale</th>
 			</tr>
 	</thead>
 	
@@ -24,6 +25,10 @@
 			<td>{{ book.author }}</td>
 			<td>{{ book.yearOfPublication }}</td>
 			<td>{{ book.isbn }}</td>
+			<td style="text-align:center;">
+          <a href="#!/book-details/{{book.id}}" class="btn btn-info btn-xs">
+            Detale
+          </a>
 		</tr>
 	</tbody>
 

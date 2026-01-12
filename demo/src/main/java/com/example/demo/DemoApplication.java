@@ -81,7 +81,10 @@ public class DemoApplication {
 					Book book2 = createBook (new Book("Alfons", "Aleksanda Sarna", 2025, "84784jH45"));
 					Book book3 = createBook (new Book("Księga upadłych aniołów", "Emilia J.Lee", 2024, "947362K06"));
 					
-					PhysicalBook physicalBook1 = createPhysicalBook(new PhysicalBook(book1, "PB/1")); 
+					PhysicalBook physicalBook1 = createPhysicalBook(new PhysicalBook(book1, "PB/1/1"));
+					createPhysicalBook(new PhysicalBook(book1, "PB/1/2", "zniszczona okładka"));
+					createPhysicalBook(new PhysicalBook(book1, "PB/1/3", "brak strony 282"));
+					createPhysicalBook(new PhysicalBook(book1, "PB/1/4", "plama na stronie 101"));
 					PhysicalBook physicalBook2 = createPhysicalBook(new PhysicalBook(book2, "PB/2")); 
 					PhysicalBook physicalBook3 = createPhysicalBook(new PhysicalBook(book3, "PB/3")); 
 					

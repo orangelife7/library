@@ -1,0 +1,18 @@
+<div>
+  <h4><b>Egzemplarze</b></h4>
+
+  <table border="1" cellpadding="6">
+    <thead>
+      <tr>
+        <th>Nr katalogowy</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="copy in $ctrl.copies">
+        <td>{{ copy.catalogNumber }}</td>
+        <td>{{ copy.description }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

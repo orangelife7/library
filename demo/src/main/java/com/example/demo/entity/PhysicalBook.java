@@ -36,8 +36,13 @@ public class PhysicalBook extends BaseEntity {
 	}
 
 	public PhysicalBook(Book book, String catalogNumber) {
+		this(book, catalogNumber, null);
+	}
+	
+	public PhysicalBook(Book book, String catalogNumber, String description) {
 		this.book = book;
 		this.catalogNumber = catalogNumber;
+		this.description = description;
 	}
 
 	public String getCatalogNumber() {
