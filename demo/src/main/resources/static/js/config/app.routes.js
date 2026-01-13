@@ -68,7 +68,13 @@ app.config(function($routeProvider) {
 		})
 		.when('/customer-details/:id', {
 			template: '<customer-details />'	
-		})											 
+		})	
+		.when('/employee-list', {
+			template: '<employee-list />'	
+		})	
+		.when('/employee-details/:id', {
+			template: '<employee-details />'	
+		})													 
         .otherwise({
             template: '<error/>'
         });

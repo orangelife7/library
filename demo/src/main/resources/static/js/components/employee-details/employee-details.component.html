@@ -1,0 +1,29 @@
+<style>
+  .employee-details th {
+    background-color: #e0e0e0;
+  }
+  
+    .employee-details td {
+    padding-right: 3mm;
+  }
+  
+</style>
+
+<div class="employee-details">
+
+	<h3><strong>Detale pracownika</strong></h3>
+  <table border="1" cellpadding="6" cellspacing="0">
+    <tr>
+      <th style="width: 23mm;">Id</th>
+      <td>{{$ctrl.employee.id}}</td>
+    </tr>
+    <tr>
+      <th>Imię</th>
+      <td>{{$ctrl.employee.firstName}}</td>
+    </tr>
+    <tr>
+      <th>Nazwisko</th>
+      <td>{{$ctrl.employee.surname}}</td>
+    </tr>
+  </table>
+</div>
