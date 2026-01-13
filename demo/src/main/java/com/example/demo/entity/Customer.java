@@ -33,7 +33,6 @@ public class Customer extends BaseEntity {
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
 	private List<Order> orders;
 
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "address_id")
 	private Address address;
