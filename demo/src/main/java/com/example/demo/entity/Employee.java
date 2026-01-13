@@ -23,7 +23,16 @@ public class Employee extends BaseEntity {
 	@OneToMany(mappedBy = "employee")
 	private List<Order> orders;
 
-// Konstruktor
+
+	// Konstruktory
+	public Employee() {
+	}
+	
+	public Employee(String firstName, String surname) {
+		this.firstName = firstName;
+		this.surname = surname;
+	}
+
 	public String toString() {
 		return "Employee [firstName=" + firstName + ", surname=" + surname + ", orders=" + orders + "]";
 	}
