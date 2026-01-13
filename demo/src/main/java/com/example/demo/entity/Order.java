@@ -71,6 +71,11 @@ public class Order extends BaseEntity {
 	@JoinColumn(name = "employee_id")
 	private Employee employee;
 
+//  Konstruktor
+	public Order() {	
+	}
+	
+	
 //	Metody
 
 	public void refreshDeadline() {
