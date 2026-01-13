@@ -1,0 +1,70 @@
+<style>
+  .order-details th {
+    background-color: #e0e0e0;
+  }
+  
+    .order-details td {
+    padding-right: 3mm;
+  }
+  
+</style>
+
+<div class="order-details">
+
+	<h3><strong>Detale zamówienia</strong></h3>
+  <table border="1" cellpadding="6" cellspacing="0">
+    <tr>
+      <th style="width: 23mm;">Id</th>
+      <td>{{$ctrl.order.id}}</td>
+    </tr>
+    <tr>
+      <th>Data wypożyczenia</th>
+      <td>{{$ctrl.order.loanDate}}</td>
+    </tr>
+    <tr>
+      <th>Termin zwrotu</th>
+      <td>{{$ctrl.order.deadline}}</td>
+    </tr>
+    <tr>
+      <th>Maksymalny termin zwrotu</th>
+      <td>{{$ctrl.order.maximumDeadline}}</td>
+    </tr>
+    <tr>
+      <th>Data zwrotu</th>
+      <td>{{$ctrl.order.returnDate}}</td>
+    </tr>
+    <tr>
+      <th>Anulowane</th>
+      <td>{{$ctrl.order.cancelled}}</td>
+    </tr>
+     <tr>
+      <th>Przygotowane</th>
+      <td>{{$ctrl.order.prepared}}</td>
+    </tr>
+    <tr>
+      <th>Zniszczone</th>
+      <td>{{$ctrl.order.damaged}}</td>
+    </tr>
+    <tr>
+      <th>Płatność</th>
+      <td>{{$ctrl.order.paid}}</td>
+    </tr>
+    <tr>
+      <th>Kwota do zapłaty</th>
+      <td>{{$ctrl.order.amountToPay}}</td>
+    </tr>
+    <tr>
+      <th>Status</th>
+      <td>{{$ctrl.order.status}}</td>
+    </tr>
+    <tr>
+      <th>Id klienta</th>
+      <td>{{$ctrl.order.customer}}</td>
+    </tr>
+    <tr>
+      <th>Id pracownika</th>
+      <td>{{$ctrl.order.employee}}</td>
+    </tr>
+    
+  </table>
+</div>

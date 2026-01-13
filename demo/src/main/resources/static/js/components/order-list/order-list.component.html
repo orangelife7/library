@@ -1,0 +1,44 @@
+<div>
+		<h3><b>Lista zamówień</b></h3>
+
+		<style>
+			th { background-color: #e0e0e0; }
+		</style>
+		
+		<table border="1" cellpadding="6" cellspacing="0">
+			<thead>
+				<tr>
+					<th style="width: 6mm; text-align: center;" >Id</th>
+					<th style="width: 20mm; text-align: center;" >Data wypożyczenia</th>
+					<th style="width: 30mm; text-align: center;" >Termin zwrotu</th>
+					<th style="width: 30mm; text-align: center;" >Maksymalny termin zwrotu</th>
+					<th style="width: 30mm; text-align: center;" >Data zwrotu</th>
+					<th style="width: 30mm; text-align: center;" >Anulowane</th>
+					<th style="width: 30mm; text-align: center;" >Przygotowane</th>
+					<th style="width: 30mm; text-align: center;" >Zniszczone</th>
+					<th style="width: 30mm; text-align: center;" >Płatność</th>
+					<th style="width: 30mm; text-align: center;" >Kwota do zapłaty</th>
+					<th style="width: 30mm; text-align: center;" >Status</th>
+					<th style="width: 30mm; text-align: center;" >Detale</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="order in $ctrl.orders" style="text-align:center;">
+					<td >{{ order.id }}</td>
+					<td>{{ order.loanDate}}</td>
+					<td>{{ order.deadline }}</td>
+					<td>{{ order.maximumDeadline }}</td>
+					<td>{{ order.returnDate }}</td>
+					<td>{{ order.cancelled }}</td>
+					<td>{{ order.prepared }}</td>
+					<td>{{ order.damaged }}</td>
+					<td>{{ order.paid }}</td>
+					<td>{{ order.amountToPay }}</td>
+					<td>{{ order.status }}</td>
+					
+					<td style="text-align:center;">
+					<a href="#!/order-details/{{order.id}}" class="btn btn-info btn-xs">Detale</a>
+				</tr>
+			</tbody>
+		</table>
+</div>
