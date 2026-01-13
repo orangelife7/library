@@ -1,0 +1,29 @@
+<div>
+		<h3><b>Lista klientów</b></h3>
+
+		<style>
+			th { background-color: #e0e0e0; }
+		</style>
+		
+		<table border="1" cellpadding="6" cellspacing="0">
+			<thead>
+				<tr>
+					<th style="width: 6mm; text-align: center;" >Id</th>
+					<th style="width: 20mm; text-align: center;" >Imię</th>
+					<th style="width: 30mm; text-align: center;" >Nazwisko</th>
+					<th style="width: 30mm; text-align: center;" >Pesel</th>
+					<th style="width: 30mm; text-align: center;" >Detale</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="customer in $ctrl.customers" style="text-align:center;">
+					<td >{{ customer.id }}</td>
+					<td>{{ customer.firstName }}</td>
+					<td>{{ customer.surname }}</td>
+					<td>{{ customer.pesel }}</td>
+					<td style="text-align:center;">
+					<a href="#!/customer-details/{{customer.id}}" class="btn btn-info btn-xs">Detale</a>
+				</tr>
+			</tbody>
+		</table>
+</div>

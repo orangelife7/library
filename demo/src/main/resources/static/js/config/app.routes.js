@@ -62,7 +62,13 @@ app.config(function($routeProvider) {
 		})	
 		.when('/physical-book-details/:id', {
 			template: '<physical-book-details />'
-		})									 
+		})	
+		.when('/customer-list', {
+			template: '<customer-list />'
+		})
+		.when('/customer-details/:id', {
+			template: '<customer-details />'	
+		})											 
         .otherwise({
             template: '<error/>'
         });
