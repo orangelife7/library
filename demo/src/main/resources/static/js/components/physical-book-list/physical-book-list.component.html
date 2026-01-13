@@ -1,0 +1,31 @@
+<div> 
+	<h3><b>Lista egzemplarzy książek</b></h3>
+	<!--  <button class="btn btn-success" ng-click="$ctrl.load()">Pobierz</button> -->
+	<style>
+		th { background-color: #e0e0e0; }
+	</style>
+	
+	<table border="1" cellpadding="6" cellspacing="0">
+	
+	<thead>
+		<tr>
+			<th style="width: 6mm; text-align: center;" >Id</th>
+			<th style="width: 70mm; text-align: center;">Numer katalogowy</th>
+			<th style="width: 50mm; text-align: center;">Opis</th>
+			<th style="width: 50mm; text-align: center;">Detale egzemplarzy</th>
+		</tr>
+	</thead>
+	
+	<tbody>
+		<tr ng-repeat="book in $ctrl.books">
+			<td>{{ book.id }}</td>
+			<td>{{ book.catalogNumber }}</td>
+			<td>{{ book.description }}</td>
+			<td style="text-align:center;">
+          <a href="#!/physical-book-details/{{book.id}}" class="btn btn-info btn-xs">
+            Detale
+          </a>
+		</tr>
+	</tbody>
+
+</div>

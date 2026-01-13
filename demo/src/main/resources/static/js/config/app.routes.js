@@ -48,15 +48,21 @@ app.config(function($routeProvider) {
 		.when('/task15', {
 			template: '<task15 />'
 		})	
-		.when('/book-list', {
-			template: '<book-list />'
-		})	
 		.when('/bootstrap-training', {
 			template: '<bootstrap-training />'	
-		})	
+		})
+		.when('/book-list', {
+			template: '<book-list />'
+		})		
 		.when('/book-details/:id', {
 			template: '<book-details />'	
-		})								 
+		})	
+		.when('/physical-book-list', {
+			template: '<physical-book-list />'
+		})	
+		.when('/physical-book-details/:id', {
+			template: '<physical-book-details />'
+		})									 
         .otherwise({
             template: '<error/>'
         });
