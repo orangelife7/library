@@ -1,34 +1,33 @@
 <div> 
 	<h3><b>Lista książek</b></h3>
 	<!--  <button class="btn btn-success" ng-click="$ctrl.load()">Pobierz</button> -->
-	<style>
-		th { background-color: #e0e0e0; }
-	</style>
 	
-	<table border="1" cellpadding="6" cellspacing="0">
+	
+	<table>
 	
 	<thead>
 		<tr>
-			<th style="width: 6mm; text-align: center;" >Id</th>
-			<th style="width: 70mm; text-align: center;">Tytuł</th>
-			<th style="width: 50mm; text-align: center;">Autor</th>
-			<th style="width: 30mm; text-align: center;">Rok publikacji</th>
-			<th style="width: 25mm; text-align: center;">ISBN</th>
-			<th style="width: 25mm; text-align: center;">Detale</th>
+			<th>Id</th>
+			<th>Tytuł</th>
+			<th>Autor</th>
+			<th>Rok publikacji</th>
+			<th>ISBN</th>
+			<th>Detale</th>
 			</tr>
 	</thead>
 	
 	<tbody>
-		<tr ng-repeat="book in $ctrl.books" style="text-align:center;">
+		<tr ng-repeat="book in $ctrl.books">
 			<td>{{ book.id }}</td>
 			<td>{{ book.title }}</td>
 			<td>{{ book.author }}</td>
 			<td>{{ book.yearOfPublication }}</td>
 			<td>{{ book.isbn }}</td>
-			<td style="text-align:center;">
+			<td>
           <a href="#!/book-details/{{book.id}}" class="btn btn-info btn-xs">
             Detale
           </a>
+          </td>
 		</tr>
 	</tbody>
 	</table>

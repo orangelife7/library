@@ -1,19 +1,9 @@
-<style>
-  .book-details th {
-    background-color: #e0e0e0;
-  }
-  
-  .book-details td {
-    padding-right: 3mm;
-  }
-  
-</style>
-<div class="book-details">
+<div>
 
 	<h3><strong>Detale książki</strong></h3>
-  <table border="1" cellpadding="6" cellspacing="0">
+  <table>
     <tr>
-      <th style="width: 26mm;">Id</th>
+      <th>Id</th>
       <td>{{$ctrl.book.id}}</td>
     </tr>
     <tr>
@@ -34,10 +24,11 @@
     </tr>
   </table>
 
+
 <div>
 <h3><strong>Lista egzemplarzy</strong></h3>
 
-<table border="1" cellpadding="6" cellspacing="0">
+<table>
 	<thead>
 		<tr>
 			<th>Id</th>
@@ -51,17 +42,14 @@
 			<td>{{item.id}}</td>
 			<td>{{item.catalogNumber}}</td>
 			<td>{{item.description}}</td>
-			<td style="text-align:center;">
+			<td>
           <a href="#!/physical-book-details/{{item.id}}" class="btn btn-info btn-xs">
             Detale
           </a>
+          </td>
 		</tr>
 	</tbody>
 </table>
 </div>
-<!-- 
-<physical-book-list book-id="$ctrl.book.id"></physical-book-list>
-
- -->
 
 </div>

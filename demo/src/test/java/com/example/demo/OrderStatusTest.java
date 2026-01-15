@@ -67,7 +67,7 @@ public class OrderStatusTest {
 
 	@Test
 	public void testUnreturned() {
-		LocalDateTime loanDate = LocalDateTime.of(2025, 4, 20, 0, 0);
+		LocalDateTime loanDate = LocalDateTime.of(2025, 6, 20, 0, 0);
 		Order order = OrderFactory.get(loanDate);
 		_assertEquals(order, OrderStatus.UNRETURNED);
 	}

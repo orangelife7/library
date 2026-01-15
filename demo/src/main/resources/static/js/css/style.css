@@ -1,0 +1,14 @@
+th { background-color: #e0e0e0;
+ 	text-align: center;
+ 	padding-left: 2mm;
+   	padding-right: 2mm;
+ }
+ 
+ td {text-align:center;
+ 	padding-left: 2mm;
+   	padding-right: 2mm;
+ }
+ 
+ table, th, td {
+    border: 1px solid black;
+}
