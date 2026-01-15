@@ -1,28 +1,12 @@
-app.component('customerList', {
+angular.module('app').component('customerList', {
 	templateUrl: '/js/components/customer-list/customer-list.component.html',
-	controller: function($http, $interval) {
-		const ctrl = this;
+	controller: function ($scope, $controller) {
 		
-		ctrl.$onInit = function() {
-			ctrl.load();
+		$controller('ListController', 
+			{
+				$scope: $scope,
+			});
 			
-			
-		$interval(function() {
-			ctrl.load();
-		}, 5000);
+			$scope.init("customer")
 	}
-		
-	
-		ctrl.load = function() {
-			$http.get('http://localhost:8080/api/customer/list')
-			.then(function(response) {
-				console.log(response.data);
-				ctrl.customers = response.data;
-			})
-			.catch(function(error) {
-				console.error('Błąd:' + error);
-			})
-		};
-	}
-	
 });

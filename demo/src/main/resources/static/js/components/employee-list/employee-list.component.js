@@ -1,27 +1,12 @@
-app.component('employeeList', {
+angular.module('app').component('employeeList', {
 	templateUrl: '/js/components/employee-list/employee-list.component.html',
-	controller: function($http, $interval) {
-		const ctrl = this;
+	controller: function ($scope, $controller) {
 		
-		ctrl.$onInit = function() {
-			ctrl.load();
+		$controller('ListController', 
+			{
+				$scope: $scope,
+			});
 			
-			
-		$interval(function() {
-			ctrl.load();
-		}, 5000);
+			$scope.init("employee")
 	}
-		
-		ctrl.load = function() {
-			$http.get('http://localhost:8080/api/employee/list')
-			.then(function(response) {
-				console.log(response.data);
-				ctrl.employees = response.data;
-			})
-			.catch(function(error) {
-				console.error('Błąd:' + error);
-			})
-		};
-	}
-	
 });
