@@ -4,23 +4,23 @@
   <table>
     <tr>
       <th>Id</th>
-      <td>{{$ctrl.book.id}}</td>
+      <td>{{item.id}}</td>
     </tr>
     <tr>
       <th>Tytuł</th>
-      <td>{{$ctrl.book.title}}</td>
+      <td>{{item.title}}</td>
     </tr>
     <tr>
       <th>Autor</th>
-      <td>{{$ctrl.book.author}}</td>
+      <td>{{item.author}}</td>
     </tr>
     <tr>
       <th>Rok publikacji</th>
-      <td>{{$ctrl.book.yearOfPublication}}</td>
+      <td>{{item.yearOfPublication}}</td>
     </tr>
     <tr>
       <th>ISBN</th>
-      <td>{{$ctrl.book.isbn}}</td>
+      <td>{{item.isbn}}</td>
     </tr>
   </table>
 
@@ -38,7 +38,7 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng:repeat="item in $ctrl.book.physicalBooks">
+		<tr ng:repeat="item in item.physicalBooks">
 			<td>{{item.id}}</td>
 			<td>{{item.catalogNumber}}</td>
 			<td>{{item.description}}</td>
