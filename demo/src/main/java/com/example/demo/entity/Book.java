@@ -3,6 +3,7 @@ package com.example.demo.entity;
 import java.util.List;
 
 import com.example.demo.enumerable.BookState;
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
@@ -15,6 +16,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "book")
+@JsonFilter("bookFilter")
 public class Book extends BaseEntity {
 
 	@Column(name = "title")

@@ -7,7 +7,10 @@ import java.util.Optional;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.entity.BaseEntity;
+import com.example.demo.mapper.CoreMapper;
 import com.example.demo.repository.CoreRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import jakarta.persistence.Id;
 
@@ -26,6 +29,12 @@ public abstract class CrudService<T extends BaseEntity> {
 
 	public List<T> findAll() {
 		return getRepository().findAll();
+	}
+
+	public String getListJson() throws JsonProcessingException {
+		List<T> list = findAll();
+		ObjectMapper mapper = getMapper();
+		return mapper.writeValueAsString(list);
 	}
 
 	@Transactional
@@ -50,6 +59,10 @@ public abstract class CrudService<T extends BaseEntity> {
 	@Transactional
 	public void delete(Long id) {
 		getRepository().deleteById(id);
+	}
+
+	protected CoreMapper getMapper() {
+		return null;
 	}
 }
 
