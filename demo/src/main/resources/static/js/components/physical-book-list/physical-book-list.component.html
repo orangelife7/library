@@ -7,18 +7,22 @@
 		<tr>
 			<th>Id</th>
 			<th>Numer katalogowy</th>
+			<th>Tytuł</th>
+			<th>Autor</th>
 			<th>Opis</th>
 			<th>Detale egzemplarzy</th>
 		</tr>
 	</thead>
 	
 	<tbody>
-		<tr ng-repeat="book in list">
-			<td>{{ book.id }}</td>
-			<td>{{ book.catalogNumber }}</td>
-			<td>{{ book.description }}</td>
+		<tr ng-repeat="item in list">
+			<td>{{ item.id }}</td>
+			<td>{{ item.catalogNumber }}</td>
+			<td>{{ item.book.title }}</td>
+			<td>{{ item.book.author }}</td>
+			<td>{{ item.description }}</td>
 			<td>
-          <a href="#!/physical-book-details/{{book.id}}" class="btn btn-info btn-xs">
+          <a href="#!/physical-book-details/{{item.id}}" class="btn btn-info btn-xs">
             Detale
           </a>
           </td>

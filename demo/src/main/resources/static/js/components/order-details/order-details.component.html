@@ -46,14 +46,84 @@
       <th>Status</th>
       <td>{{item.status}}</td>
     </tr>
-    <tr>
-      <th>Id klienta</th>
-      <td>{{item.customer}}</td>
-    </tr>
-    <tr>
-      <th>Id pracownika</th>
-      <td>{{item.employee}}</td>
-    </tr>
-    
   </table>
+  
+  <div>
+		<h3><b>Dane klienta</b></h3>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Imię</th>
+					<th>Nazwisko</th>
+					<th>Pesel</th>
+					<th>Detale</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td >{{ item.customer.id }}</td>
+					<td>{{ item.customer.firstName }}</td>
+					<td>{{ item.customer.surname }}</td>
+					<td>{{ item.customer.pesel }}</td>
+					<td>
+					<a href="#!/customer-details/{{item.customer.id}}" class="btn btn-info btn-xs">Detale</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+</div>
+  
+  <h3><b>Dane pracownika</b></h3>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Imię</th>
+					<th>Nazwisko</th>
+					<th>Detale</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td >{{ item.employee.id }}</td>
+					<td>{{ item.employee.firstName }}</td>
+					<td>{{ item.employee.surname }}</td>
+					<td>
+					<a href="#!/employee-details/{{item.employee.id}}" class="btn btn-info btn-xs">Detale</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+</div>
+  
+  <div>
+		<h3><b>Egzemplarze</b></h3>
+<table>
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Numer katalogowy</th>
+			<th>Tytuł</th>
+			<th>Autor</th>
+			<th>Opis</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in item.physicalBooks">
+			<td>{{item.id}}</td>
+			<td>{{item.catalogNumber}}</td>
+			<td>{{item.book.title}}</td>
+			<td>{{item.book.author}}</td>
+			<td>{{item.description}}</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+
+  
+  
+  
 </div>

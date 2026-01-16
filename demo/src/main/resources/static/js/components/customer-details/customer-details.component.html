@@ -16,7 +16,14 @@
     </tr>
     <tr>
       <th>Adres</th>
-      <td>{{item.address}}</td>
+      <td>
+      	<div class="row">{{item.address.country}}</div>
+      	<div class="row">{{item.address.city}}</div>
+      	<div class="row">{{item.address.street}}</div>
+      	<div class="row">{{item.address.numberOfHouseOrApartment}}</div>
+      	<div class="row">{{item.address.zipCode}}</div>
+      </td>
+      
     </tr>
   </table>
 </div>
