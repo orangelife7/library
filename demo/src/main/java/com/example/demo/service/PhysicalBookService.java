@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.PhysicalBook;
+import com.example.demo.mapper.CoreMapper;
+import com.example.demo.mapper.PhysicalBookMapper;
 import com.example.demo.repository.CoreRepository;
 import com.example.demo.repository.PhysicalBookRepository;
 
@@ -15,5 +17,10 @@ public class PhysicalBookService extends CrudService<PhysicalBook>{
 	
 	public CoreRepository<PhysicalBook, Long> getRepository() {
 		return physicalBookRepository;
+	}
+	
+	@Override
+	protected CoreMapper getMapper() {
+		return new PhysicalBookMapper();
 	}
 }

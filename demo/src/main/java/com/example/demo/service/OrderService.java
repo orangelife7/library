@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.entity.Order;
+import com.example.demo.mapper.CoreMapper;
+import com.example.demo.mapper.OrderMapper;
 import com.example.demo.repository.CoreRepository;
 import com.example.demo.repository.OrderRepository;
 
@@ -28,4 +30,11 @@ public class OrderService extends CrudService<Order> {
 			order.refreshStatus();
 		}
 	}
+
+	@Override
+	protected CoreMapper getMapper() {
+		return new OrderMapper();
+	}
+	
+	
 }

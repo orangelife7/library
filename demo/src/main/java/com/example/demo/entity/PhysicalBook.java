@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -14,6 +15,7 @@ import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "physical_book")
+@JsonFilter("physicalBookFilter")
 public class PhysicalBook extends BaseEntity {
 
 	@NotNull

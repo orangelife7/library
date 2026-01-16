@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
@@ -17,6 +18,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "customer")
+@JsonFilter("customerFilter")
 public class Customer extends BaseEntity {
 
 

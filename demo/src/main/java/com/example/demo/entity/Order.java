@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.example.demo.enumerable.OrderStatus;
 import com.example.demo.listener.OrderListener;
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -22,6 +23,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "orders")
+@JsonFilter("orderFilter")
 @EntityListeners(OrderListener.class)
 public class Order extends BaseEntity {
 
