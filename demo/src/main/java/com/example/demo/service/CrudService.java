@@ -12,6 +12,7 @@ import com.example.demo.repository.CoreRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.Id;
 
 public abstract class CrudService<T extends BaseEntity> {
@@ -35,6 +36,12 @@ public abstract class CrudService<T extends BaseEntity> {
 		List<T> list = findAll();
 		ObjectMapper mapper = getMapper();
 		return mapper.writeValueAsString(list);
+	}
+	
+	public String getDetailsJson(Long id) throws JsonProcessingException {
+		T entity = findById(id).orElseThrow(() -> new EntityNotFoundException("Entity not found with id: " + id));
+		ObjectMapper mapper = getMapper();
+		return mapper.writeValueAsString(entity);
 	}
 
 	@Transactional

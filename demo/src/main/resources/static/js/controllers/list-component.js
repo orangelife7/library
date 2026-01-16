@@ -3,7 +3,7 @@ app.controller('ListController', function($scope, $http, $interval){
 	$scope.list = [];
 	
 	$scope.init = function(entityUrl) {
-		$scope.initList(`http://localhost:8080/api/${entityUrl}/list-json`);
+		$scope.initList(`http://localhost:8080/api/${entityUrl}/list`);
 	}
 	
 	$scope.initList = function (url) {

@@ -24,21 +24,30 @@ public abstract class CrudController<T extends BaseEntity> {
 		return getService().save(entity);
 	}
 
+	/*
 	@GetMapping("/list")
 	public List<T> findAll() {
 		return getService().findAll();
 	}
+	*/
 
-	@GetMapping("/list-json")
+	@GetMapping("/list")
 	public String listJson() throws JsonProcessingException {
 		return getService().getListJson();
 	}
+	
+	@GetMapping("/{id}")
+	public String detailsJson(@PathVariable Long id) throws JsonProcessingException {
+		return getService().getDetailsJson(id);
+	}
 
+	/*
 	@GetMapping("/{id}")
 	public T findById(@PathVariable Long id) {
 		return getService().findById(id)
 				.orElseThrow(() -> new EntityNotFoundException("Entity not found with id: " + id));
 	}
+	*/
 
 	@PostMapping("/{id}/update")
 	public void update(@PathVariable Long id, @RequestBody T entity) {
