@@ -117,7 +117,7 @@ public class StartupService {
 //					Order4
 		Order order4 = new Order();
 		order4.setCustomer(customer3);
-		order3.setEmployee(employee1);
+		order4.setEmployee(employee1);
 
 		List<PhysicalBook> order4Book = new ArrayList<>();
 		order4Book.add(physicalBook1);
