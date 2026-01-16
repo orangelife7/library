@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.entity.Book;
 import com.example.demo.mapper.BookMapper;
 import com.example.demo.mapper.CoreMapper;
+import com.example.demo.mapper.PhysicalBookMapper;
 import com.example.demo.repository.BookRepository;
 import com.example.demo.repository.CoreRepository;
 

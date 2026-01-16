@@ -2,6 +2,7 @@ package com.example.demo.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -14,6 +15,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "address")
+@JsonFilter("addressFilter")
 public class Address extends BaseEntity {
 
 	@Column(name = "country")

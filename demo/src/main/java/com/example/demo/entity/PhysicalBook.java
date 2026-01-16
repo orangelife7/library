@@ -3,7 +3,6 @@ package com.example.demo.entity;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,12 +24,10 @@ public class PhysicalBook extends BaseEntity {
 	@Column(name = "description")
 	private String description;
 
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "book_id")
 	private Book book;
 
-	@JsonIgnore
 	@ManyToMany(mappedBy = "physicalBooks")
 	private List<Order> orders;
 
@@ -40,7 +37,7 @@ public class PhysicalBook extends BaseEntity {
 	public PhysicalBook(Book book, String catalogNumber) {
 		this(book, catalogNumber, null);
 	}
-	
+
 	public PhysicalBook(Book book, String catalogNumber, String description) {
 		this.book = book;
 		this.catalogNumber = catalogNumber;
@@ -69,6 +66,14 @@ public class PhysicalBook extends BaseEntity {
 
 	public void setBook(Book book) {
 		this.book = book;
+	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
 
 }

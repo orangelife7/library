@@ -58,17 +58,14 @@ public class Order extends BaseEntity {
 	@Enumerated(EnumType.STRING)
 	private OrderStatus status;
 
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
 	private Customer customer;
 
-	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "order_physical_book", joinColumns = @JoinColumn(name = "order_id"), inverseJoinColumns = @JoinColumn(name = "physical_book_id"))
 	private List<PhysicalBook> physicalBooks;
 
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "employee_id")
 	private Employee employee;
