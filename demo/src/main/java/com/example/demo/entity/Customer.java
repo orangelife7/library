@@ -31,7 +31,6 @@ public class Customer extends BaseEntity {
 	@Column(name = "pesel")
 	private String pesel;
 
-	@JsonIgnore
 	@OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
 	private List<Order> orders;
 

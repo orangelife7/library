@@ -21,7 +21,6 @@ public class Employee extends BaseEntity {
 	@Column(name = "surname")
 	private String surname;
 
-	@JsonIgnore
 	@OneToMany(mappedBy = "employee")
 	private List<Order> orders;
 

@@ -9,7 +9,8 @@ public class PhysicalBookMapper extends CoreMapper {
 		
 		addFilter("bookFilter", filterOutAllExcept("title", "author"));
 		
-		addFilter("orderFilter", filterOutAllExcept("id", "status"));
+		addFilter("orderFilter", filterOutAllExcept("id", "loadDate", "deadline", "maximumDeadline", 
+				"returnDate", "cancelled", "prepared", "damaged", "paid", "amountToPaid", "status"));
 	}
 	
 }

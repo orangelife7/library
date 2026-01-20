@@ -1,41 +1,4 @@
 <div>
-	<h3><b>Lista zamówień</b></h3>
-
-	<table>
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Data wypożyczenia</th>
-				<th>Termin zwrotu</th>
-				<th>Maksymalny termin zwrotu</th>
-				<th>Data zwrotu</th>
-				<th>Anulowane</th>
-				<th>Przygotowane</th>
-				<th>Zniszczone</th>
-				<th>Płatność</th>
-				<th>Kwota do zapłaty</th>
-				<th>Status</th>
-				<th>Detale</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="order in list">
-				<td >{{ order.id }}</td>
-				<td>{{ order.loanDate}}</td>
-				<td>{{ order.deadline }}</td>
-				<td>{{ order.maximumDeadline }}</td>
-				<td>{{ order.returnDate }}</td>
-				<td>{{ order.cancelled }}</td>
-				<td>{{ order.prepared }}</td>
-				<td>{{ order.damaged }}</td>
-				<td>{{ order.paid }}</td>
-				<td>{{ order.amountToPay }}</td>
-				<td>{{ order.status }}</td>
-					
-				<td>
-				<a href="#!/order-details/{{order.id}}" class="btn btn-info btn-xs">Detale</a>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+	<h3><b>Lista zamówień<b></b></h3>
+	<order-table list="list" />
 </div>

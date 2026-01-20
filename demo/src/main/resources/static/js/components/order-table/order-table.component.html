@@ -1,0 +1,43 @@
+<div>
+<table >
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Data wypożyczenia</th>
+      <th>Termin zwrotu</th>
+      <th>Maksymalny termin zwrotu</th>
+      <th>Data zwrotu</th>
+      <th>Anulowane</th>
+      <th>Przygotowane</th>
+      <th>Zniszczone</th>
+      <th>Płatność</th>
+      <th>Kwota</th>
+      <th>Status</th>
+      <th>Detale</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr ng-repeat="order in $ctrl.list">
+      <td>{{ order.id }}</td>
+      <td>{{ order.loanDate }}</td>
+      <td>{{ order.deadline }}</td>
+      <td>{{ order.maximumDeadline }}</td>
+      <td>{{ order.returnDate }}</td>
+      <td>{{ order.cancelled }}</td>
+      <td>{{ order.prepared }}</td>
+      <td>{{ order.damaged }}</td>
+      <td>{{ order.paid }}</td>
+      <td>{{ order.amountToPay }}</td>
+      <td>{{ order.status }}</td>
+      <td>
+		<a href="#!/order-details/{{order.id}}" class="btn btn-info btn-xs">Detale</a>
+		</td>
+    </tr>
+
+    <tr ng-if="!$ctrl.list || !$ctrl.list.length">
+      <td>Brak zamówień</td>
+    </tr>
+  </tbody>
+</table>
+</div>

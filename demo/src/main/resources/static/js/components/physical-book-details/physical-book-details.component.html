@@ -26,19 +26,7 @@
 <br>
 
 <div>
-	<table>
-		<thead>
-				<tr>
-					<th>Id</th>
-					<th>Status</th>
-				</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="item in item.orders">
-				<td>{{item.id}}</td>
-				<td>{{item.status}}</td>
-			</tr>
-		</tbody>
-	</table>
+	 <h3><strong>Zamówienia egzemplarzy</strong></h3>
+	 <order-table list="item.orders">
 </div>
 
