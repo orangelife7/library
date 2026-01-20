@@ -28,28 +28,7 @@
 <div>
 <h3><strong>Lista egzemplarzy</strong></h3>
 
-<table>
-	<thead>
-		<tr>
-			<th>Id</th>
-			<th>Numer katalogowy</th>
-			<th>Opis</th>
-			<th>Detale egzemplarza</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng:repeat="item in item.physicalBooks">
-			<td>{{item.id}}</td>
-			<td>{{item.catalogNumber}}</td>
-			<td>{{item.description}}</td>
-			<td>
-          <a href="#!/physical-book-details/{{item.id}}" class="btn btn-info btn-xs">
-            Detale
-          </a>
-          </td>
-		</tr>
-	</tbody>
-</table>
+<physical-book-table list="item.physicalBooks" />
 </div>
 
 </div>

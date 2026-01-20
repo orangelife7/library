@@ -6,7 +6,7 @@ public class BookMapper extends CoreMapper {
 
 	{
 		addFilter("bookFilter", filterOutAllExcept("id", "title", "author", "yearOfPublication", "isbn", "physicalBooks"));
-		addFilter("physicalBookFilter", filterOutAllExcept("id", "catalogNumber", "description"));
+		addFilter("physicalBookFilter", filterOutAllExcept("id", "catalogNumber", "title", "author", "description"));
 	}
 
 }

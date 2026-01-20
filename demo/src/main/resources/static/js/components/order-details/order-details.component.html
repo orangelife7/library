@@ -100,30 +100,5 @@
 </div>
   
   <div>
-		<h3><b>Egzemplarze</b></h3>
-<table>
-	<thead>
-		<tr>
-			<th>Id</th>
-			<th>Numer katalogowy</th>
-			<th>Tytuł</th>
-			<th>Autor</th>
-			<th>Opis</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="item in item.physicalBooks">
-			<td>{{item.id}}</td>
-			<td>{{item.catalogNumber}}</td>
-			<td>{{item.book.title}}</td>
-			<td>{{item.book.author}}</td>
-			<td>{{item.description}}</td>
-		</tr>
-	</tbody>
-</table>
-</div>
-
-  
-  
-  
+<physical-book-table list="item.physicalBooks" /> 
 </div>
