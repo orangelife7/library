@@ -17,10 +17,18 @@
 	<tbody>
 		<tr ng-repeat="item in $ctrl.list">
 			<td>{{ item.id }}</td>
-			<td>{{ item.catalogNumber }}</td>
-			<td>{{ item.book.title }}</td>
-			<td>{{ item.book.author }}</td>
-			<td>{{ item.description }}</td>
+			<td>
+				<field entity-name="physicalBook" entity="item" field-name="catalogNumber"/>
+			</td>
+			<td>
+				<field entity-name="book" entity="item.book" field-name="title"/>
+			</td>
+			<td>
+				<field entity-name="book" entity="item.book" field-name="author"/>
+			</td>
+			<td>
+				<field entity-name="physicalBook" entity="item" field-name="description"/>
+			</td>
 			<td>
           <a href="#!/physical-book-details/{{item.id}}" class="btn btn-info btn-xs">
             Detale

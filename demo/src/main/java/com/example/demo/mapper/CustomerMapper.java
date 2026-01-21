@@ -6,8 +6,8 @@ public class CustomerMapper extends CoreMapper {
 	
 	{
 		addFilter("customerFilter", filterOutAllExcept("id", "firstName", "surname", "pesel", "address", "orders"));
-		addFilter("addressFilter", filterOutAllExcept("country", "city", "street", "numberOfHouseOrApartment", "zipCode"));
-		addFilter("orderFilter", filterOutAllExcept("id", "loadDate", "deadline", "maximumDeadline", 
+		addFilter("addressFilter", filterOutAllExcept("id", "country", "city", "street", "numberOfHouseOrApartment", "zipCode"));
+		addFilter("orderFilter", filterOutAllExcept("id", "loanDate", "deadline", "maximumDeadline", 
 				"returnDate", "cancelled", "prepared", "damaged", "paid", "amountToPaid", "status"));
 	}
 	

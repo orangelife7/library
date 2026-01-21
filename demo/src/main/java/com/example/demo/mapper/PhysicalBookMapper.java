@@ -7,9 +7,9 @@ public class PhysicalBookMapper extends CoreMapper {
 	{
 		addFilter("physicalBookFilter", filterOutAllExcept("id", "catalogNumber", "description", "book", "orders"));
 		
-		addFilter("bookFilter", filterOutAllExcept("title", "author"));
+		addFilter("bookFilter", filterOutAllExcept("id", "title", "author", "description"));
 		
-		addFilter("orderFilter", filterOutAllExcept("id", "loadDate", "deadline", "maximumDeadline", 
+		addFilter("orderFilter", filterOutAllExcept("id", "loanDate", "deadline", "maximumDeadline", 
 				"returnDate", "cancelled", "prepared", "damaged", "paid", "amountToPaid", "status"));
 	}
 	

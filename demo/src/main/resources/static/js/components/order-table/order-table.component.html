@@ -20,16 +20,36 @@
   <tbody>
     <tr ng-repeat="order in $ctrl.list">
       <td>{{ order.id }}</td>
-      <td>{{ order.loanDate }}</td>
-      <td>{{ order.deadline }}</td>
-      <td>{{ order.maximumDeadline }}</td>
-      <td>{{ order.returnDate }}</td>
-      <td>{{ order.cancelled }}</td>
-      <td>{{ order.prepared }}</td>
-      <td>{{ order.damaged }}</td>
-      <td>{{ order.paid }}</td>
-      <td>{{ order.amountToPay }}</td>
-      <td>{{ order.status }}</td>
+     	<td>
+			<field entity-name="order" entity="order" field-name="loanDate"/>
+		</td>
+     	<td>
+			<field entity-name="order" entity="order" field-name="deadline"/>
+		</td>
+		<td>
+			<field entity-name="order" entity="order" field-name="maximumDeadline"/>
+		</td>
+     	<td>
+			<field entity-name="order" entity="order" field-name="returnDate"/>
+		</td>
+      	<td>
+			<field entity-name="order" entity="order" field-name="cancelled"/>
+		</td>
+      <td>
+			<field entity-name="order" entity="order" field-name="prepared"/>
+		</td>
+     <td>
+			<field entity-name="order" entity="order" field-name="damaged"/>
+		</td>
+      <td>
+			<field entity-name="order" entity="order" field-name="paid"/>
+		</td>
+      <td>
+			<field entity-name="order" entity="order" field-name="amountToPay" editable="false"/>
+		</td>
+      <td>
+			<field entity-name="order" entity="order" field-name="status" editable="false"/>
+		</td>
       <td>
 		<a href="#!/order-details/{{order.id}}" class="btn btn-info btn-xs">Detale</a>
 		</td>

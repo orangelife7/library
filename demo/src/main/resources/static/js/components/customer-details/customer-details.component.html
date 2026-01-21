@@ -8,23 +8,41 @@
     </tr>
     <tr>
       <th>Imię</th>
-      <td>{{item.firstName}}</td>
+      <td>
+		<field entity-name="customer" entity="item" field-name="firstName"/>
+	  </td>
     </tr>
     <tr>
       <th>Nazwisko</th>
-      <td>{{item.surname}}</td>
-    </tr>
-    <tr>
-      <th>Adres</th>
       <td>
-      	<div class="row">{{item.address.country}}</div>
-      	<div class="row">{{item.address.city}}</div>
-      	<div class="row">{{item.address.street}}</div>
-      	<div class="row">{{item.address.numberOfHouseOrApartment}}</div>
-      	<div class="row">{{item.address.zipCode}}</div>
-      </td>
-      
+		<field entity-name="customer" entity="item" field-name="surname"/>
+	  </td>
     </tr>
+    
+   <tr>
+  <th>Adres</th>
+  <td>
+    <div class="row">
+      <field entity-name="address" entity="item.address"field-name="country"></field>
+    </div>
+
+    <div class="row">
+      <field entity-name="address" entity="item.address" field-name="city"></field>
+    </div>
+
+    <div class="row">
+      <field entity-name="address" entity="item.address" field-name="street"></field>
+    </div>
+
+    <div class="row">
+      <field entity-name="address" entity="item.address" field-name="numberOfHouseOrApartment"></field>
+    </div>
+
+    <div class="row">
+      <field entity-name="address" entity="item.address" field-name="zipCode"></field>
+    </div>
+  </td>
+</tr>
   </table>
   
   <h3><strong>Zamówienia klienta</strong></h3>

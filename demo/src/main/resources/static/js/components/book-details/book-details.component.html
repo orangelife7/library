@@ -8,25 +8,32 @@
     </tr>
     <tr>
       <th>Tytuł</th>
-      <td>{{item.title}}</td>
+      <td>
+		<field entity-name="book" entity="item" field-name="title"/>
+	  </td>
     </tr>
     <tr>
       <th>Autor</th>
-      <td>{{item.author}}</td>
+      <td>
+		<field entity-name="book" entity="item" field-name="author"/>
+	  </td>
     </tr>
     <tr>
       <th>Rok publikacji</th>
-      <td>{{item.yearOfPublication}}</td>
+      <td>
+		<field entity-name="book" entity="item" field-name="yearOfPublication"/>
+	  </td>
     </tr>
     <tr>
       <th>ISBN</th>
-      <td>{{item.isbn}}</td>
+      <td>
+		<field entity-name="book" entity="item" field-name="isbn"/>
+	  </td>
     </tr>
   </table>
 
 
 <div>
-<h3><strong>Lista egzemplarzy</strong></h3>
 
 <physical-book-table list="item.physicalBooks" />
 </div>

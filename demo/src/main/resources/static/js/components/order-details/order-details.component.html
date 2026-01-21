@@ -8,43 +8,63 @@
     </tr>
     <tr>
       <th>Data wypożyczenia</th>
-      <td>{{item.loanDate}}</td>
+     <td>
+		<field entity-name="order" entity="item" field-name="loanDate"/>
+	 </td>
     </tr>
     <tr>
       <th>Termin zwrotu</th>
-      <td>{{item.deadline}}</td>
+     <td>
+		<field entity-name="order" entity="item" field-name="deadline"/>
+	 </td>
     </tr>
     <tr>
       <th>Maksymalny termin zwrotu</th>
-      <td>{{item.maximumDeadline}}</td>
+      <td>
+		<field entity-name="order" entity="item" field-name="maximumDeadline"/>
+	 </td>
     </tr>
     <tr>
       <th>Data zwrotu</th>
-      <td>{{item.returnDate}}</td>
+      <td>
+		<field entity-name="order" entity="item" field-name="returnDate"/>
+	 </td>
     </tr>
     <tr>
       <th>Anulowane</th>
-      <td>{{item.cancelled}}</td>
+      <td>
+		<field entity-name="order" entity="item" field-name="cancelled"/>
+	 </td>
     </tr>
      <tr>
       <th>Przygotowane</th>
-      <td>{{item.prepared}}</td>
+     <td>
+		<field entity-name="order" entity="item" field-name="prepared"/>
+	 </td>
     </tr>
     <tr>
       <th>Zniszczone</th>
-      <td>{{item.damaged}}</td>
+      <td>
+		<field entity-name="order" entity="item" field-name="damaged"/>
+	 </td>
     </tr>
     <tr>
       <th>Płatność</th>
-      <td>{{item.paid}}</td>
+      <td>
+		<field entity-name="order" entity="item" field-name="paid"/>
+	 </td>
     </tr>
     <tr>
       <th>Kwota do zapłaty</th>
-      <td>{{item.amountToPay}}</td>
+      <td>
+		<field entity-name="order" entity="item" field-name="amountToPay" editable="false"/>
+	 </td>
     </tr>
     <tr>
       <th>Status</th>
-      <td>{{item.status}}</td>
+      <td>
+		<field entity-name="order" entity="item" field-name="status" editable="false"/>
+	 </td>
     </tr>
   </table>
   
@@ -64,9 +84,15 @@
 			<tbody>
 				<tr>
 					<td >{{ item.customer.id }}</td>
-					<td>{{ item.customer.firstName }}</td>
-					<td>{{ item.customer.surname }}</td>
-					<td>{{ item.customer.pesel }}</td>
+					<td>
+						<field entity-name="customer" entity="item.customer" field-name="firstName"/>
+	 				</td>
+					<td>
+						<field entity-name="customer" entity="item.customer" field-name="surname"/>
+	 				</td>
+					<td>
+						<field entity-name="customer" entity="item.customer" field-name="pesel"/>
+	 				</td>
 					<td>
 					<a href="#!/customer-details/{{item.customer.id}}" class="btn btn-info btn-xs">Detale</a>
 					</td>
@@ -89,8 +115,12 @@
 			<tbody>
 				<tr>
 					<td >{{ item.employee.id }}</td>
-					<td>{{ item.employee.firstName }}</td>
-					<td>{{ item.employee.surname }}</td>
+					<td>
+						<field entity-name="employee" entity="item.employee" field-name="firstName"/>
+	 				</td>
+					<td>
+						<field entity-name="employee" entity="item.employee" field-name="surname"/>
+					</td>
 					<td>
 					<a href="#!/employee-details/{{item.employee.id}}" class="btn btn-info btn-xs">Detale</a>
 					</td>

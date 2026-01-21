@@ -1,0 +1,13 @@
+<div>
+	<span ng-if="!edit" ng-click="start()" ng-style="{'cursor': isEditable() ? 'pointer' : 'default'}">
+		{{ entity[fieldName] || '—' }}
+	</span>
+	
+	<span ng-show="edit">
+		<input type="text" class="form-control" ng-model="val">
+	
+	<button class="btn btn-success btn-xs" ng-click="save()">Zapisz</button>
+	<button class="btn btn-danger btn-xs" ng-click="cancel()">Anuluj</button>
+	
+	</span>
+</div>

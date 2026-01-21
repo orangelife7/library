@@ -13,8 +13,12 @@
 			<tbody>
 				<tr ng-repeat="employee in list">
 					<td >{{ employee.id }}</td>
-					<td>{{ employee.firstName }}</td>
-					<td>{{ employee.surname }}</td>
+					<td>
+						<field entity-name="employee" entity="employee" field-name="firstName"/>
+					</td>
+					<td>
+						<field entity-name="employee" entity="employee" field-name="surname"/>
+					</td>
 					<td>
 					<a href="#!/employee-details/{{employee.id}}" class="btn btn-info btn-xs">Detale</a>
 					</td>

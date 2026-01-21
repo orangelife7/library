@@ -17,7 +17,7 @@ app.controller('DetailsController', function ($scope, $http, $interval, $routePa
         };
 
         $scope.load();
-        vm.interval = $interval($scope.load, 5000);
+        vm.interval = $interval($scope.load, 30000);
     };
 	
 	$scope.$on('$destroy', function() {
