@@ -1,4 +1,7 @@
 app.directive('field', function($http) {
+	
+	let editing = false;
+	
 	return {
 		restrict: 'E',
 		scope: {
@@ -17,16 +20,20 @@ app.directive('field', function($http) {
 		 }
 		
 		scope.start = function() {
+			if (editing) return;
 			if (!isEditable()) return; 
 			if(!scope.entity || !scope.entity.id) return; 
+			editing = true;
 			scope.old = scope.entity[scope.fieldName];
 			scope.val = scope.old;
 			scope.edit = true;
 		};
 		
+	
 		scope.cancel = function() {
 			scope.entity[scope.fieldName] = scope.old;
 			scope.edit = false;
+			editing = false;
 		};
 		
 		scope.save = function() {
@@ -38,15 +45,18 @@ app.directive('field', function($http) {
 			let entityPath = camelToKebabCase(scope.entityName);
 			$http.post('/api/' + entityPath + '/' + scope.entity.id + '/update', payload)
 			.then(function() {
-				scope.entity[scope.fieldName] = scope.val;
 				scope.edit = false;
+				editing = false;
+				scope.$emit('UPLOAD_FIELDS');
 				
+		
 				
-				console.log('Zapisano pole: "' + scope.fieldName + '" =', scope.val);
-				}, function() {
-					scope.entity[scope.fieldName] = scope.old;
-					scope.edit = false;
-				});
+			console.log('Zapisano pole: "' + scope.fieldName + '" =', scope.val);
+			}, function() {
+				scope.entity[scope.fieldName] = scope.old;
+				scope.edit = false;
+				editing = false;
+			});
 		};
 		
 		function camelToKebabCase(str) {

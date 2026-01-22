@@ -20,6 +20,10 @@ app.controller('DetailsController', function ($scope, $http, $interval, $routePa
         vm.interval = $interval($scope.load, 30000);
     };
 	
+	$scope.$on('UPLOAD_FIELDS', function() {
+	    scope.load();
+	  });
+	
 	$scope.$on('$destroy', function() {
 		if(vm.interval) {
 			$interval.cancel(vm.interval);

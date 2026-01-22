@@ -20,6 +20,10 @@ app.controller('ListController', function($scope, $http, $interval) {
 		$scope.load();
 		vm.interval = $interval($scope.load, 30000);
 	};
+	
+	$scope.$on('UPLOAD_FIELDS', function() {
+	      $scope.load();
+	  });
 
 	$scope.$on('$destroy', function() {
 		if (vm.interval) {
