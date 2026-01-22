@@ -1,4 +1,4 @@
-app.directive('field', function($http) {
+app.directive('field', function($http, $timeout) {
 	
 	let editing = false;
 	
@@ -11,7 +11,7 @@ app.directive('field', function($http) {
 			editable: '<'
 		},
 	templateUrl: '/js/directives/field/field.directive.html',
-	link: function(scope) {
+	link: function(scope, element) {
 		console.log('field' + scope.entityName+scope.fieldName);
 		scope.edit=false;
 		
@@ -27,6 +27,9 @@ app.directive('field', function($http) {
 			scope.old = scope.entity[scope.fieldName];
 			scope.val = scope.old;
 			scope.edit = true;
+			$timeout(function(){ var i=element[0].querySelector('input'); if(i) i.focus(); }, 500);
+
+			
 		};
 		
 	
@@ -50,7 +53,6 @@ app.directive('field', function($http) {
 				scope.$emit('UPLOAD_FIELDS');
 				
 		
-				
 			console.log('Zapisano pole: "' + scope.fieldName + '" =', scope.val);
 			}, function() {
 				scope.entity[scope.fieldName] = scope.old;
@@ -66,6 +68,11 @@ app.directive('field', function($http) {
 		}
 		
 		scope.isEditable = isEditable;
+		
+		scope.key = function(e) {
+			if(e.key === 'Enter') scope.save();
+			if(e.key === 'Escape') scope.cancel();
+		};
 	  }
    };
 });
