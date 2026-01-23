@@ -1,13 +1,29 @@
 <div>
 	<span ng-if="!edit" ng-click="start()" ng-style="{'cursor': isEditable() ? 'pointer' : 'default'}">
-		{{ entity[fieldName] || '—' }}
+		<span ng-if="type === 'boolean'">{{ entity[fieldName] != null ? (entity[fieldName] ? 'TAK' : 'NIE') : '—'}}</span>
+		
+    	<span ng-if="type !== 'boolean'">{{ entity && entity[fieldName] || '—' }}</span>
 	</span>
 	
-	<span ng-show="edit">
-		<input type="text" class="form-control" ng-model="val" ng-keydown="key($event)">
-	
-	<button class="btn btn-success btn-xs" ng-click="save()">Zapisz</button>
-	<button class="btn btn-danger btn-xs" ng-click="cancel()">Anuluj</button>
+	<span ng-if="edit">
+		<span ng-if="type =='boolean'">
+		      <span >
+		      		<button class="btn btn-xs btn-default" ng-click="chooseBoolean(true)">TAK</button>
+		     	 	<button class="btn btn-xs btn-default" ng-click="chooseBoolean(false)">NIE</button>
+		   	 </span>
+	   	 </span>
+		<span ng-if="type == 'text'">
+			<input type="text" class="form-control" ng-model="val" ng-keydown="key($event)">
+			<button class="btn btn-success btn-xs" ng-click="save()">Zapisz</button>
+			<button class="btn btn-danger btn-xs" ng-click="cancel()">Anuluj</button>
+		</span>
+		
+		
+<!-- 	<span ng-if="type === 'localDateTime'">
+      <input type="datetime-local" class="form-control" ng-model="val" ng-keydown="key($event)">
+      <button class="btn btn-success btn-xs" ng-click="save()">Zapisz</button>
+      <button class="btn btn-danger btn-xs" ng-click="cancel()">Anuluj</button>
+    </span>  -->
 	
 	</span>
 </div>

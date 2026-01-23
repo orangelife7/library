@@ -21,7 +21,7 @@ app.controller('DetailsController', function ($scope, $http, $interval, $routePa
     };
 	
 	$scope.$on('UPLOAD_FIELDS', function() {
-	    scope.load();
+	    $scope.load();
 	  });
 	
 	$scope.$on('$destroy', function() {

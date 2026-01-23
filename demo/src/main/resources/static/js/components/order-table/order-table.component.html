@@ -10,7 +10,10 @@
       <th>Anulowane</th>
       <th>Przygotowane</th>
       <th>Zniszczone</th>
-      <th>Płatność</th>
+      <th> Płatność
+      <br>
+  	  <small>(jeśli wymagane)</small>
+	  </th>
       <th>Kwota</th>
       <th>Status</th>
       <th>Detale</th>
@@ -21,28 +24,28 @@
     <tr ng-repeat="order in $ctrl.list">
       <td>{{ order.id }}</td>
      	<td>
-			<field entity-name="order" entity="order" field-name="loanDate"/>
+			<field entity-name="order" entity="order" field-name="loanDate" type="localDateTime"/>
 		</td>
      	<td>
-			<field entity-name="order" entity="order" field-name="deadline"/>
+			<field entity-name="order" entity="order" field-name="deadline" editable="false"/>
 		</td>
 		<td>
-			<field entity-name="order" entity="order" field-name="maximumDeadline"/>
+			<field entity-name="order" entity="order" field-name="maximumDeadline" editable="false"/>
 		</td>
      	<td>
 			<field entity-name="order" entity="order" field-name="returnDate"/>
 		</td>
       	<td>
-			<field entity-name="order" entity="order" field-name="cancelled"/>
+			<field entity-name="order" entity="order" field-name="cancelled" type="boolean"/>
 		</td>
       <td>
-			<field entity-name="order" entity="order" field-name="prepared"/>
+			<field entity-name="order" entity="order" field-name="prepared" type="boolean"/>
 		</td>
      <td>
-			<field entity-name="order" entity="order" field-name="damaged"/>
+			<field entity-name="order" entity="order" field-name="damaged" type="boolean"/>
 		</td>
       <td>
-			<field entity-name="order" entity="order" field-name="paid"/>
+			<field entity-name="order" entity="order" field-name="paid" type="boolean"/>
 		</td>
       <td>
 			<field entity-name="order" entity="order" field-name="amountToPay" editable="false"/>

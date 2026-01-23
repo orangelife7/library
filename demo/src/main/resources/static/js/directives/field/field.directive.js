@@ -8,17 +8,31 @@ app.directive('field', function($http, $timeout) {
 			entityName: '@',
 			entity: '=',
 			fieldName: '@',
-			editable: '<'
+			editable: '<',
+			type: '@?'
 		},
 	templateUrl: '/js/directives/field/field.directive.html',
 	link: function(scope, element) {
-		console.log('field' + scope.entityName+scope.fieldName);
+		
+		if(!scope.type) {
+			scope.type = 'text';
+		}
 		scope.edit=false;
 		
 		function isEditable() {
 		    return scope.editable != false; 
 		 }
 		
+		 
+	/*	function toDateTimeLocal(value) {
+		      return ('' + value).slice(0, 16); 
+		  }
+
+		 function fromDateTimeLocal(value) {
+		      return value; 
+		  }
+	*/	 
+		 
 		scope.start = function() {
 			if (editing) return;
 			if (!isEditable()) return; 
@@ -26,13 +40,17 @@ app.directive('field', function($http, $timeout) {
 			editing = true;
 			scope.old = scope.entity[scope.fieldName];
 			scope.val = scope.old;
+			
+			
+	/*		if (scope.type === 'localDateTime') {
+			       scope.val = toDateTimeLocal(scope.old);
+			 }
+	*/				
+					
 			scope.edit = true;
 			$timeout(function(){ var i=element[0].querySelector('input'); if(i) i.focus(); }, 500);
-
-			
 		};
 		
-	
 		scope.cancel = function() {
 			scope.entity[scope.fieldName] = scope.old;
 			scope.edit = false;
@@ -44,6 +62,13 @@ app.directive('field', function($http, $timeout) {
 			let payload = {};
 			payload[scope.fieldName] = scope.val;
 		
+				
+	/*		
+			if (scope.type === 'localDateTime') {
+			        payload[scope.fieldName] = fromDateTimeLocal(scope.val);
+			 }
+	*/		
+				   		   
 			
 			let entityPath = camelToKebabCase(scope.entityName);
 			$http.post('/api/' + entityPath + '/' + scope.entity.id + '/update', payload)
@@ -61,6 +86,12 @@ app.directive('field', function($http, $timeout) {
 			});
 		};
 		
+		scope.chooseBoolean = function(value) {
+		      scope.val = value;  
+			  scope.entity[scope.fieldName] = value; 
+		      scope.save();        
+		};
+		
 		function camelToKebabCase(str) {
 		  return str
 		    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
@@ -73,6 +104,8 @@ app.directive('field', function($http, $timeout) {
 			if(e.key === 'Enter') scope.save();
 			if(e.key === 'Escape') scope.cancel();
 		};
+		
+		
 	  }
    };
 });

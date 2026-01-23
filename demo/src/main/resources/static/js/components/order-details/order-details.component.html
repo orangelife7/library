@@ -15,13 +15,13 @@
     <tr>
       <th>Termin zwrotu</th>
      <td>
-		<field entity-name="order" entity="item" field-name="deadline"/>
+		<field entity-name="order" entity="item" field-name="deadline" editable="false"/>
 	 </td>
     </tr>
     <tr>
       <th>Maksymalny termin zwrotu</th>
       <td>
-		<field entity-name="order" entity="item" field-name="maximumDeadline"/>
+		<field entity-name="order" entity="item" field-name="maximumDeadline" editable="false"/>
 	 </td>
     </tr>
     <tr>
@@ -33,25 +33,28 @@
     <tr>
       <th>Anulowane</th>
       <td>
-		<field entity-name="order" entity="item" field-name="cancelled"/>
+		<field entity-name="order" entity="item" field-name="cancelled" type="boolean"/>
 	 </td>
     </tr>
      <tr>
       <th>Przygotowane</th>
      <td>
-		<field entity-name="order" entity="item" field-name="prepared"/>
+		<field entity-name="order" entity="item" field-name="prepared" type="boolean"/>
 	 </td>
     </tr>
     <tr>
       <th>Zniszczone</th>
       <td>
-		<field entity-name="order" entity="item" field-name="damaged"/>
+		<field entity-name="order" entity="item" field-name="damaged" type="boolean"/>
 	 </td>
     </tr>
     <tr>
-      <th>Płatność</th>
+     <th> Płatność
+      <br>
+  	  <small>(jeśli wymagane)</small>
+	  </th>
       <td>
-		<field entity-name="order" entity="item" field-name="paid"/>
+		<field entity-name="order" entity="item" field-name="paid" type="boolean"/>
 	 </td>
     </tr>
     <tr>
