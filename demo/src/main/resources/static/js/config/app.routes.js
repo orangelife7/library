@@ -85,3 +85,12 @@ app.config(function($routeProvider) {
             template: '<error/>'
         });
 });
+
+app.config(function($httpProvider) {
+  $httpProvider.defaults.cache = false;
+  if (!$httpProvider.defaults.headers.get) {
+    $httpProvider.defaults.headers.get = {};
+  }
+  $httpProvider.defaults.headers.get['Cache-Control'] = 'no-cache';
+  $httpProvider.defaults.headers.get['Pragma'] = 'no-cache';
+});
