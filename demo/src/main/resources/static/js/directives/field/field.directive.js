@@ -1,7 +1,7 @@
 app.directive('field', function($http, $timeout) {
-	
+
 	let editing = false;
-	
+
 	return {
 		restrict: 'E',
 		scope: {
@@ -11,102 +11,113 @@ app.directive('field', function($http, $timeout) {
 			editable: '<',
 			type: '@?'
 		},
-	templateUrl: '/js/directives/field/field.directive.html',
-	link: function(scope, element) {
-		
-		if(!scope.type) {
-			scope.type = 'text';
-		}
-		scope.edit=false;
-		
-		function isEditable() {
-		    return scope.editable != false; 
-		 }
-		
-		 
-	/*	function toDateTimeLocal(value) {
-		      return ('' + value).slice(0, 16); 
-		  }
+		templateUrl: '/js/directives/field/field.directive.html',
+		link: function(scope, element) {
 
-		 function fromDateTimeLocal(value) {
-		      return value; 
-		  }
-	*/	 
-		 
-		scope.start = function() {
-			if (editing) return;
-			if (!isEditable()) return; 
-			if(!scope.entity || !scope.entity.id) return; 
-			editing = true;
-			scope.old = scope.entity[scope.fieldName];
-			scope.val = scope.old;
-			
-			
-	/*		if (scope.type === 'localDateTime') {
-			       scope.val = toDateTimeLocal(scope.old);
-			 }
-	*/				
-					
-			scope.edit = true;
-			$timeout(function(){ var i=element[0].querySelector('input'); if(i) i.focus(); }, 500);
-		};
-		
-		scope.cancel = function() {
-			scope.entity[scope.fieldName] = scope.old;
+			scope.INPUT_TYPES = ['text', 'localDateTime'];
+			scope.SAVE_CANCEL_TYPES = ['text', 'localDateTime'];
+			const DATE_TIME_FORMAT = 'YYYY-MM-DD HH:mm';
+
+			if (!scope.type) {
+				scope.type = 'text';
+			}
+
+			if (scope.type == 'text') {
+				scope.inputType == 'text';
+			} else if (scope.type == 'localDateTime') {
+				scope.inputType = 'datetime-local';
+			}
+
 			scope.edit = false;
-			editing = false;
-		};
-		
-		scope.save = function() {
-			if (!isEditable()) return;  
-			let payload = {};
-			payload[scope.fieldName] = scope.val;
-		
-				
-	/*		
-			if (scope.type === 'localDateTime') {
-			        payload[scope.fieldName] = fromDateTimeLocal(scope.val);
-			 }
-	*/		
-				   		   
-			
-			let entityPath = camelToKebabCase(scope.entityName);
-			$http.post('/api/' + entityPath + '/' + scope.entity.id + '/update', payload)
-			.then(function() {
-				scope.edit = false;
-				editing = false;
-				scope.$emit('UPLOAD_FIELDS');
-				
-		
-			console.log('Zapisano pole: "' + scope.fieldName + '" =', scope.val);
-			}, function() {
-				scope.entity[scope.fieldName] = scope.old;
-				scope.edit = false;
-				editing = false;
-			});
-		};
-		
-		scope.chooseBoolean = function(value) {
-		      scope.val = value;  
-			  scope.entity[scope.fieldName] = value; 
-		      scope.save();        
-		};
-		
-		function camelToKebabCase(str) {
-		  return str
-		    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
-		    .toLowerCase();
-		}
-		
-		scope.isEditable = isEditable;
-		
-		scope.key = function(e) {
-			if(e.key === 'Enter') scope.save();
-			if(e.key === 'Escape') scope.cancel();
-		};
-		
-		
-	  }
-   };
-});
 
+			scope.isEditable = function() {
+				return scope.editable != false;
+			}
+
+			scope.start = function() {
+				if (editing) {
+					return;
+				}
+				if (!scope.isEditable()) {
+					return;
+				}
+				if (!scope.entity || !scope.entity.id) {
+					return;
+				}
+				editing = true;
+
+				let currentVal = scope.entity[scope.fieldName];
+				if (isDate()) {
+					scope.val = parseToDate(currentVal);
+				} else {
+					scope.val = currentVal;
+				}
+
+				scope.edit = true;
+				$timeout(function() { var i = element[0].querySelector('input'); if (i) i.focus(); }, 500);
+			};
+
+			scope.cancel = function() {
+				scope.edit = false;
+				editing = false;
+			};
+
+			scope.save = function() {
+				if (!scope.isEditable()) return;
+				let payload = {};
+				payload[scope.fieldName] = scope.val;
+
+				if (isDate()) {
+					payload[scope.fieldName] = toLocalDateTimeString(scope.val);
+				}
+
+				let entityPath = camelToKebabCase(scope.entityName);
+				$http.post('/api/' + entityPath + '/' + scope.entity.id + '/update', payload)
+					.then(function() {
+						scope.edit = false;
+						editing = false;
+						scope.$emit('UPLOAD_FIELDS');
+
+					}, function() {
+						scope.edit = false;
+						editing = false;
+					});
+			};
+
+			scope.chooseBoolean = function(value) {
+				scope.val = value;
+				scope.entity[scope.fieldName] = value;
+				scope.save();
+			};
+
+			scope.key = function(e) {
+				if (e.key === 'Enter') scope.save();
+				if (e.key === 'Escape') scope.cancel();
+			};
+
+			function isDate() {
+				return scope.type === 'localDateTime';
+			}
+
+			function camelToKebabCase(str) {
+				return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+			}
+
+			function parseToDate(value) {
+				if (!value) {
+					return null;
+				}
+
+				const m = moment(value, DATE_TIME_FORMAT, true);
+				return m.isValid()
+					? m.format('YYYY-MM-DD[T]HH:mm')
+					: null;
+			}
+
+			function toLocalDateTimeString(date) {
+				return moment(date).format(DATE_TIME_FORMAT);
+			}
+
+		}
+	};
+});
