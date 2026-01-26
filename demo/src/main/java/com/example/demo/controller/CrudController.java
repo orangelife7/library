@@ -1,7 +1,6 @@
 package com.example.demo.controller;
 
-import java.util.List;
-
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,8 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.entity.BaseEntity;
 import com.example.demo.service.CrudService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-
-import jakarta.persistence.EntityNotFoundException;
 
 @RestController
 public abstract class CrudController<T extends BaseEntity> {
@@ -57,5 +54,38 @@ public abstract class CrudController<T extends BaseEntity> {
 	@PostMapping("/{id}/delete")
 	public void delete(@PathVariable Long id) {
 		getService().delete(id);
+	}
+	
+	@GetMapping("/{fieldName}/type")
+	public ResponseEntity<String> fieldType(@PathVariable String fieldName) {
+
+	    String fieldType = getFieldType(fieldName);
+	    
+	    return ResponseEntity.ok(String.format( "{\"data\" : \"%s\"}", fieldType));
+	}
+	
+	private Class<?> getEntityClass() {
+	    return (Class<?>) ((java.lang.reflect.ParameterizedType)
+	            getClass().getGenericSuperclass())
+	            .getActualTypeArguments()[0];
+	}
+	
+	private String getFieldType(String fieldName) {
+		try {
+	        Class<?> entityClass = getEntityClass();
+
+	        Class<?> fieldType = entityClass.getDeclaredField(fieldName).getType();
+
+	        if (java.time.LocalDateTime.class.equals(fieldType)) {
+	            return "localDateTime";
+	        }
+	        if (boolean.class.equals(fieldType) || Boolean.class.equals(fieldType)) {
+	            return "boolean";
+	        }
+	    } catch (Exception ignored) {
+	        
+	    }
+
+	    return "text";
 	}
 }

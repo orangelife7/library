@@ -24,7 +24,7 @@
     <tr ng-repeat="order in $ctrl.list">
       <td>{{ order.id }}</td>
      	<td>
-			<field entity-name="order" entity="order" field-name="loanDate" type="localDateTime"/>
+			<field entity-name="order" entity="order" field-name="loanDate"/>
 		</td>
      	<td>
 			<field entity-name="order" entity="order" field-name="deadline" editable="false"/>
@@ -36,16 +36,16 @@
 			<field entity-name="order" entity="order" field-name="returnDate"/>
 		</td>
       	<td>
-			<field entity-name="order" entity="order" field-name="cancelled" type="boolean"/>
+			<field entity-name="order" entity="order" field-name="cancelled"/>
 		</td>
       <td>
-			<field entity-name="order" entity="order" field-name="prepared" type="boolean"/>
+			<field entity-name="order" entity="order" field-name="prepared"/>
 		</td>
      <td>
-			<field entity-name="order" entity="order" field-name="damaged" type="boolean"/>
+			<field entity-name="order" entity="order" field-name="damaged" />
 		</td>
       <td>
-			<field entity-name="order" entity="order" field-name="paid" type="boolean"/>
+			<field entity-name="order" entity="order" field-name="paid"/>
 		</td>
       <td>
 			<field entity-name="order" entity="order" field-name="amountToPay" editable="false"/>

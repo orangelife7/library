@@ -1,7 +1,8 @@
 app.directive('field', function($http, $timeout) {
 
 	let editing = false;
-
+	let fieldTypeCache = {};
+	
 	return {
 		restrict: 'E',
 		scope: {
@@ -18,15 +19,20 @@ app.directive('field', function($http, $timeout) {
 			scope.SAVE_CANCEL_TYPES = ['text', 'localDateTime'];
 			const DATE_TIME_FORMAT = 'YYYY-MM-DD HH:mm';
 
+			function setInputType() {
+				if (scope.type === 'localDateTime') {
+					scope.inputType = 'datetime-local';
+				} else if (scope.type === 'boolean') {
+					scope.inputType = 'checkbox';
+				} else {
+					scope.inputType = 'text';
+				} 
+			}
+		
 			if (!scope.type) {
 				scope.type = 'text';
 			}
-
-			if (scope.type == 'text') {
-				scope.inputType == 'text';
-			} else if (scope.type == 'localDateTime') {
-				scope.inputType = 'datetime-local';
-			}
+			
 
 			scope.edit = false;
 
@@ -44,6 +50,14 @@ app.directive('field', function($http, $timeout) {
 				if (!scope.entity || !scope.entity.id) {
 					return;
 				}
+			
+				let entityPath = camelToKebabCase(scope.entityName);
+				$http.get('/api/' + entityPath + '/' + scope.fieldName + '/type')
+					.then(function(res) {
+					scope.type = res.data.data;
+					setInputType();
+				});
+
 				editing = true;
 
 				let currentVal = scope.entity[scope.fieldName];
@@ -115,7 +129,9 @@ app.directive('field', function($http, $timeout) {
 			}
 
 			function toLocalDateTimeString(date) {
-				return moment(date).format(DATE_TIME_FORMAT);
+				let momentDate = moment(date);
+				let formattedDate = momentDate.format(DATE_TIME_FORMAT);
+				return formattedDate;
 			}
 
 		}
