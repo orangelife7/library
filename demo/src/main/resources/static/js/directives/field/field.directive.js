@@ -1,7 +1,6 @@
-app.directive('field', function($http, $timeout) {
+app.directive('field', function($http, $timeout, $rootScope) {
 
 	let editing = false;
-	let fieldTypeCache = {};
 	
 	return {
 		restrict: 'E',
@@ -12,6 +11,7 @@ app.directive('field', function($http, $timeout) {
 			editable: '<',
 			type: '@?'
 		},
+		
 		templateUrl: '/js/directives/field/field.directive.html',
 		link: function(scope, element) {
 
@@ -29,35 +29,28 @@ app.directive('field', function($http, $timeout) {
 				} 
 			}
 		
-			if (!scope.type) {
-				scope.type = 'text';
-			}
-			
+			let type = $rootScope.fieldConfig[scope.entityName][scope.fieldName];
+			scope.type = type;
+			setInputType();
 
 			scope.edit = false;
 
 			scope.isEditable = function() {
 				return scope.editable != false;
 			}
-
+		
 			scope.start = function() {
-				if (editing) {
-					return;
-				}
-				if (!scope.isEditable()) {
-					return;
-				}
-				if (!scope.entity || !scope.entity.id) {
-					return;
-				}
+				if (editing) {return;}
+				if (!scope.isEditable()) {return;}
+				if (!scope.entity || !scope.entity.id) {return;}
 			
-				let entityPath = camelToKebabCase(scope.entityName);
+	/*			let entityPath = camelToKebabCase(scope.entityName);
 				$http.get('/api/' + entityPath + '/' + scope.fieldName + '/type')
 					.then(function(res) {
 					scope.type = res.data.data;
 					setInputType();
 				});
-
+   */
 				editing = true;
 
 				let currentVal = scope.entity[scope.fieldName];

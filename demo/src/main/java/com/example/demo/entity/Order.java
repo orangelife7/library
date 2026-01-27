@@ -113,7 +113,7 @@ public class Order extends BaseEntity {
 			return OrderStatus.CANCELLED;
 		}
 		if (loanDate == null || LocalDateTime.now().isBefore(loanDate)) {
-			if (Boolean.TRUE.equals(prepared)) {
+			if (!Boolean.TRUE.equals(prepared)) {
 				return OrderStatus.PREPARED;
 			}
 			return OrderStatus.IN_PREPARATION;
