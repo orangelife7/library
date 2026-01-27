@@ -17,8 +17,8 @@ public abstract class CrudController<T extends BaseEntity> {
 	public abstract CrudService<T> getService();
 
 	@PostMapping
-	public T save(@RequestBody T entity) {
-		return getService().save(entity);
+	public void save(@RequestBody T entity) {
+		getService().save(entity);
 	}
 
 	/*
