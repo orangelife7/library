@@ -7,12 +7,9 @@ app.run(function($rootScope, $http) {
 	$http.get('/field-configuration')
 		.then(function(response) {
 			console.log(response);
-			$rootScope.fieldConfig = response.data || {};
-		}, function() {
-			$rootScope.fieldConfig = {};
+			$rootScope.fieldConfig = response.data;
 		});
 });
-
 
 app.controller('HelloController', function($scope, $http) {
 	
