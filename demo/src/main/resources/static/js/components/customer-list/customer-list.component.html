@@ -1,7 +1,7 @@
 <div>
 		<h3><b>Lista klientów</b></h3>
-
-	<button type="button" class="btn btn-success btn-sm"ng-click="create()">Dodaj klienta</button>
+		
+	<button class="btn btn-success btn-sm"ng-click="create()" style="margin-bottom: 8px;">Dodaj klienta</button>
 		<table>
 			<thead>
 				<tr>
@@ -10,6 +10,7 @@
 					<th>Nazwisko</th>
 					<th>Pesel</th>
 					<th>Detale</th>
+					<th>Usuń</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -26,6 +27,9 @@
 					</td>
 					<td>
     					<details-button url="customer" id="customer.id"/>
+					</td>
+					<td>
+						<button class="btn btn-danger btn-xs"ng-click="delete(customer.id)">Usuń</button>
 					</td>
 				</tr>
 			</tbody>

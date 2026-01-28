@@ -25,6 +25,14 @@ app.controller('ListController', function($scope, $http, $interval) {
 			});
 		}
 		
+	$scope.delete = function(id) {
+		$http.post(`http://localhost:8080/api/${$scope.entityUrl}/${id}/delete`, {})
+			.then(function() {
+				$scope.load();
+		});
+	}
+		
+		
 		$scope.load();
 		vm.interval = $interval($scope.load, 60000);
 	};
