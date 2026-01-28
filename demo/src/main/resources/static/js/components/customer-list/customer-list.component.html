@@ -1,8 +1,9 @@
 <div>
 		<h3><b>Lista klientów</b></h3>
 		
-	<button class="btn btn-success btn-sm"ng-click="create()" style="margin-bottom: 8px;">Dodaj klienta</button>
-		<table>
+	<create-button on-create="create()" label="Dodaj klienta"/>
+	
+	<table>
 			<thead>
 				<tr>
 					<th>Id</th>
@@ -29,8 +30,8 @@
     					<details-button url="customer" id="customer.id"/>
 					</td>
 					<td>
-						<button class="btn btn-danger btn-xs"ng-click="delete(customer.id)">Usuń</button>
-					</td>
+            			<delete-btn item-id="customer.id" on-delete="delete(id)"/>
+            		</td>
 				</tr>
 			</tbody>
 		</table>
