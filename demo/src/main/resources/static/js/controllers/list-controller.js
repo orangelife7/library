@@ -5,6 +5,7 @@ app.controller('ListController', function($scope, $http, $interval) {
 	$scope.list = [];
 
 	$scope.init = function(entityUrl) {
+		$scope.entityUrl = entityUrl;
 		$scope.initList(`http://localhost:8080/api/${entityUrl}/list`);
 	}
 
@@ -17,6 +18,13 @@ app.controller('ListController', function($scope, $http, $interval) {
 			});
 		};
 
+	$scope.create = function() {
+		$http.post(`http://localhost:8080/api/${$scope.entityUrl}/create`, {})
+			.then(function() {
+				$scope.load();
+			});
+		}
+		
 		$scope.load();
 		vm.interval = $interval($scope.load, 60000);
 	};
