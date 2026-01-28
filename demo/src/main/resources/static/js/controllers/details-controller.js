@@ -17,7 +17,7 @@ app.controller('DetailsController', function ($scope, $http, $interval, $routePa
         };
 
         $scope.load();
-        vm.interval = $interval($scope.load, 30000);
+        vm.interval = $interval($scope.load, 60000);
     };
 	
 	$scope.$on('UPLOAD_FIELDS', function() {

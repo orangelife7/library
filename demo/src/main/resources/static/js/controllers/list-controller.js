@@ -18,7 +18,7 @@ app.controller('ListController', function($scope, $http, $interval) {
 		};
 
 		$scope.load();
-		vm.interval = $interval($scope.load, 30000);
+		vm.interval = $interval($scope.load, 60000);
 	};
 	
 	$scope.$on('UPLOAD_FIELDS', function() {
