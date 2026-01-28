@@ -1,4 +1,4 @@
-angular.module('app').component('physicalBookTable', {
+app.component('physicalBookTable', {
 	bindings: {list: '<'},
 	templateUrl: '/js/components/physical-book-table/physical-book-table.component.html',
 });

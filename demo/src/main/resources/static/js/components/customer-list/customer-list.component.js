@@ -1,4 +1,4 @@
-angular.module('app').component('customerList', {
+app.component('customerList', {
 	templateUrl: '/js/components/customer-list/customer-list.component.html',
 	controller: function ($scope, $controller) {
 		
