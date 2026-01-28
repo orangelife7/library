@@ -54,8 +54,8 @@
 			<field entity-name="order" entity="order" field-name="status" editable="false"/>
 		</td>
       <td>
-		<a href="#!/order-details/{{order.id}}" class="btn btn-info btn-xs">Detale</a>
-		</td>
+    	   <details-button url="order" id="order.id"/>
+	  </td>
     </tr>
 
     <tr ng-if="!$ctrl.list || !$ctrl.list.length">
