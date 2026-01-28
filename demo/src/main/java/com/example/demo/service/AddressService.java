@@ -16,7 +16,5 @@ public class AddressService extends CrudService<Address> {
 	public CoreRepository<Address, Long> getRepository() {
 		return addressRepository;
 	}
-
 	
 }
-//////////////////////////

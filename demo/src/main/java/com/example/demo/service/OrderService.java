@@ -35,6 +35,5 @@ public class OrderService extends CrudService<Order> {
 	protected CoreMapper getMapper() {
 		return new OrderMapper();
 	}
-	
-	
+		
 }
