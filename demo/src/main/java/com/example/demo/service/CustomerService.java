@@ -24,4 +24,8 @@ public class CustomerService extends CrudService<Customer> {
 	protected CoreMapper getMapper() {
 		return new CustomerMapper();
 	}
+	
+	protected Customer createEmpty() {
+		return new Customer();
+	}
 }
