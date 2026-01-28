@@ -46,12 +46,6 @@ public abstract class CrudController<T extends BaseEntity> {
 	}
 	*/
 
-	@PostMapping("/create")
-	public void create() {
-		getService().createEmptyAndSave();
-	}
-	
-	
 	@PostMapping("/{id}/update")
 	public void update(@PathVariable Long id, @RequestBody T entity) {
 		getService().update(id, entity);

@@ -71,14 +71,6 @@ public abstract class CrudService<T extends BaseEntity> {
 	protected CoreMapper getMapper() {
 		return null;
 	}
-	
-	protected abstract T createEmpty();
-	
-	@Transactional
-	public T createEmptyAndSave() {
-		T entity = createEmpty();
-		return save(entity);
-	}
 }
 
-
+///////////////////////////////////////////////////////////////////////////

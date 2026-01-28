@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Book;
-import com.example.demo.entity.Customer;
 import com.example.demo.mapper.BookMapper;
 import com.example.demo.mapper.CoreMapper;
 import com.example.demo.mapper.PhysicalBookMapper;
@@ -26,7 +25,4 @@ public class BookService extends CrudService<Book> {
 		return new BookMapper();
 	}
 
-	protected Book createEmpty() {
-		return new Book();
-	}
 }

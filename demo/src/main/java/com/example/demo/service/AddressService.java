@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Address;
-import com.example.demo.entity.Customer;
 import com.example.demo.repository.AddressRepository;
 import com.example.demo.repository.CoreRepository;
 
@@ -18,7 +17,6 @@ public class AddressService extends CrudService<Address> {
 		return addressRepository;
 	}
 
-	protected Address createEmpty() {
-		return new Address();
-	}
+	
 }
+//////////////////////////

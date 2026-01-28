@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.demo.entity.Customer;
 import com.example.demo.entity.Order;
 import com.example.demo.mapper.CoreMapper;
 import com.example.demo.mapper.OrderMapper;
@@ -37,7 +36,5 @@ public class OrderService extends CrudService<Order> {
 		return new OrderMapper();
 	}
 	
-	protected Order createEmpty() {
-		return new Order();
-	}
+	
 }

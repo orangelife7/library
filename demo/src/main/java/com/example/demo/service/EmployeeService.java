@@ -3,7 +3,6 @@ package com.example.demo.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.Customer;
 import com.example.demo.entity.Employee;
 import com.example.demo.mapper.CoreMapper;
 import com.example.demo.mapper.EmployeeMapper;
@@ -23,9 +22,5 @@ public class EmployeeService extends CrudService<Employee>{
 	@Override
 	protected CoreMapper getMapper() {
 		return new EmployeeMapper();
-	}
-	
-	protected Employee createEmpty() {
-		return new Employee();
 	}
 }
