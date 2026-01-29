@@ -1,5 +1,5 @@
 app.component('bookDetails', {
-    templateUrl: '/js/components/book-details/book-details.component.html',
+    templateUrl: getComponentPath('book-details'),
     controller: function ($scope, $controller) {
         
         

@@ -1,3 +1,3 @@
 app.component('error', {
-	templateUrl: '/js/components/error/error.component.html'
+	templateUrl: getComponentPath('error')
 });

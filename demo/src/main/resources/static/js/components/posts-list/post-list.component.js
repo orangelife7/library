@@ -1,6 +1,6 @@
 // Zadanie 3 - 4
 app.component('postList', {
-	templateUrl: '/js/components/posts-list/post-list.component.html',
+	templateUrl: getComponentPath('post-list'),
 	controller: function($http) {
 		const ctrl = this;
 			

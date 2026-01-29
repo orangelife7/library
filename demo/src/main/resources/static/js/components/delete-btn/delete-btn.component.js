@@ -3,5 +3,5 @@ app.component('deleteBtn', {
         onDelete: '&',
        itemId: '<'
     },
-    templateUrl: '/js/components/delete-btn/delete-btn.component.html'
+    templateUrl: getComponentPath('delete-btn')
 });

@@ -3,5 +3,5 @@ app.component('createButton', {
         onCreate: '&',
         label: '@'
     },
-    templateUrl: '/js/components/create-button/create-button.component.html'
+    templateUrl: getComponentPath('create-button')
 });

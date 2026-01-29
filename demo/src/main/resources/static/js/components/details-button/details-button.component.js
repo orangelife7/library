@@ -3,5 +3,5 @@ app.component('detailsButton', {
         url: '@',   
         id: '<'   
     },
-    templateUrl: '/js/components/details-button/details-button.component.html'
+    templateUrl: getComponentPath('details-button')
 });

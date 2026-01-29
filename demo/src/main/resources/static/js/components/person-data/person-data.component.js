@@ -1,6 +1,6 @@
 app.component('personData', {
 	bindings: {item: '<', index: '<'},
-	templateUrl: '/js/components/person-data/person-data.component.html',
+	templateUrl: getComponentPath('person-data'),
 	controller: function($scope) {
 		const ctrl = this;
 		

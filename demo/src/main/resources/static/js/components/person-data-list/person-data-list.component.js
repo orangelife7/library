@@ -1,5 +1,5 @@
 app.component('personDataList', {
-	templateUrl: '/js/components/person-data-list/person-data-list.component.html',
+	templateUrl: getComponentPath('person-data-list'),
 	controller: function($scope) {
 		const ctrl = this;
 		
