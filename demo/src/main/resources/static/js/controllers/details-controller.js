@@ -1,4 +1,4 @@
-app.controller('DetailsController', function ($scope, $http, $interval, $routeParams, $rootScope) {
+app.controller('DetailsController', function ($scope, HttpService, $interval, $routeParams, $rootScope) {
 
 	const vm = this;
 	
@@ -8,12 +8,10 @@ app.controller('DetailsController', function ($scope, $http, $interval, $routePa
 
     $scope.initDetails = function (url) {
         $scope.load = function () {
-            $http.get(url)
+            HttpService.get(url)
                .then(function (response) {
-                  $scope.item = response.data;
-           }).catch(function (error) {
-			console.error('Blad: ' + error)
-			});
+                  $scope.item = response;
+           })
         };
 
         $scope.load();

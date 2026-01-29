@@ -1,4 +1,4 @@
-app.directive('field', function($http, $timeout, $rootScope) {
+app.directive('field', function(HttpService, $timeout, $rootScope) {
 
 	let editing = false;
 	
@@ -44,13 +44,7 @@ app.directive('field', function($http, $timeout, $rootScope) {
 				if (!scope.isEditable()) {return;}
 				if (!scope.entity || !scope.entity.id) {return;}
 			
-	/*			let entityPath = camelToKebabCase(scope.entityName);
-				$http.get('/api/' + entityPath + '/' + scope.fieldName + '/type')
-					.then(function(res) {
-					scope.type = res.data.data;
-					setInputType();
-				});
-   */
+	
 				editing = true;
 
 				let currentVal = scope.entity[scope.fieldName];
@@ -79,7 +73,7 @@ app.directive('field', function($http, $timeout, $rootScope) {
 				}
 
 				let entityPath = camelToKebabCase(scope.entityName);
-				$http.post('/api/' + entityPath + '/' + scope.entity.id + '/update', payload)
+				HttpService.post('/api/' + entityPath + '/' + scope.entity.id + '/update', payload)
 					.then(function() {
 						scope.edit = false;
 						editing = false;

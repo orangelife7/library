@@ -1,4 +1,4 @@
-app.controller('ListController', function($scope, $http, $interval, $rootScope) {
+app.controller('ListController', function($scope, HttpService, $interval, $rootScope) {
 
 	const vm = this;
 
@@ -11,11 +11,9 @@ app.controller('ListController', function($scope, $http, $interval, $rootScope) 
 
 	$scope.initList = function(url) {
 		$scope.load = function() {
-			$http.get(url).then(function(response) {
-				$scope.list = response.data;
-			}).catch(function(error) {
-				console.error('Blad: ' + error)
-			});
+			HttpService.get(url).then(function(response) {
+				$scope.list = response;
+			})
 		};
 		
 		

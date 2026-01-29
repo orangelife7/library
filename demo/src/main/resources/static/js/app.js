@@ -1,17 +1,17 @@
 var app = angular.module('app', ['ngRoute', 'ui.bootstrap']);
 
 
-app.run(function($rootScope, $http) {
+app.run(function($rootScope, HttpService) {
 	$rootScope.fieldConfig = {};
 	
 	$rootScope.INTERVAL_MS = 60000;
 	
-	$http.get('/field-configuration')
+	HttpService.get('/field-configuration')
 		.then(function(response) {
-			$rootScope.fieldConfig = response.data;
+			$rootScope.fieldConfig = response;
 		});
 });
 
-app.controller('HelloController', function($scope, $http) {
+app.controller('HelloController', function($scope) {
 	
 });

@@ -4,12 +4,12 @@ app.component('createButton', {
         label: '@'
     },
     templateUrl: getComponentPath('create-button'),
-	controller: function($http, $scope) {
+	controller: function(HttpService, $scope) {
 		
 		this.create = function() {
 			let url = 'http://localhost:8080/api/' + this.entityUrl + '/create';
-			
-		$http.post(url, {})
+		
+		HttpService.post(url, {})
 		.then(function() {
 			$scope.$emit('DATA_CHANGED')	;
 			})

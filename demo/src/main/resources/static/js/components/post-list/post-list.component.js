@@ -1,7 +1,7 @@
 // Zadanie 3 - 4
 app.component('postList', {
 	templateUrl: getComponentPath('post-list'),
-	controller: function($http) {
+	controller: function(HttpService) {
 		const ctrl = this;
 			
 		ctrl.posts = [
@@ -29,10 +29,10 @@ app.component('postList', {
 		// Zadanie 5
 		ctrl.download = function() {
 		//Wysyłamy zapytanie GET
-		$http.get('https://jsonplaceholder.typicode.com/posts/')
+		HttpService.get('https://jsonplaceholder.typicode.com/posts/')
 		.then(function(response) {
-		console.log(response.data);
-		response.data.forEach(r => ctrl.posts.push(r));
+		console.log(response);
+		response.forEach(r => ctrl.posts.push(r));
 		//ctrl.posts = response.data;
 		})
 		.catch(function(error) {
@@ -44,9 +44,9 @@ app.component('postList', {
 		ctrl.loadComments = function(post) {
 			const url = "https://jsonplaceholder.typicode.com/comments?postId=" + post.id;
 			
-			$http.get(url)
+			HttpService.get(url)
 			.then(function(response) {
-				post.comments = response.data;
+				post.comments = response;
 			})
 			.catch(function(error) {
 				console.error('Blad pobierania komentarzy: ' + error);
