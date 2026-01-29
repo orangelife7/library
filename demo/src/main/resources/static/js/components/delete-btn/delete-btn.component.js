@@ -1,7 +1,18 @@
 app.component('deleteBtn', {
     bindings: {
-        onDelete: '&',
+       entityUrl: '@',
        itemId: '<'
     },
-    templateUrl: getComponentPath('delete-btn')
+    templateUrl: getComponentPath('delete-btn'),
+	controller: function($http, $scope) {
+		
+		this.delete = function() {
+			let url = 'http://localhost:8080/api/' + this.entityUrl + '/' + this.itemId + '/delete';
+			
+			$http.post(url, {})
+			.then(function() {
+			     $scope.$emit('DATA_CHANGED');
+			 })
+		}
+	}
 });

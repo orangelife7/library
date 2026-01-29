@@ -17,30 +17,17 @@ app.controller('ListController', function($scope, $http, $interval, $rootScope) 
 				console.error('Blad: ' + error)
 			});
 		};
-
-	$scope.create = function() {
-		$http.post(`http://localhost:8080/api/${$scope.entityUrl}/create`, {})
-			.then(function() {
-				$scope.load();
-			});
-		}
-		
-	$scope.delete = function(id) {
-		$http.post(`http://localhost:8080/api/${$scope.entityUrl}/${id}/delete`, {})
-			.then(function() {
-				$scope.load();
-		});
-	}
 		
 		
 		$scope.load();
 		vm.interval = $interval($scope.load, $rootScope.INTERVAL_MS);
 	};
 	
-	$scope.$on('UPLOAD_FIELDS', function() {
+	$scope.$on('DATA_CHANGED', function() {
 	      $scope.load();
 	  });
 
+	  
 	$scope.$on('$destroy', function() {
 		if (vm.interval) {
 			$interval.cancel(vm.interval);

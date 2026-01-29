@@ -83,7 +83,7 @@ app.directive('field', function($http, $timeout, $rootScope) {
 					.then(function() {
 						scope.edit = false;
 						editing = false;
-						scope.$emit('UPLOAD_FIELDS');
+						scope.$emit('DATA_CHANGED');
 
 					}, function() {
 						scope.edit = false;

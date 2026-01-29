@@ -1,7 +1,7 @@
 <div>
 		<h3><b>Lista klientów</b></h3>
 		
-	<create-button on-create="create()" label="klienta"/>
+	 <create-button entity-url="customer" label="klienta"></create-button>
 	
 	<table>
 			<thead>
@@ -30,7 +30,7 @@
     					<details-button url="customer" id="customer.id"/>
 					</td>
 					<td>
-            			<delete-btn item-id="customer.id" on-delete="delete(id)"/>
+            			<delete-btn item-id="customer.id" entity-url="customer"/>
             		</td>
 				</tr>
 			</tbody>

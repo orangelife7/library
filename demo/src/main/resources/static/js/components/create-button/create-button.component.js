@@ -1,7 +1,18 @@
 app.component('createButton', {
     bindings: {
-        onCreate: '&',
+        entityUrl: '@',
         label: '@'
     },
-    templateUrl: getComponentPath('create-button')
+    templateUrl: getComponentPath('create-button'),
+	controller: function($http, $scope) {
+		
+		this.create = function() {
+			let url = 'http://localhost:8080/api/' + this.entityUrl + '/create';
+			
+		$http.post(url, {})
+		.then(function() {
+			$scope.$emit('DATA_CHANGED')	;
+			})
+		};
+	}
 });

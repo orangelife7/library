@@ -20,7 +20,7 @@ app.controller('DetailsController', function ($scope, $http, $interval, $routePa
         vm.interval = $interval($scope.load, $rootScope.INTERVAL_MS);
     };
 	
-	$scope.$on('UPLOAD_FIELDS', function() {
+	$scope.$on('DATA_CHANGED', function() {
 	    $scope.load();
 	  });
 	
