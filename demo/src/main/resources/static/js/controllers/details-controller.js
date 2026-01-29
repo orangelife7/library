@@ -1,4 +1,4 @@
-app.controller('DetailsController', function ($scope, $http, $interval, $routeParams) {
+app.controller('DetailsController', function ($scope, $http, $interval, $routeParams, $rootScope) {
 
 	const vm = this;
 	
@@ -17,7 +17,7 @@ app.controller('DetailsController', function ($scope, $http, $interval, $routePa
         };
 
         $scope.load();
-        vm.interval = $interval($scope.load, 60000);
+        vm.interval = $interval($scope.load, $rootScope.INTERVAL_MS);
     };
 	
 	$scope.$on('UPLOAD_FIELDS', function() {

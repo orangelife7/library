@@ -1,4 +1,4 @@
-app.controller('ListController', function($scope, $http, $interval) {
+app.controller('ListController', function($scope, $http, $interval, $rootScope) {
 
 	const vm = this;
 
@@ -34,7 +34,7 @@ app.controller('ListController', function($scope, $http, $interval) {
 		
 		
 		$scope.load();
-		vm.interval = $interval($scope.load, 60000);
+		vm.interval = $interval($scope.load, $rootScope.INTERVAL_MS);
 	};
 	
 	$scope.$on('UPLOAD_FIELDS', function() {
