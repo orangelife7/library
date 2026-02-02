@@ -1,6 +1,8 @@
 <div>
 	<h3><b>Lista pracowników</b></h3>
 
+	<create-button entity-url="employee" label="pracownika"></create-button>
+
 	<table >
 		<thead>
 				<tr>
@@ -8,6 +10,7 @@
 				<th>Imię</th>
 				<th>Nazwisko</th>
 				<th>Detale</th>
+				<th>Usuń</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -22,6 +25,9 @@
 					<td>
     					<details-button url="employee" id="employee.id"/>
 					</td>
+					<td>
+            			<delete-btn item-id="employee.id" entity-url="employee"/>
+            		</td>
 				</tr>
 			</tbody>
 		</table>

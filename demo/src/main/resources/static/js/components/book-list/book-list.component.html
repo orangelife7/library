@@ -1,7 +1,7 @@
 <div> 
 	<h3><b>Lista książek</b></h3>
-	<!--  <button class="btn btn-success" ng-click="$ctrl.load()">Pobierz</button> -->
 	
+	<create-button entity-url="book" label="książkę"></create-button>
 	
 	<table>
 	
@@ -13,6 +13,7 @@
 			<th>Rok publikacji</th>
 			<th>ISBN</th>
 			<th>Detale</th>
+			<th>Usuń</th>
 			</tr>
 	</thead>
 	
@@ -31,9 +32,12 @@
 		<td>
 			<field entity-name="book" entity="book" field-name="isbn"/>
 		</td>	
-			<td>
+		<td>
     			<details-button url="book" id="book.id"/>
-			</td>
+		</td>
+		<td>
+            <delete-btn item-id="book.id" entity-url="book"/>
+         </td>
 		</tr>
 	</tbody>
 	</table>
