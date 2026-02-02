@@ -69,7 +69,7 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 				payload[scope.fieldName] = scope.val;
 
 				if (isDate()) {
-					payload[scope.fieldName] = toLocalDateTimeString(scope.val);
+					payload[scope.fieldName] = scope.val ? toLocalDateTimeString(scope.val) : null;
 				}
 
 				let entityPath = camelToKebabCase(scope.entityName);
@@ -84,7 +84,14 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 						editing = false;
 					});
 			};
+			
+			scope.clear = function() {
+				if (!scope.isEditable()) return;
+				scope.val = scope.entity[scope.fieldName] = null;
+				scope.save();
+			};
 
+			
 			scope.chooseBoolean = function(value) {
 				scope.val = value;
 				scope.entity[scope.fieldName] = value;

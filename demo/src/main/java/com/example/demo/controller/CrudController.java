@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.Map;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,8 +49,8 @@ public abstract class CrudController<T extends BaseEntity> {
 	*/
 
 	@PostMapping("/{id}/update")
-	public void update(@PathVariable Long id, @RequestBody T entity) {
-		getService().update(id, entity);
+	public void update(@PathVariable Long id, @RequestBody Map<String, Object> payload) {
+		getService().update(id, payload);
 	}
 
 	@PostMapping("/{id}/delete")

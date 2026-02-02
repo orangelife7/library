@@ -6,6 +6,7 @@ app.service('HttpService', function($http, $q){
 	}
 	
 	function handleError(error) {
+		alert("Błąd backend!");
 		console.error('HTTP ERROR:', error);
 		return $q.reject(error);
 	}

@@ -1,9 +1,12 @@
 package com.example.demo.service;
 
 import java.lang.reflect.Field;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
+import org.hibernate.validator.internal.util.privilegedactions.GetDeclaredField;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.entity.BaseEntity;
@@ -45,22 +48,27 @@ public abstract class CrudService<T extends BaseEntity> {
 	}
 
 	@Transactional
-	public void update(Long id, T entity) {
-		T existingEntity = getRepository().findById(id)
+	public void update(Long id, Map<String, Object> payload) {
+		T existing = getRepository().findById(id)
 				.orElseThrow(() -> new RuntimeException("Entity with address id: " + id + " not found."));
-		for (Field field : entity.getClass().getDeclaredFields()) {
+	
+		payload.forEach((name, value) -> {
 			try {
-				field.setAccessible(true);
-				Object newValue = field.get(entity);
-				if (newValue != null && !field.isAnnotationPresent(Id.class)) {
-					field.set(existingEntity, newValue);
+				Field f = existing.getClass().getDeclaredField(name);
+				if(f.isAnnotationPresent(Id.class)) return;
+				f.setAccessible(true);
+				if (f.getType() == LocalDateTime.class && value instanceof String) {
+				    String s = (String) value;
+				    value = s.isEmpty() ? null
+				    : LocalDateTime.parse(s, java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 				}
-
-			} catch (IllegalAccessException e) {
+				f.set(existing, value);
+			} catch (NoSuchFieldException | IllegalAccessException e) {
 				throw new RuntimeException("Error updating entity fields", e);
 			}
-		}
-		getRepository().save(existingEntity);
+		});
+		
+		getRepository().save(existing);
 	}
 
 	@Transactional
