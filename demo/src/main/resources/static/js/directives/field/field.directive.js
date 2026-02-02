@@ -1,6 +1,4 @@
 app.directive('field', function(HttpService, $timeout, $rootScope) {
-
-	let editing = false;
 	
 	return {
 		restrict: 'E',
@@ -33,8 +31,6 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 			scope.type = type;
 			setInputType();
 
-			scope.edit = false;
-
 			scope.isEditable = function() {
 				return scope.editable != false;
 			}
@@ -48,7 +44,6 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 				}
 				
 				$rootScope.activeField = scope;
-				editing = true;
 	
 				let currentVal = scope.entity[scope.fieldName];
 				if (isDate()) {
@@ -62,8 +57,7 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 			};
 
 			scope.cancel = function() {
-				scope.edit = false;
-				editing = false;	
+				scope.edit = false;	
 			};
 
 			scope.save = function() {
@@ -79,11 +73,9 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 				HttpService.post('/api/' + entityPath + '/' + scope.entity.id + '/update', payload)
 					.then(function() {
 						scope.edit = false;
-						editing = false;
 						scope.$emit('DATA_CHANGED');
 					}, function() {
 						scope.edit = false;
-						editing = false;
 					});
 			};
 			

@@ -18,7 +18,7 @@ import jakarta.validation.constraints.NotNull;
 public class PhysicalBook extends BaseEntity {
 
 	@NotNull
-	@Column(name = "catalog_number", unique = true)
+	@Column(name = "catalog_number", unique = true, nullable=false)
 	private String catalogNumber;
 
 	@Column(name = "description")
