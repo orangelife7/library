@@ -40,13 +40,16 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 			}
 		
 			scope.start = function() {
-				if (editing) {return;}
 				if (!scope.isEditable()) {return;}
 				if (!scope.entity || !scope.entity.id) {return;}
 			
-	
+				if ($rootScope.activeField && $rootScope.activeField != scope) {
+					$rootScope.activeField.edit = false;
+				}
+				
+				$rootScope.activeField = scope;
 				editing = true;
-
+	
 				let currentVal = scope.entity[scope.fieldName];
 				if (isDate()) {
 					scope.val = parseToDate(currentVal);
@@ -60,7 +63,7 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 
 			scope.cancel = function() {
 				scope.edit = false;
-				editing = false;
+				editing = false;	
 			};
 
 			scope.save = function() {
@@ -78,7 +81,6 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 						scope.edit = false;
 						editing = false;
 						scope.$emit('DATA_CHANGED');
-
 					}, function() {
 						scope.edit = false;
 						editing = false;
@@ -131,3 +133,6 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 		}
 	};
 });
+
+
+
