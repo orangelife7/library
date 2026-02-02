@@ -1,17 +1,12 @@
 <div> 
-	<h3><b>Lista egzemplarzy książek</b></h3>
-	
-	<create-button entity-url="physical-book" label="egzemplarz książki"></create-button>
-	
-	
 	<table>
 	
 	<thead>
 		<tr>
 			<th>Id</th>
 			<th>Numer katalogowy</th>
-			<th>Tytuł</th>
-			<th>Autor</th>
+			<th ng-if="$ctrl.showTitle">Tytuł</th>
+			<th ng-if="$ctrl.showAuthor">Autor</th>
 			<th>Opis</th>
 			<th>Detale egzemplarzy</th>
 			<th>Usuń</th>
@@ -24,10 +19,10 @@
 			<td>
 				<field entity-name="physicalBook" entity="item" field-name="catalogNumber"/>
 			</td>
-			<td>
+			<td ng-if="$ctrl.showTitle">
 				<field entity-name="book" entity="item.book" field-name="title"/>
 			</td>
-			<td>
+			<td ng-if="$ctrl.showAuthor">
 				<field entity-name="book" entity="item.book" field-name="author"/>
 			</td>
 			<td>

@@ -1,4 +1,8 @@
 app.component('physicalBookTable', {
-	bindings: {list: '<'},
-	templateUrl: getComponentPath('physical-book-table')
+	bindings: {
+		list: '<',
+		showTitle: '<',
+		showAuthor: '<'
+	},
+	templateUrl: getComponentPath('physical-book-table'),
 });
