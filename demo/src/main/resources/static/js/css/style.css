@@ -17,3 +17,9 @@ th { background-color: #e0e0e0;
 .create-button {
 	margin-bottom: 8px;
 }
+
+.catalog-number {
+	width: 220px; 
+	display: inline-block; 
+	margin-right: 8px;
+}
