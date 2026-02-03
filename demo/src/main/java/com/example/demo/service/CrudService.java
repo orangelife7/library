@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import org.hibernate.validator.internal.util.privilegedactions.GetDeclaredField;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.entity.BaseEntity;
@@ -23,7 +22,8 @@ public abstract class CrudService<T extends BaseEntity> {
 	public abstract CoreRepository<T, Long> getRepository();
 
 	@Transactional
-	public T save(T entity) {
+	public T create(T entity) {
+		beforeCreate(entity);
 		return getRepository().save(entity);
 	}
 
@@ -40,7 +40,7 @@ public abstract class CrudService<T extends BaseEntity> {
 		ObjectMapper mapper = getMapper();
 		return mapper.writeValueAsString(list);
 	}
-	
+
 	public String getDetailsJson(Long id) throws JsonProcessingException {
 		T entity = findById(id).orElseThrow(() -> new EntityNotFoundException("Entity not found with id: " + id));
 		ObjectMapper mapper = getMapper();
@@ -51,23 +51,24 @@ public abstract class CrudService<T extends BaseEntity> {
 	public void update(Long id, Map<String, Object> payload) {
 		T existing = getRepository().findById(id)
 				.orElseThrow(() -> new RuntimeException("Entity with address id: " + id + " not found."));
-	
+
 		payload.forEach((name, value) -> {
 			try {
 				Field f = existing.getClass().getDeclaredField(name);
-				if(f.isAnnotationPresent(Id.class)) return;
+				if (f.isAnnotationPresent(Id.class))
+					return;
 				f.setAccessible(true);
 				if (f.getType() == LocalDateTime.class && value instanceof String) {
-				    String s = (String) value;
-				    value = s.isEmpty() ? null
-				    : LocalDateTime.parse(s, java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+					String s = (String) value;
+					value = s.isEmpty() ? null
+							: LocalDateTime.parse(s, java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 				}
 				f.set(existing, value);
 			} catch (NoSuchFieldException | IllegalAccessException e) {
 				throw new RuntimeException("Error updating entity fields", e);
 			}
 		});
-		
+
 		getRepository().save(existing);
 	}
 
@@ -79,6 +80,10 @@ public abstract class CrudService<T extends BaseEntity> {
 	protected CoreMapper getMapper() {
 		return null;
 	}
+	
+	protected void beforeCreate(T entity) {
+	} 
 }
+
 
 

@@ -134,29 +134,29 @@ public class StartupService {
 	}
 
 	private PhysicalBook createPhysicalBook(PhysicalBook pb) {
-		return physicalBookService.save(pb);
+		return physicalBookService.create(pb);
 
 	}
 
 	public Address createAddress(Address address) {
-		return addressService.save(address);
+		return addressService.create(address);
 	}
 
 	public Customer createCustomer(Customer customer) {
-		return customerService.save(customer);
+		return customerService.create(customer);
 	}
 
 	public Book createBook(Book book) {
-		return bookService.save(book);
+		return bookService.create(book);
 
 	}
 
 	public Order createOrder(Order order) {
-		return orderService.save(order);
+		return orderService.create(order);
 	}
 
 	public Employee createEmployee(Employee employee) {
-		return employeeService.save(employee);
+		return employeeService.create(employee);
 	}
 
 }

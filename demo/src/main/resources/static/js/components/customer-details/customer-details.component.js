@@ -6,6 +6,6 @@ app.component('customerDetails', {
         $controller('DetailsController', {
             $scope: $scope,
         });
-            $scope.init("customer");
+            $scope.init("customer");	
     }
 });
