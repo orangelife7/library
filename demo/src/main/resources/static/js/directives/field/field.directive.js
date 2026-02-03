@@ -27,8 +27,9 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 				} 
 			}
 		
-			let type = $rootScope.fieldConfig[scope.entityName][scope.fieldName];
-			scope.type = type;
+			let fieldInfo = $rootScope.fieldConfig[scope.entityName][scope.fieldName];
+			scope.type = fieldInfo.type;
+			scope.nullable = fieldInfo.nullable;
 			setInputType();
 
 			scope.isEditable = function() {
@@ -84,8 +85,8 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 				scope.val = scope.entity[scope.fieldName] = null;
 				scope.save();
 			};
-
 			
+				
 			scope.chooseBoolean = function(value) {
 				scope.val = value;
 				scope.entity[scope.fieldName] = value;

@@ -14,7 +14,7 @@
 		<div ng-if="SAVE_CANCEL_TYPES.includes(type)">
 			<button class="btn btn-success btn-xs" ng-click="save()">Zapisz</button>
 			<button class="btn btn-danger btn-xs" ng-click="cancel()">Anuluj</button>
-			<button class="btn btn-default btn-xs" ng-if="edit" ng-click="clear()">Wyczyść</button>
+			<button class="btn btn-default btn-xs" ng-if="edit && nullable" ng-click="clear()">Wyczyść</button>
 		</div>
 	</div>
 </div>

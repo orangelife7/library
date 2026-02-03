@@ -10,15 +10,18 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.pojo.FieldInfo;
+
 import jakarta.persistence.Entity;
+import jakarta.validation.constraints.NotNull;
 
 @RestController
 public class ConfigurationController {
 	
 	 @GetMapping("/field-configuration")
-	    public Map<String, Map<String, String>> fieldConfiguration() {
+	    public Map<String, Map<String, FieldInfo>> fieldConfiguration() {
 
-	        Map<String, Map<String, String>> result = new HashMap<>();
+	        Map<String, Map<String, FieldInfo>> result = new HashMap<>();
 
 	        Set<Class<?>> entities =
 	                new Reflections("com.example.demo.entity")
@@ -26,10 +29,12 @@ public class ConfigurationController {
 
 	        for (Class<?> entity : entities) {
 
-	            Map<String, String> fields = new HashMap<>();
+	            Map<String, FieldInfo> fields = new HashMap<>();
 
 	            for (Field field : entity.getDeclaredFields()) {
-	                fields.put(field.getName(), mapType(field.getType()));
+	                String type = mapType(field.getType());
+	                boolean nullable = !field.isAnnotationPresent(NotNull.class);
+	                fields.put(field.getName(), new FieldInfo(type, nullable));
 	            }
 
 	            result.put(StringUtils.uncapitalize(entity.getSimpleName()), fields);
