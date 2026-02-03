@@ -13,3 +13,7 @@ th { background-color: #e0e0e0;
     border: 1px solid black;
      margin-right: 10mm;
 }
+
+.create-button {
+	margin-bottom: 8px;
+}

@@ -36,7 +36,7 @@
 <div>
 <h3><b>Lista egzemplarzy książki</b></h3>
 <input class="form-control input-sm" style="width:220px; display:inline-block; margin-right:8px;" placeholder="Numer katalogowy" ng-model="newCatalogNumber">
-<button class="btn btn-success btn-sm" ng-click="addPhysicalBook()" style="margin-bottom: 8px;" ng-disabled="!newCatalogNumber.length">Dodaj egzemplarz</button>
+<button class="btn btn-success btn-sm create-button" ng-click="addPhysicalBook()" ng-disabled="!newCatalogNumber.length">Dodaj egzemplarz</button>
 <physical-book-table list="item.physicalBooks" show-title="false" show-author="false"/>
 </div>
 
