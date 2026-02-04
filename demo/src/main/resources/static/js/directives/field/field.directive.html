@@ -1,8 +1,6 @@
 <div>
 	<div ng-if="!edit" ng-click="start()" ng-style="{'cursor': isEditable() ? 'pointer' : 'default'}">
-		<span ng-if="type === 'boolean'">{{ entity[fieldName] != null ? (entity[fieldName] ? 'TAK' : 'NIE') : '—'}}</span>
-		<span ng-if="type === 'entity'">{{ (entity && entity[fieldName] && entity[fieldName].label) || '—' }}</span>
-    	<span ng-if="type !== 'boolean' && type !== 'entity'">{{ entity && entity[fieldName] || '—' }}</span>
+		<span>{{ getValue()}}</span>
 	</div>
 	
 	<div ng-show="edit">

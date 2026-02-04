@@ -39,6 +39,8 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 				return scope.editable != false;
 			}
 			
+			
+		
 			scope.start = function() {
 				if (!scope.isEditable()) {return;}
 				if (!scope.entity || !scope.entity.id) {return;}
@@ -126,7 +128,25 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 				return formattedDate;
 			}
 			
-
+			
+			scope.getValue = function() {
+				if(scope.entity == null) {
+					return "-";
+				}
+				let value = scope.entity[scope.fieldName];
+				if(value == null) {
+					return '-';
+				}
+				if(scope.type == 'boolean') {
+					return value ? 'TAK' : 'NIE'
+				}
+				if(scope.type == 'entity') {
+					return value.label;
+				}
+				
+				return value;
+			}
+			
 		}
 	};
 });
