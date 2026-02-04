@@ -34,9 +34,12 @@ public class Employee extends BaseEntity {
 		this.surname = surname;
 	}
 
-	public String toString() {
-		return "Employee [firstName=" + firstName + ", surname=" + surname + ", orders=" + orders + "]";
+	public String getLabel() {
+		String fn = firstName == null ? "" : firstName;
+		String sn = surname == null ? "" : surname;
+		return (fn + " " + sn); 
 	}
+	
 
 // Gettery i Settery
 	public String getFirstName() {
@@ -63,6 +66,11 @@ public class Employee extends BaseEntity {
 		this.orders = orders;
 	}
 
+	
+	public String toString() {
+		return "Employee [firstName=" + firstName + ", surname=" + surname + ", orders=" + orders + "]";
+	}
+	
 }
 
 

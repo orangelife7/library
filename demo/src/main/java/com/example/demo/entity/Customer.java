@@ -50,6 +50,13 @@ public class Customer extends BaseEntity {
 		this.pesel = pesel;
 	}
 
+	public String getLabel() {
+		String fn = firstName == null ? "" : firstName;
+		String sn = surname == null ? "" : surname;
+		return (fn + " " + sn);
+	}
+	
+	
 //	Gettery i Settery
 
 	public String getFirstName() {

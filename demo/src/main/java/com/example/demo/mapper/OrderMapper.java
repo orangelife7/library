@@ -9,7 +9,7 @@ public class OrderMapper extends CoreMapper {
 				"deadline", "maximumDeadline", "returnDate", "cancelled",
 				"prepared", "damaged", "paid", "amountToPay", "status", "customer", "employee", "physicalBooks"));
 		
-		addFilter("customerFilter", filterOutAllExcept("id", "firstName", "surname", "pesel"));
+		addFilter("customerFilter", filterOutAllExcept("id", "firstName", "surname", "pesel", "label"));
 		addFilter("employeeFilter", filterOutAllExcept("id", "firstName", "surname"));
 		addFilter("physicalBookFilter", filterOutAllExcept("id", "catalogNumber", "description", "book"));
 		 addFilter("bookFilter", filterOutAllExcept("id", "title", "author", "description"));

@@ -33,9 +33,12 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 			setInputType();
 
 			scope.isEditable = function() {
+				if (scope.type === 'entity') {
+					return false
+				} 
 				return scope.editable != false;
 			}
-		
+			
 			scope.start = function() {
 				if (!scope.isEditable()) {return;}
 				if (!scope.entity || !scope.entity.id) {return;}
@@ -122,6 +125,7 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 				let formattedDate = momentDate.format(DATE_TIME_FORMAT);
 				return formattedDate;
 			}
+			
 
 		}
 	};

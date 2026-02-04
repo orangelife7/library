@@ -16,6 +16,7 @@
 	  </th>
       <th>Kwota</th>
       <th>Status</th>
+      <th>Klient</th>
       <th>Detale</th>
       <th>Usuń</th>
     </tr>
@@ -54,6 +55,10 @@
       <td>
 			<field entity-name="order" entity="order" field-name="status" editable="false"/>
 		</td>
+	   <td>
+			<field entity-name="order" entity="order" field-name="customer" editable="false"/>
+		</td>
+		
       <td>
     	   <details-button url="order" id="order.id"/>
 	  </td>

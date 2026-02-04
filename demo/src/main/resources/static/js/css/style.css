@@ -11,7 +11,9 @@ th { background-color: #e0e0e0;
  
  table, th, td {
     border: 1px solid black;
-     margin-right: 10mm;
+    margin-right: 10mm;
+    max-width: 180px;
+    overflow-wrap: break-word;
 }
 
 .create-button {

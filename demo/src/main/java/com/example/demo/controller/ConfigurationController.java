@@ -10,6 +10,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.demo.entity.BaseEntity;
 import com.example.demo.pojo.FieldInfo;
 
 import jakarta.persistence.Entity;
@@ -46,6 +47,11 @@ public class ConfigurationController {
 	    private String mapType(Class<?> type) {
 	        if (type == LocalDateTime.class) return "localDateTime";
 	        if (type == boolean.class || type == Boolean.class) return "boolean";
+	        
+	        if (BaseEntity.class.isAssignableFrom(type)) return "entity";
+	        
 	        return "text";
+	        
+	        
 	    }
 	}

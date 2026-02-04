@@ -50,6 +50,10 @@ public class Book extends BaseEntity {
 		this.isbn = isbn;
 	}
 
+	public String getLabel() {
+		return getId() != null ? String.valueOf(getId()) : "";
+	}
+	
 //	Gettery i Settery
 
 	public String getTitle() {
