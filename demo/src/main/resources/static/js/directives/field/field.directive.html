@@ -1,26 +1,25 @@
 <div>
-	<div ng-if="!edit" ng-click="start()" ng-style="{'cursor': isEditable() ? 'pointer' : 'default'}">
-		<span ng-if="type !== 'entity'">{{ getValue()}}</span>
-		<span ng-if="type === 'entity'">
-		<span ng-if="!entityDetailsOpen">
-			<a href="" ng-click="onEntityClick($event)"class="entity-label-link">{{ getValue() }}</a>
-		</span>
-		<span ng-if="entityDetailsOpen">	
-		<details-button url="{{entityUrl()}}" id="entityId()"></details-button>
-		</span>		
-
+	<div ng-click="activate()"ng-style="{'cursor':'pointer'}">
+		<span>{{ getValue() }}</span>
 	</div>
-	
-	<div ng-show="edit">
-		<input ng-show="INPUT_TYPES.includes(type)" type="{{inputType}}" class="form-control" ng-model="val" ng-keydown="key($event)">
-		<div ng-if="type =='boolean'">
-      		<button class="btn btn-xs btn-default" ng-click="chooseBoolean(true)">TAK</button>
-     	 	<button class="btn btn-xs btn-default" ng-click="chooseBoolean(false)">NIE</button>
-	   	 </div> 
-		<div ng-if="SAVE_CANCEL_TYPES.includes(type)">
-			<button class="btn btn-success btn-xs" ng-click="save()">Zapisz</button>
-			<button class="btn btn-danger btn-xs" ng-click="cancel()">Anuluj</button>
-			<button class="btn btn-default btn-xs" ng-if="edit && nullable" ng-click="clear()">Wyczyść</button>
+
+	<div ng-show="active">
+		<div ng-if="type === 'entity'">
+			<details-button url="{{entityUrl()}}" id="entityId()"></details-button>
+		</div>
+
+		<div ng-show="isEditable()">
+			<input ng-show="INPUT_TYPES.includes(type)" type="{{inputType}}" class="form-control" ng-model="val" ng-keydown="key($event)">
+			<div ng-if="type === 'boolean'">
+				<button class="btn btn-xs btn-default" ng-click="chooseBoolean(true)">TAK</button>
+				<button class="btn btn-xs btn-default" ng-click="chooseBoolean(false)">NIE</button>
+			</div>
+		
+			<div ng-if="SAVE_CANCEL_TYPES.includes(type)">
+				<button class="btn btn-success btn-xs" ng-click="save()">Zapisz</button>
+				<button class="btn btn-danger btn-xs" ng-click="cancel()">Anuluj</button>
+				<button class="btn btn-default btn-xs" ng-if="nullable" ng-click="clear()">Wyczyść</button>
+			</div>
 		</div>
 	</div>
 </div>

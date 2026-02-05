@@ -1,5 +1,5 @@
 app.directive('field', function(HttpService, $timeout, $rootScope) {
-	
+
 	return {
 		restrict: 'E',
 		scope: {
@@ -9,13 +9,14 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 			editable: '<',
 			type: '@?'
 		},
-		
 		templateUrl: '/js/directives/field/field.directive.html',
 		link: function(scope, element) {
 
 			scope.INPUT_TYPES = ['text', 'localDateTime'];
 			scope.SAVE_CANCEL_TYPES = ['text', 'localDateTime'];
 			const DATE_TIME_FORMAT = 'YYYY-MM-DD HH:mm';
+			
+			scope.active = false;
 
 			function setInputType() {
 				if (scope.type === 'localDateTime') {
@@ -24,147 +25,138 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 					scope.inputType = 'checkbox';
 				} else {
 					scope.inputType = 'text';
-				} 
+				}
 			}
-		
+
 			let fieldInfo = $rootScope.fieldConfig[scope.entityName][scope.fieldName];
 			scope.type = fieldInfo.type;
 			scope.nullable = fieldInfo.nullable;
 			setInputType();
 			
-			
-			scope.entityDetailsOpen = false;
-
-						scope.entityId = function() {
-							return scope.entity[scope.fieldName].id || null;
-						};
-
-						scope.entityUrl = function() {
-							return scope.fieldName; 
-						};
-
-						scope.onEntityClick = function($event) {
-							$event.preventDefault();
-							$event.stopPropagation();
-							scope.entityDetailsOpen = true;
-						};
-
 			scope.isEditable = function() {
 				if (scope.type === 'entity') {
-					return false
+					return false;
 				} 
 				return scope.editable != false;
 			}
-		
-			scope.start = function() {
-				if (!scope.isEditable()) {return;}
-				if (!scope.entity || !scope.entity.id) {return;}
+
+			scope.entityId = function() {
+				return scope.entity[scope.fieldName].id || null;
+			};
+
+			scope.entityUrl = function() {
+				return scope.fieldName;
+			};
+
 			
-				if ($rootScope.activeField && $rootScope.activeField != scope) {
-					$rootScope.activeField.edit = false;
+			scope.activate = function() {
+				if ($rootScope.activeField && $rootScope.activeField !== scope) {
+					$rootScope.activeField.active = false;
 				}
-				
 				$rootScope.activeField = scope;
-	
+				scope.active = true;
+
 				let currentVal = scope.entity[scope.fieldName];
-				if (isDate()) {
-					scope.val = parseToDate(currentVal);
-				} else {
-					scope.val = currentVal;
-				}
+				   if (isDate()) {
+				   scope.val = parseToDate(currentVal);
+				   } else {
+				    scope.val = currentVal;
+				   }
 
-				scope.edit = true;
-				$timeout(function() { var i = element[0].querySelector('input'); if (i) i.focus(); }, 500);
-			};
+				   if (scope.isEditable()) {
+				      $timeout(function() {
+				      let i = element[0].querySelector('input');
+				      if (i) i.focus();
+				   }, 0);
+				      }
+				   };
 
-			scope.cancel = function() {
-				scope.edit = false;	
-			};
 
-			scope.save = function() {
-				if (!scope.isEditable()) return;
-				let payload = {};
-				payload[scope.fieldName] = scope.val;
+			
+				 scope.cancel = function() {
+			        scope.active = false;
+			      };
 
-				if (isDate()) {
-					payload[scope.fieldName] = scope.val ? toLocalDateTimeString(scope.val) : null;
-				}
+				  
+			      scope.save = function() {
+			        if (!scope.isEditable()) return;
 
-				let entityPath = camelToKebabCase(scope.entityName);
-				HttpService.post('/api/' + entityPath + '/' + scope.entity.id + '/update', payload)
-					.then(function() {
-						scope.edit = false;
-						scope.$emit('DATA_CHANGED');
-					}, function() {
-						scope.edit = false;
+			        let payload = {};
+			        payload[scope.fieldName] = scope.val;
+
+			        if (isDate()) {
+			          payload[scope.fieldName] = scope.val
+			            ? toLocalDateTimeString(scope.val)
+			            : null;
+			        }
+
+					let entityPath = camelToKebabCase(scope.entityName);
+					        HttpService.post('/api/' + entityPath + '/' + scope.entity.id + '/update', payload)
+					          .then(function() {
+					            scope.edit = false;
+					            scope.$emit('DATA_CHANGED');
+					          }, function() {
+					            scope.edit = false;
+					          });
+					      };
+
+					      scope.clear = function() {
+					        if (!scope.isEditable()) return;
+					        scope.val = scope.entity[scope.fieldName] = null;
+					        scope.save();
+					      };
+
+					      scope.chooseBoolean = function(value) {
+					        scope.val = value;
+					        scope.entity[scope.fieldName] = value;
+					        scope.save();
+					      };
+
+					      scope.key = function(e) {
+					        if (e.key === 'Enter') scope.save();
+					        if (e.key === 'Escape') scope.cancel();
+					      };
+
+					      function isDate() {
+					        return scope.type === 'localDateTime';
+					      }
+
+					      function camelToKebabCase(str) {
+					        return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+					      }
+
+					      function parseToDate(value) {
+					        if (!value) {
+					          return null;
+					        }
+					        const m = moment(value, DATE_TIME_FORMAT, true);
+					        return m.isValid()
+					          ? m.format('YYYY-MM-DD[T]HH:mm')
+					          : null;
+					      }
+
+					      function toLocalDateTimeString(date) {
+					        let momentDate = moment(date);
+					        let formattedDate = momentDate.format(DATE_TIME_FORMAT);
+					        return formattedDate;
+					      }
+
+					      scope.getValue = function() {
+					        if (scope.entity == null) {
+					          return "-";
+					        }
+					        let value = scope.entity[scope.fieldName];
+					        if (value == null) {
+					          return '-';
+					        }
+					        if (scope.type == 'boolean') {
+					          return value ? 'TAK' : 'NIE';
+					        }
+					        if (scope.type == 'entity') {
+					          return value.label;
+					        }
+					        return value;
+					      };
+					    }
+					  };
 					});
-			};
-			
-			scope.clear = function() {
-				if (!scope.isEditable()) return;
-				scope.val = scope.entity[scope.fieldName] = null;
-				scope.save();
-			};
-			
-				
-			scope.chooseBoolean = function(value) {
-				scope.val = value;
-				scope.entity[scope.fieldName] = value;
-				scope.save();
-			};
-
-			scope.key = function(e) {
-				if (e.key === 'Enter') scope.save();
-				if (e.key === 'Escape') scope.cancel();
-			};
-
-			function isDate() {
-				return scope.type === 'localDateTime';
-			}
-
-			function camelToKebabCase(str) {
-				return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
-			}
-
-			function parseToDate(value) {
-				if (!value) {
-					return null;
-				}
-
-				const m = moment(value, DATE_TIME_FORMAT, true);
-				return m.isValid()
-					? m.format('YYYY-MM-DD[T]HH:mm')
-					: null;
-			}
-
-			function toLocalDateTimeString(date) {
-				let momentDate = moment(date);
-				let formattedDate = momentDate.format(DATE_TIME_FORMAT);
-				return formattedDate;
-			}
-			
-			
-			scope.getValue = function() {
-				if(scope.entity == null) {
-					return "-";
-				}
-				let value = scope.entity[scope.fieldName];
-				if(value == null) {
-					return '-';
-				}
-				if(scope.type == 'boolean') {
-					return value ? 'TAK' : 'NIE'
-				}
-				if(scope.type == 'entity') {
-					return value.label;
-				}
-				
-				return value;
-			}
-			
-		}
-	};
-});
-
-
-
