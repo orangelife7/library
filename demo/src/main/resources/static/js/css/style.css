@@ -25,3 +25,8 @@ th { background-color: #e0e0e0;
 	display: inline-block; 
 	margin-right: 8px;
 }
+
+.entity-label-link {
+  text-decoration: none;
+  color: inherit;
+}

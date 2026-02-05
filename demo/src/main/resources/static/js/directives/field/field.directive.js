@@ -31,6 +31,23 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 			scope.type = fieldInfo.type;
 			scope.nullable = fieldInfo.nullable;
 			setInputType();
+			
+			
+			scope.entityDetailsOpen = false;
+
+						scope.entityId = function() {
+							return scope.entity[scope.fieldName].id || null;
+						};
+
+						scope.entityUrl = function() {
+							return scope.fieldName; 
+						};
+
+						scope.onEntityClick = function($event) {
+							$event.preventDefault();
+							$event.stopPropagation();
+							scope.entityDetailsOpen = true;
+						};
 
 			scope.isEditable = function() {
 				if (scope.type === 'entity') {
@@ -38,8 +55,6 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 				} 
 				return scope.editable != false;
 			}
-			
-			
 		
 			scope.start = function() {
 				if (!scope.isEditable()) {return;}

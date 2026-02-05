@@ -1,6 +1,14 @@
 <div>
 	<div ng-if="!edit" ng-click="start()" ng-style="{'cursor': isEditable() ? 'pointer' : 'default'}">
-		<span>{{ getValue()}}</span>
+		<span ng-if="type !== 'entity'">{{ getValue()}}</span>
+		<span ng-if="type === 'entity'">
+		<span ng-if="!entityDetailsOpen">
+			<a href="" ng-click="onEntityClick($event)"class="entity-label-link">{{ getValue() }}</a>
+		</span>
+		<span ng-if="entityDetailsOpen">	
+		<details-button url="{{entityUrl()}}" id="entityId()"></details-button>
+		</span>		
+
 	</div>
 	
 	<div ng-show="edit">
