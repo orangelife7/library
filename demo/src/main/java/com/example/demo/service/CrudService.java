@@ -48,7 +48,7 @@ public abstract class CrudService<T extends BaseEntity> {
 	}
 
 	@Transactional
-	public void update(Long id, Map<String, Object> payload) {
+	public void update(Long id, Map<String, String> payload) {
 		T existing = getRepository().findById(id)
 				.orElseThrow(() -> new RuntimeException("Entity with address id: " + id + " not found."));
 
@@ -58,18 +58,33 @@ public abstract class CrudService<T extends BaseEntity> {
 				if (f.isAnnotationPresent(Id.class))
 					return;
 				f.setAccessible(true);
-				if (f.getType() == LocalDateTime.class && value instanceof String) {
-					String s = (String) value;
-					value = s.isEmpty() ? null
-							: LocalDateTime.parse(s, java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
-				}
-				f.set(existing, value);
+
+				// pobierz zrzutowana wartosc
+				Object castedValue = getCastedValue(f, value);
+				f.set(existing, castedValue);
 			} catch (NoSuchFieldException | IllegalAccessException e) {
 				throw new RuntimeException("Error updating entity fields", e);
 			}
 		});
 
 		getRepository().save(existing);
+	}
+
+	private Object getCastedValue(Field f, String value) {
+		if (value == null || value.isEmpty()) {
+			return null;
+		}
+		Class<?> fieldType = f.getType();
+		if (fieldType == LocalDateTime.class) {
+			return LocalDateTime.parse(value, java.time.format.DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+		}
+		if(fieldType == Boolean.class) {
+			return Boolean.valueOf(value);
+		}
+		if (fieldType == Integer.class) {
+			return Integer.valueOf(value);
+		}
+		return value;
 	}
 
 	@Transactional
@@ -80,10 +95,7 @@ public abstract class CrudService<T extends BaseEntity> {
 	protected CoreMapper getMapper() {
 		return null;
 	}
-	
+
 	protected void beforeCreate(T entity) {
-	} 
+	}
 }
-
-
-

@@ -49,7 +49,7 @@ public abstract class CrudController<T extends BaseEntity> {
 	*/
 
 	@PostMapping("/{id}/update")
-	public void update(@PathVariable Long id, @RequestBody Map<String, Object> payload) {
+	public void update(@PathVariable Long id, @RequestBody Map<String, String> payload) {
 		getService().update(id, payload);
 	}
 
