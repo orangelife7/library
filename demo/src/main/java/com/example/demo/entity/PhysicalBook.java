@@ -43,10 +43,6 @@ public class PhysicalBook extends BaseEntity {
 		this.catalogNumber = catalogNumber;
 		this.description = description;
 	}
-
-	public String getLabel() {
-		return getId() != null ? String.valueOf(getId()) : "";
-	}
 	
 	public String getCatalogNumber() {
 		return catalogNumber;

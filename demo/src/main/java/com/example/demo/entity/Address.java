@@ -49,9 +49,6 @@ public class Address extends BaseEntity {
 		this.zipCode = zipCode;
 	}
 
-	public String getLabel() {
-		return getId() != null ? String.valueOf(getId()) : "";
-	}
 	
 //	Gettery i Settery
 

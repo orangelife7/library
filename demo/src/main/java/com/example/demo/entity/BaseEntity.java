@@ -21,6 +21,6 @@ public abstract class BaseEntity {
 	}
 		
 	public String getLabel() {
-		return "";
+		return getId() != null ? String.valueOf(getId()) : "";
 	}
 }

@@ -175,9 +175,6 @@ public class Order extends BaseEntity {
 		return BigDecimal.valueOf(daysBetweenDateAndDeadline);
 	}
 
-	public String getLabel() {
-		return getId() != null ? String.valueOf(getId()) : "";
-	}
 	
 //	Gettery i Settery
 

@@ -5,6 +5,7 @@
 		<tr>
 			<th>Id</th>
 			<th>Numer katalogowy</th>
+			<th>Książka</th>
 			<th ng-if="$ctrl.showTitle">Tytuł</th>
 			<th ng-if="$ctrl.showAuthor">Autor</th>
 			<th>Opis</th>
@@ -18,6 +19,9 @@
 			<td>{{ item.id }}</td>
 			<td>
 				<field entity-name="physicalBook" entity="item" field-name="catalogNumber"/>
+			</td>
+			<td>
+				<field entity-name="physicalBook" entity="item" field-name="book"/>
 			</td>
 			<td ng-if="$ctrl.showTitle">
 				<field entity-name="book" entity="item.book" field-name="title"/>
