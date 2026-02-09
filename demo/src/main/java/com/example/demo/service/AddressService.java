@@ -4,6 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entity.Address;
+import com.example.demo.mapper.AddressMapper;
+import com.example.demo.mapper.BookMapper;
+import com.example.demo.mapper.CoreMapper;
 import com.example.demo.repository.AddressRepository;
 import com.example.demo.repository.CoreRepository;
 
@@ -17,4 +20,8 @@ public class AddressService extends CrudService<Address> {
 		return addressRepository;
 	}
 	
+	@Override
+	protected CoreMapper getMapper() {
+		return new AddressMapper();
+	}
 }

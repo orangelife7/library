@@ -2,37 +2,5 @@
 		<h3><b>Lista klientów</b></h3>
 		
 	 <create-button entity-url="customer" label="klienta"></create-button>
-	
-	<table>
-			<thead>
-				<tr>
-					<th>Id</th>
-					<th>Imię</th>
-					<th>Nazwisko</th>
-					<th>Pesel</th>
-					<th>Detale</th>
-					<th>Usuń</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat="customer in list">
-					<td >{{ customer.id }}</td>
-					<td>
-						<field entity-name="customer" entity="customer" field-name="firstName"/>
-					</td>
-					<td>
-						<field entity-name="customer" entity="customer" field-name="surname"/>
-					</td>
-					<td>
-						<field entity-name="customer" entity="customer" field-name="pesel"/>
-					</td>
-					<td>
-    					<details-button url="customer" id="customer.id"/>
-					</td>
-					<td>
-            			<delete-btn item-id="customer.id" entity-url="customer"/>
-            		</td>
-				</tr>
-			</tbody>
-		</table>
+	 <customer-table list="list" />
 </div>

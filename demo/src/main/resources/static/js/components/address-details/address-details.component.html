@@ -1,0 +1,49 @@
+<div >
+
+	<h3><strong>Detale adresu</strong></h3>
+  <table>
+    <tr>
+      <th>Id</th>
+      <td>{{item.id}}</td>
+    </tr>
+    <tr>
+      <th>Kraj</th>
+      <td>
+		<field entity-name="address" entity="item" field-name="country"/>
+	</td>
+    </tr>
+    <tr>
+      <th>Miasto</th>
+      <td>
+		<field entity-name="address" entity="item" field-name="city"/>
+	</td>
+    </tr>
+    <tr>
+      <th>Ulica</th>
+      <td>
+		<field entity-name="address" entity="item" field-name="street"/>
+	</td>
+    </tr>
+    <tr>
+      <th>Numer domu lub mieszkania</th>
+      <td>
+		<field entity-name="address" entity="item" field-name="numberOfHouseOrApartment"/>
+	</td>
+    </tr>
+    <tr>
+      <th>Kod pocztowy</th>
+      <td>
+		<field entity-name="address" entity="item" field-name="zipCode"/>
+	</td>
+    </tr>
+  </table>
+  
+  <h3><strong>Klienci przypisani do adresu</strong></h3>
+	 <customer-table list="item.customers">
+	 
+	 <h3><strong>Zamówienia klienta</strong></h3>
+	 <order-table list="item.orders">
+</div>
+
+
+

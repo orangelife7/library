@@ -91,72 +91,72 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 			        }
 
 					let entityPath = camelToKebabCase(scope.entityName);
-					        HttpService.post('/api/' + entityPath + '/' + scope.entity.id + '/update', payload)
-					          .then(function() {
-					            scope.edit = false;
-					            scope.$emit('DATA_CHANGED');
-					          }, function() {
-					            scope.edit = false;
-					          });
-					      };
+			        HttpService.post('/api/' + entityPath + '/' + scope.entity.id + '/update', payload)
+			          .then(function() {
+			            scope.active = false;
+			            scope.$emit('DATA_CHANGED');
+			          }, function() {
+			            scope.active = false;
+			          });
+			      };
 
-					      scope.clear = function() {
-					        if (!scope.isEditable()) return;
-					        scope.val = scope.entity[scope.fieldName] = null;
-					        scope.save();
-					      };
+	      scope.clear = function() {
+	        if (!scope.isEditable()) return;
+	        scope.val = scope.entity[scope.fieldName] = null;
+	        scope.save();
+	      };
 
-					      scope.chooseBoolean = function(value) {
-					        scope.val = value;
-					        scope.entity[scope.fieldName] = value;
-					        scope.save();
-					      };
+	      scope.chooseBoolean = function(value) {
+	        scope.val = value;
+	        scope.entity[scope.fieldName] = value;
+	        scope.save();
+	      };
 
-					      scope.key = function(e) {
-					        if (e.key === 'Enter') scope.save();
-					        if (e.key === 'Escape') scope.cancel();
-					      };
+	      scope.key = function(e) {
+	        if (e.key === 'Enter') scope.save();
+	        if (e.key === 'Escape') scope.cancel();
+	      };
 
-					      function isDate() {
-					        return scope.type === 'localDateTime';
-					      }
+	      function isDate() {
+	        return scope.type === 'localDateTime';
+	      }
 
-					      function camelToKebabCase(str) {
-					        return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
-					      }
+	      function camelToKebabCase(str) {
+	        return str.replace(/([a-z0-9])([A-Z])/g, '$1-$2').toLowerCase();
+	      }
 
-					      function parseToDate(value) {
-					        if (!value) {
-					          return null;
-					        }
-					        const m = moment(value, DATE_TIME_FORMAT, true);
-					        return m.isValid()
-					          ? m.format('YYYY-MM-DD[T]HH:mm')
-					          : null;
-					      }
+	      function parseToDate(value) {
+	        if (!value) {
+	          return null;
+	        }
+	        const m = moment(value, DATE_TIME_FORMAT, true);
+	        return m.isValid()
+	          ? m.format('YYYY-MM-DD[T]HH:mm')
+	          : null;
+	      }
 
-					      function toLocalDateTimeString(date) {
-					        let momentDate = moment(date);
-					        let formattedDate = momentDate.format(DATE_TIME_FORMAT);
-					        return formattedDate;
-					      }
+	      function toLocalDateTimeString(date) {
+	        let momentDate = moment(date);
+	        let formattedDate = momentDate.format(DATE_TIME_FORMAT);
+	        return formattedDate;
+	      }
 
-					      scope.getValue = function() {
-					        if (scope.entity == null) {
-					          return "-";
-					        }
-					        let value = scope.entity[scope.fieldName];
-					        if (value == null) {
-					          return '-';
-					        }
-					        if (scope.type == 'boolean') {
-					          return value ? 'TAK' : 'NIE';
-					        }
-					        if (scope.type == 'entity') {
-					          return value.label;
-					        }
-					        return value;
-					      };
-					    }
-					  };
-					});
+	      scope.getValue = function() {
+	        if (scope.entity == null) {
+	          return "-";
+	        }
+	        let value = scope.entity[scope.fieldName];
+	        if (value == null) {
+	          return '-';
+	        }
+	        if (scope.type == 'boolean') {
+	          return value ? 'TAK' : 'NIE';
+	        }
+	        if (scope.type == 'entity') {
+	          return value.label;
+	        }
+	        return value;
+	      };
+	    }
+	  };
+	});
