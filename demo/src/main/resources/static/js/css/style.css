@@ -12,7 +12,7 @@ th { background-color: #e0e0e0;
  table, th, td {
     border: 1px solid black;
     margin-right: 10mm;
-    max-width: 600px;
+    max-width: 1000px;
     overflow-wrap: break-word;
 }
 
