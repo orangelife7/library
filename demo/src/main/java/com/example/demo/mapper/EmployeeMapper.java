@@ -1,12 +1,16 @@
 package com.example.demo.mapper;
 
+import com.example.demo.entity.Employee;
+import com.example.demo.entity.Employee_;
+import com.example.demo.entity.Order_;
+
 public class EmployeeMapper extends CoreMapper {
 	
 	public static final long serialVersionUID = 1L; 
 	
 	{
-		addFilter("employeeFilter", filterOutAllExcept("id", "firstName", "surname", "orders"));
-		addFilter("orderFilter", filterOutAllExcept("id", "loadDate", "deadline", "maximumDeadline", 
-				"returnDate", "cancelled", "prepared", "damaged", "paid", "amountToPaid", "status"));
+		addFilter("employeeFilter", filterOutAllExcept(Employee_.ID, Employee_.FIRST_NAME, Employee_.SURNAME, Employee_.ORDERS));
+		addFilter("orderFilter", filterOutAllExcept(Order_.ID, Order_.LOAN_DATE, Order_.DEADLINE, Order_.MAXIMUM_DEADLINE, 
+				Order_.RETURN_DATE, Order_.CANCELLED, Order_.PREPARED, Order_.DAMAGED, Order_.PAID, Order_.AMOUNT_TO_PAY, Order_.STATUS));
 	}
 }
