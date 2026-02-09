@@ -34,14 +34,12 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 			setInputType();
 			
 			scope.isEditable = function() {
-				if (scope.type === 'entity') {
-					return false;
-				} 
 				return scope.editable != false;
 			}
+			
 
 			scope.entityId = function() {
-				return scope.entity[scope.fieldName].id || null;
+				return scope.entity[scope.fieldName]?.id || null;
 			};
 
 			scope.entityUrl = function() {
@@ -80,7 +78,7 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 				  
 			      scope.save = function() {
 			        if (!scope.isEditable()) return;
-
+					
 			        let payload = {};
 			        payload[scope.fieldName] = scope.val;
 
@@ -101,7 +99,8 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 			      };
 
 	      scope.clear = function() {
-	        if (!scope.isEditable()) return;
+			if (scope.type === 'entity' && !scope.nullable) return;
+			if (scope.type !== 'entity' && !scope.isEditable()) return;
 	        scope.val = scope.entity[scope.fieldName] = null;
 	        scope.save();
 	      };
