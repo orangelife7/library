@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.util.StringUtils;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
@@ -37,6 +39,15 @@ public class CoreMapper extends ObjectMapper {
 
 	protected void addFilter(String filterName, SimpleBeanPropertyFilter filter) {
 		provider.addFilter(filterName, filter);
+	}
+	
+	protected void addFilter(Class<?> entityClass, SimpleBeanPropertyFilter filter) {
+		addFilter(filterName(entityClass), filter);
+	}
+	
+	private String filterName(Class<?> entityClass) {
+		String className = StringUtils.uncapitalize(entityClass.getSimpleName());
+		return className + "Filter";
 	}
 
 	protected SimpleBeanPropertyFilter filterOutAllExcept(String... propertyArray) {
