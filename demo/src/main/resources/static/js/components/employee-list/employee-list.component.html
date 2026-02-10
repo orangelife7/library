@@ -1,7 +1,12 @@
 <div>
 	<h3><b>Lista pracowników</b></h3>
 
-	<create-button entity-url="employee" label="pracownika"></create-button>
+		<form class="create-form" name="myForm" ng-submit="createEmployee()">
+		<input class="form-control" placeholder="Imię" ng-model="form.firstName" required>
+		<input class="form-control" placeholder="Nazwisko" ng-model="form.surname" required>
+	<button class="btn btn-success" type="submit">Utwórz</button>
+	</form>
+	
 
 	<table >
 		<thead>

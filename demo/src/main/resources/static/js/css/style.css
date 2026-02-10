@@ -30,3 +30,18 @@ th { background-color: #e0e0e0;
   text-decoration: none;
   color: inherit;
 }
+
+.create-form {
+  margin-bottom: 8px;
+}
+
+.create-form > input.form-control {
+  display: inline-block;
+  width: 220px;
+  margin-right: 8px;
+}
+
+
+
+
+

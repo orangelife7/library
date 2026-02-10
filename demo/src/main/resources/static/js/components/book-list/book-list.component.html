@@ -1,10 +1,16 @@
 <div> 
 	<h3><b>Lista książek</b></h3>
 	
-	<create-button entity-url="book" label="książkę"></create-button>
+	<form class="create-form" name="myForm" ng-submit="createBook()">
+		<input class="form-control" placeholder="Tytuł" ng-model="form.title" required>
+		<input class="form-control" placeholder="Autor" ng-model="form.author" required>
+		<input class="form-control" type="number" placeholder="Rok publikacji" ng-model="form.yearOfPublication" required>
+		<input class="form-control" placeholder="ISBN" ng-model="form.isbn" required>
+	<button class="btn btn-success" type="submit">Utwórz</button>
+	</form>
+	
 	
 	<table>
-	
 	<thead>
 		<tr>
 			<th>Id</th>

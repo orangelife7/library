@@ -1,7 +1,14 @@
 <div> 
 	<h3><b>Lista adresów</b></h3>
 	
-	<create-button entity-url="address" label="adres"></create-button>
+	<form class="create-form" name="myForm" ng-submit="createAddress()">
+		<input class="form-control" placeholder="Kraj" ng-model="form.country" required>
+		<input class="form-control" placeholder="Miasto" ng-model="form.city" required>
+		<input class="form-control" placeholder="Ulica" ng-model="form.street" required>
+		<input class="form-control" placeholder="Number domu lub mieszkania" ng-model="form.numberOfHouseOrApartment" required>
+		<input class="form-control" placeholder="Kod pocztowy" ng-model="form.zipCode" required>
+	<button class="btn btn-success" type="submit">Utwórz</button>
+	</form>
 	
 	<table>
 	
