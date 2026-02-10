@@ -31,5 +31,17 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
 			$interval.cancel(vm.interval);
 		}
 	});
+	
+	$scope.form = {};
+	
+	$scope.createByForm = function() {
+      HttpService.post(`/api/${$scope.entityUrl}/create`, $scope.form)
+        .then(function() {
+          $scope.$emit('DATA_CHANGED');
+
+      
+          $scope.form = {};
+        });
+    };
 
 });

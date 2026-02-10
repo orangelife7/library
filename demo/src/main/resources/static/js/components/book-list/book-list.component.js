@@ -7,18 +7,5 @@ app.component('bookList', {
 			$scope: $scope 
 		});
     $scope.init("book");
-
-   
-    $scope.form = {};
-     
-	$scope.createBook = function() {
-      HttpService.post('/api/book/create', $scope.form)
-        .then(function() {
-          $scope.$emit('DATA_CHANGED');
-
-      
-          $scope.form = {};
-        });
-    };
   }
 });

@@ -7,18 +7,5 @@ app.component('employeeList', {
 			$scope: $scope 
 		});
     $scope.init("employee");
-
-   
-    $scope.form = {};
-     
-	$scope.createEmployee = function() {
-      HttpService.post('/api/employee/create', $scope.form)
-        .then(function() {
-          $scope.$emit('DATA_CHANGED');
-
-      
-          $scope.form = {};
-        });
-    };
   }
 });

@@ -7,18 +7,5 @@ app.component('addressList', {
 			$scope: $scope 
 		});
     $scope.init("address");
-
-   
-    $scope.form = {};
-     
-	$scope.createAddress = function() {
-      HttpService.post('/api/address/create', $scope.form)
-        .then(function() {
-          $scope.$emit('DATA_CHANGED');
-
-      
-          $scope.form = {};
-        });
-    };
   }
 });

@@ -7,18 +7,5 @@ app.component('customerList', {
 			$scope: $scope 
 		});
     $scope.init("customer");
-
-   
-    $scope.form = {};
-     
-	$scope.createCustomer = function() {
-      HttpService.post('/api/customer/create', $scope.form)
-        .then(function() {
-          $scope.$emit('DATA_CHANGED');
-
-      
-          $scope.form = {};
-        });
-    };
   }
 });
