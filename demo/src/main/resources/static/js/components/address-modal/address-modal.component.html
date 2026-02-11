@@ -1,18 +1,9 @@
-<div class="modal-header">
-		<h3 class="modal-title">Dodaj adres</h3>
-</div>
-
-<div class="modal-body">
-	<form class="create-form" id="myForm" ng-submit="$ctrl.resolve.callback(form)">
+<common-modal entity-label="adres" on-close="$ctrl.close()">
+	<form id="myForm" ng-submit="$ctrl.resolve.callback(form)">
 		<input class="form-control" placeholder="Kraj" ng-model="form.country" required>
 		<input class="form-control" placeholder="Miasto" ng-model="form.city" required>
 		<input class="form-control" placeholder="Ulica" ng-model="form.street" required>
 		<input class="form-control" placeholder="Numer domu lub mieszkania" ng-model="form.numberOfHouseOrApartment" required>
 		<input class="form-control" placeholder="Kod pocztowy" ng-model="form.zipCode" required>
 	</form>
-</div>
-
-<div class="modal-footer">
-	<button class="btn btn-success" type="submit" form="myForm">Utwórz</button>
-	<button class="btn btn-secondary" ng-click="$ctrl.close()">Anuluj</button>
-</div>
+</common-modal>

@@ -1,17 +1,8 @@
-<div class="modal-header">
-		<h3 class="modal-title">Dodaj książkę</h3>
-</div>
-
-<div class="modal-body">
-	<form class="create-form" id="myForm" ng-submit="$ctrl.resolve.callback(form)">
+<common-modal entity-label="książkę" on-close="$ctrl.close()">
+	<form id="myForm" ng-submit="$ctrl.resolve.callback(form)">
 		<input class="form-control" placeholder="Tytuł" ng-model="form.title" required>
 		<input class="form-control" placeholder="Autor" ng-model="form.author" required>
 		<input class="form-control" type="number" placeholder="Rok publikacji" ng-model="form.yearOfPublication" required>
 		<input class="form-control" placeholder="ISBN" ng-model="form.isbn" required>
 	</form>
-</div>
-
-<div class="modal-footer">
-	<button class="btn btn-success" type="submit" form="myForm">Utwórz</button>
-	<button class="btn btn-secondary" ng-click="$ctrl.close()">Anuluj</button>
-</div>
+</common-modal>
