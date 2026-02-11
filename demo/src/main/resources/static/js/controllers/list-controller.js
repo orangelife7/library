@@ -6,6 +6,7 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
 
 	$scope.init = function(entityUrl) {
 		$scope.entityUrl = entityUrl;
+		$scope.entityName = entityUrl.replace(/-./g, s => s[1].toUpperCase());
 		$scope.initList(`http://localhost:8080/api/${entityUrl}/list`);
 	}
 
