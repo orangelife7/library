@@ -1,13 +1,8 @@
 <div>
 	<h3><b>Lista pracowników</b></h3>
-
-		<form class="create-form" name="myForm" ng-submit="createByForm()">
-		<input class="form-control" placeholder="Imię" ng-model="form.firstName" required>
-		<input class="form-control" placeholder="Nazwisko" ng-model="form.surname" required>
-	<button class="btn btn-success" type="submit">Utwórz</button>
-	</form>
 	
-
+<button class="btn btn-primary create-button" ng-click="createByModal()">Dodaj</button>
+	
 	<table >
 		<thead>
 				<tr>

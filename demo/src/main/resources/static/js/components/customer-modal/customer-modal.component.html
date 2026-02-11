@@ -1,0 +1,16 @@
+<div class="modal-header">
+		<h3 class="modal-title">Dodaj klienta</h3>
+</div>
+
+<div class="modal-body">
+	<form class="create-form" id="myForm" ng-submit="$ctrl.resolve.callback(form)">
+		<input class="form-control" placeholder="Imię" ng-model="form.firstName" required>
+		<input class="form-control" placeholder="Nazwisko" ng-model="form.surname" required>
+		<input class="form-control" placeholder="Pesel" ng-model="form.pesel" required>
+	</form>
+</div>
+
+<div class="modal-footer">
+	<button class="btn btn-success" type="submit" form="myForm">Utwórz</button>
+	<button class="btn btn-secondary" ng-click="$ctrl.close()">Anuluj</button>
+</div>

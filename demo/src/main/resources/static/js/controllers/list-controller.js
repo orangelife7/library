@@ -43,7 +43,7 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
       
           $scope.form = {};
         });
-    };
+    }; 
 	
 	$scope.createByModal = function() {
 		let modalInstance = $uibModal.open({
@@ -51,7 +51,7 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
 		resolve: {
 		callback: function() {
 			return function(form) {
-				HttpService.post('/api/${scope.entityUrl}/create', form)
+				HttpService.post(`/api/${$scope.entityUrl}/create`, form)
 					.then(function() {
 						$scope.$emit('DATA_CHANGED');
 						modalInstance.close();	
@@ -61,5 +61,4 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
 	}
 
 });
-
 
