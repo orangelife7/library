@@ -35,7 +35,8 @@ public class ConfigurationController {
 	            for (Field field : entity.getDeclaredFields()) {
 	                String type = mapType(field.getType());
 	                boolean nullable = !field.isAnnotationPresent(NotNull.class);
-	                fields.put(field.getName(), new FieldInfo(type, nullable));
+	                String entityName = StringUtils.uncapitalize(field.getType().getSimpleName());
+	                fields.put(field.getName(), new FieldInfo(type, nullable, entityName ));
 	            }
 
 	            result.put(StringUtils.uncapitalize(entity.getSimpleName()), fields);
