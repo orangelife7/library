@@ -1,4 +1,4 @@
-app.controller('ListController', function($scope, HttpService, $interval, $rootScope, $uibModal) {
+app.controller('ListController', function($scope, HttpService, $interval, $rootScope, $uibModal, ModalService) {
 
 	const vm = this;
 
@@ -46,18 +46,7 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
     }; 
 	
 	$scope.createByModal = function() {
-		let modalInstance = $uibModal.open({
-		component: $scope.entityName+"Modal",
-		resolve: {
-		callback: function() {
-			return function(form) {
-				HttpService.post(`/api/${$scope.entityUrl}/create`, form)
-					.then(function() {
-						$scope.$emit('DATA_CHANGED');
-						modalInstance.close();	
-					});
-				}
-		}}});
+		ModalService.createByModal($scope.entityName, $scope.entityUrl);
 	}
 
 });
