@@ -35,8 +35,7 @@
 
 <div>
 <h3><b>Lista egzemplarzy książki</b></h3>
-<input class="form-control input-sm catalog-number" placeholder="Numer katalogowy" ng-model="newCatalogNumber">
-<button class="btn btn-success btn-sm create-button" ng-click="addPhysicalBook()" ng-disabled="!newCatalogNumber.length">Dodaj egzemplarz</button>
+<button class="btn btn-primary create-button" ng-click="createPhysicalBook()">Dodaj</button>
 <physical-book-table list="item.physicalBooks" show-title="false" show-author="false"/>
 </div>
 

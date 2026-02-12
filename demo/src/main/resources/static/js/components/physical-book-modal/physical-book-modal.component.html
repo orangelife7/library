@@ -1,0 +1,6 @@
+<common-modal entity-label="egzemplarz książki" on-close="$ctrl.close()">
+	<form id="myForm" ng-submit="$ctrl.resolve.callback(form)">
+		<input class="form-control" placeholder="Numer katalogowy" ng-model="form.catalogNumber" required>
+		<input class="form-control" placeholder="Opis" ng-model="form.description" required>
+	</form>
+</common-modal>

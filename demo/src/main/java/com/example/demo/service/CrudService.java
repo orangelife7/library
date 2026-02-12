@@ -1,11 +1,13 @@
 package com.example.demo.service;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.entity.BaseEntity;
@@ -14,12 +16,16 @@ import com.example.demo.repository.CoreRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.Id;
 
 public abstract class CrudService<T extends BaseEntity> {
 
 	public abstract CoreRepository<T, Long> getRepository();
+	
+	@Autowired
+	private EntityManager entityManager;
 
 	@Transactional
 	public T create(T entity) {
@@ -83,6 +89,9 @@ public abstract class CrudService<T extends BaseEntity> {
 		}
 		if (fieldType == Integer.class) {
 			return Integer.valueOf(value);
+		}
+		if(BaseEntity.class.isAssignableFrom(fieldType)) {
+			return entityManager.getReference(fieldType, Long.valueOf(value));
 		}
 		return value;
 	}

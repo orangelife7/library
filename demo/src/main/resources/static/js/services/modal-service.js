@@ -7,14 +7,19 @@ app.service('ModalService', function($uibModal, HttpService, $rootScope) {
 				resolve: {
 				callback: function() {
 					return function(form) {
+						
 						HttpService.post(`/api/${entityUrl}/create`, form)
-							.then(function() {
+							.then(function(id) {
 								$rootScope.$broadcast('DATA_CHANGED');
-								modalInstance.close();	
+								modalInstance.close();
+								if(callback) {
+									callback(id);
+								}	
 							});
 						}
 				}}});
 			
 	}
+	
 	
 });
