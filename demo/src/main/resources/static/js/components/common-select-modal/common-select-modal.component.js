@@ -2,8 +2,7 @@ app.component('commonSelectModal', {
 	bindings: {
 		entityLabel: '@',
 		entityUrl: '@',
-		resolve: '<',
-		optionLabel: '&'
+		resolve: '<'
 	},
 	transclude: true,
 	templateUrl: getComponentPath('common-select-modal'),
