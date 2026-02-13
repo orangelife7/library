@@ -1,4 +1,4 @@
-app.directive('field', function(HttpService, $timeout, $rootScope) {
+app.directive('field', function(HttpService, $timeout, $rootScope, ModalService) {
 
 	return {
 		restrict: 'E',
@@ -18,6 +18,8 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 			
 			scope.active = false;
 
+			
+			
 			function setInputType() {
 				if (scope.type === 'localDateTime') {
 					scope.inputType = 'datetime-local';
@@ -31,6 +33,7 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 			let fieldInfo = $rootScope.fieldConfig[scope.entityName][scope.fieldName];
 			scope.type = fieldInfo.type;
 			scope.nullable = fieldInfo.nullable;
+			scope.targetEntityName = fieldInfo.entityName;
 			setInputType();
 			
 			scope.isEditable = function() {
@@ -82,6 +85,10 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 			        let payload = {};
 			        payload[scope.fieldName] = scope.val;
 
+					if(scope.type === 'entity') {
+						payload[scope.fieldName] = scope.val ? String(scope.val.id) : null;
+					}
+					
 			        if (isDate()) {
 			          payload[scope.fieldName] = scope.val
 			            ? toLocalDateTimeString(scope.val)
@@ -105,6 +112,19 @@ app.directive('field', function(HttpService, $timeout, $rootScope) {
 	        scope.save();
 	      };
 
+		  scope.chooseEntity = function() {
+			if(scope.type !== 'entity' || !scope.isEditable()) return;
+			
+			ModalService.createByModal(scope.targetEntityName, scope.targetEntityName, function(id) {
+				let newEntity = {id: id};
+				scope.val = newEntity;
+				scope.entity[scope.fieldName] = newEntity;
+				scope.save();
+				
+			});
+		  };
+		  
+		  
 	      scope.chooseBoolean = function(value) {
 	        scope.val = value;
 	        scope.entity[scope.fieldName] = value;

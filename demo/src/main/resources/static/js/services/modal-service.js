@@ -1,4 +1,4 @@
-app.service('ModalService', function($uibModal, HttpService, $rootScope) {
+app.service('ModalService', function($uibModal, HttpService) {
 	
 	this.createByModal = function(entityName, entityUrl, callback) {
 		
@@ -10,11 +10,11 @@ app.service('ModalService', function($uibModal, HttpService, $rootScope) {
 						
 						HttpService.post(`/api/${entityUrl}/create`, form)
 							.then(function(id) {
-								$rootScope.$broadcast('DATA_CHANGED');
 								modalInstance.close();
 								if(callback) {
 									callback(id);
-								}	
+								}
+									
 							});
 						}
 				}}});

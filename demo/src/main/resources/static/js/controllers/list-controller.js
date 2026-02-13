@@ -46,7 +46,10 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
     }; 
 	
 	$scope.createByModal = function() {
-		ModalService.createByModal($scope.entityName, $scope.entityUrl);
+		let callback = function() {
+			$scope.$emit('DATA_CHANGED');
+		}
+		ModalService.createByModal($scope.entityName, $scope.entityUrl, callback);
 	}
 
 });

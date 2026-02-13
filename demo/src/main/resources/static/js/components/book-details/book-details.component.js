@@ -7,7 +7,9 @@ app.component('bookDetails', {
 
 		$scope.createPhysicalBook = function() {	
 			let callback = function(id) {
-				return HttpService.post('/api/physical-book/' + id + '/update', {book: $scope.item.id});
+				return HttpService.post('/api/physical-book/' + id + '/update', {book: $scope.item.id}).then(function (){
+					$scope.$emit('DATA_CHANGED');
+				});
 			};
 			ModalService.createByModal('physicalBook', 'physical-book', callback);
 		}

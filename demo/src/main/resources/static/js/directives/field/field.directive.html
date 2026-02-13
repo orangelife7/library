@@ -6,6 +6,7 @@
 	<div ng-show="active">
 		<div ng-if="type === 'entity'">
 			<details-button url="{{entityUrl()}}" id="entityId()"></details-button>
+			<button class="btn btn-primary btn-xs" ng-click="chooseEntity()">Utwórz</button>
 		</div>
 		
 		<div ng-show="isEditable()">
