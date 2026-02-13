@@ -5,4 +5,15 @@
 		<input class="form-control" type="number" placeholder="Rok publikacji" ng-model="form.yearOfPublication" required>
 		<input class="form-control" placeholder="ISBN" ng-model="form.isbn" required>
 	</form>
+	<hr>
+	
+	  <div class="form-group">
+    <label>Wybierz istniejącą książkę</label>
+
+    <select class="form-control" ng-model="$ctrl.selectedBookId" ng-options="book.id as book.label for book in list track by book.id">
+    	<option value="">-- wybierz --</option>
+  	</select>
+  </div>
+
+  <button class="btn btn-primary btn-xs" ng-disabled="!$ctrl.selectedBookId" ng-click="$ctrl.selectExisting()">Wybierz</button>
 </common-modal>

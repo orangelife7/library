@@ -51,7 +51,11 @@ public class Book extends BaseEntity {
 	}
 
 	public String getLabel() {
-		return getId() != null ? String.valueOf(getId()) : "";
+		String t = title == null ? "" : title;
+		String a = author == null ? "" : author;
+		String yp = yearOfPublication == null ? "" : yearOfPublication.toString();
+		String in = isbn == null ? "" : isbn;
+		return (t + ", " + a + ", " + yp + ", " + in);
 	}
 	
 //	Gettery i Settery

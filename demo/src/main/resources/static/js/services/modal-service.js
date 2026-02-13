@@ -13,13 +13,28 @@ app.service('ModalService', function($uibModal, HttpService) {
 								modalInstance.close();
 								if(callback) {
 									callback(id);
-								}
-									
-							});
 						}
-				}}});
-			
+									
+					});
+				};
+						
+			},
+				
+				select: function() {
+							return function(id) {
+								modalInstance.close();
+								if(callback) {
+									callback(id);
+						}
+					};
+				}
+			}
+		});
+		
 	}
 	
 	
 });
+
+
+
