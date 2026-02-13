@@ -1,19 +1,12 @@
 <common-modal entity-label="książkę" on-close="$ctrl.close()">
-	<form id="myForm" ng-submit="$ctrl.resolve.callback(form)">
-		<input class="form-control" placeholder="Tytuł" ng-model="form.title" required>
-		<input class="form-control" placeholder="Autor" ng-model="form.author" required>
-		<input class="form-control" type="number" placeholder="Rok publikacji" ng-model="form.yearOfPublication" required>
-		<input class="form-control" placeholder="ISBN" ng-model="form.isbn" required>
-	</form>
-	<hr>
-	
-	  <div class="form-group">
-    <label>Wybierz istniejącą książkę</label>
 
-    <select class="form-control" ng-model="$ctrl.selectedBookId" ng-options="book.id as book.label for book in list track by book.id">
-    	<option value="">-- wybierz --</option>
-  	</select>
-  </div>
+<form id="myForm" ng-submit="$ctrl.resolve.callback(form)">
+      <input class="form-control" placeholder="Tytuł" ng-model="form.title" required>
+      <input class="form-control" placeholder="Autor" ng-model="form.author" required>
+      <input class="form-control" type="number" placeholder="Rok publikacji" ng-model="form.yearOfPublication" required>
+      <input class="form-control" placeholder="ISBN" ng-model="form.isbn" required>
+    </form>
+    
+  <common-select-modal entity-url="book" entity-label="książkę" resolve="$ctrl.resolve" option-label="item.title + '-' + item.author" />
 
-  <button class="btn btn-primary btn-xs" ng-disabled="!$ctrl.selectedBookId" ng-click="$ctrl.selectExisting()">Wybierz</button>
 </common-modal>

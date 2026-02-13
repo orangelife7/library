@@ -1,0 +1,13 @@
+<div ng-transclude></div>
+
+<hr>
+
+<div class="form-group">
+  <label>Wybierz {{$ctrl.entityLabel}}</label>
+
+  <select class="form-control" ng-model="$ctrl.selectedId" ng-options="item.id as item.label for item in list track by item.id">
+    <option value="">-- wybierz --</option>
+  	</select>
+  </div>
+</div>
+<button class="btn btn-primary btn-xs"ng-disabled="!$ctrl.selectedId" ng-click="$ctrl.selectExisting()">Wybierz</button>
