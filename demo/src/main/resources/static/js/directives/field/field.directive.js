@@ -112,7 +112,8 @@ app.directive('field', function(HttpService, $timeout, $rootScope, ModalService)
 	        scope.save();
 	      };
 
-		  scope.chooseEntity = function() {
+		  scope.chooseEntity = function(mode) {
+			console.log(mode)
 			if(scope.type !== 'entity' || !scope.isEditable()) return;
 			
 			ModalService.createByModal(scope.targetEntityName, scope.targetEntityName, function(id) {
@@ -121,7 +122,9 @@ app.directive('field', function(HttpService, $timeout, $rootScope, ModalService)
 				scope.entity[scope.fieldName] = newEntity;
 				scope.save();
 				
-			});
+				},
+				mode
+			);
 		  };
 		  
 		  

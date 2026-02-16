@@ -1,11 +1,15 @@
 <common-modal entity-label="klienta" on-close="$ctrl.close()">
 
+<div ng-show="$ctrl.resolve.mode == 'C'">
 <form id="myForm" ng-submit="$ctrl.resolve.callback(form)">
 		<input class="form-control" placeholder="Imię" ng-model="form.firstName" required>
 		<input class="form-control" placeholder="Nazwisko" ng-model="form.surname" required>
 		<input class="form-control" placeholder="Pesel" ng-model="form.pesel" required>
 	</form>
+</div>
     
+<div ng-show="$ctrl.resolve.mode == 'S'">
   <common-select-modal entity-url="customer" entity-label="klienta" resolve="$ctrl.resolve"/>
+</div>
 
 </common-modal>
