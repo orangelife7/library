@@ -1,19 +1,11 @@
 <common-modal entity-label="klienta" on-close="$ctrl.close()">
-	<form id="myForm" ng-submit="$ctrl.resolve.callback(form)">
+
+<form id="myForm" ng-submit="$ctrl.resolve.callback(form)">
 		<input class="form-control" placeholder="Imię" ng-model="form.firstName" required>
 		<input class="form-control" placeholder="Nazwisko" ng-model="form.surname" required>
 		<input class="form-control" placeholder="Pesel" ng-model="form.pesel" required>
 	</form>
-	
-	<hr>
-	
-	  <div class="form-group">
-    <label>Wybierz istniejącego klienta</label>
+    
+  <common-select-modal entity-url="customer" entity-label="klienta" resolve="$ctrl.resolve"/>
 
-    <select class="form-control" ng-model="$ctrl.selectedCustomerId" ng-options="customer.id as customer.label for customer in list track by customer.id">
-    	<option value="">-- wybierz --</option>
-  	</select>
-  </div>
-
-  <button class="btn btn-primary btn-xs" ng-disabled="!$ctrl.selectedCustomerId" ng-click="$ctrl.selectExisting()">Wybierz</button>
 </common-modal>

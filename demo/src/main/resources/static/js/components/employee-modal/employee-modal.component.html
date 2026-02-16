@@ -1,18 +1,10 @@
 <common-modal entity-label="pracownika" on-close="$ctrl.close()">
-	<form id="myForm" ng-submit="$ctrl.resolve.callback(form)">
+
+<form id="myForm" ng-submit="$ctrl.resolve.callback(form)">
 		<input class="form-control" placeholder="Imię" ng-model="form.firstName" required>
 		<input class="form-control" placeholder="Nazwisko" ng-model="form.surname" required>
 	</form>
-	
-	<hr>
-	
-	  <div class="form-group">
-    <label>Wybierz istniejącego pracownika</label>
+    
+  <common-select-modal entity-url="employee" entity-label="pracownika" resolve="$ctrl.resolve"/>
 
-    <select class="form-control" ng-model="$ctrl.selectedEmployeeId" ng-options="employee.id as (employee.firstName + ' ' + employee.surname) for employee in list track by employee.id">
-    	<option value="">-- wybierz --</option>
-  	</select>
-  </div>
-
-  <button class="btn btn-primary btn-xs" ng-disabled="!$ctrl.selectedEmployeeId" ng-click="$ctrl.selectExisting()">Wybierz</button>
 </common-modal>
