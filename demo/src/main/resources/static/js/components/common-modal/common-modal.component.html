@@ -3,12 +3,13 @@
 		<span ng-if="$ctrl.mode === 'C'">Dodaj {{$ctrl.entityLabel}}</span>
 		<span ng-if="$ctrl.mode === 'S'">Wybierz {{$ctrl.entityLabel}}</span>
 	</h3>
-		<button class="btn btn-success" type="submit" form="myForm" ng-if="$ctrl.mode === 'C'">Utwórz</button>
+		
 </div>
 
 <div class="modal-body">
 	<div ng-if="$ctrl.mode === 'C'">
 		<div ng-transclude="formSlot"></div>
+		<button class="btn btn-success" type="submit" form="myForm">Utwórz</button>
 	</div>
 
 	<div ng-if="$ctrl.mode === 'S'">
