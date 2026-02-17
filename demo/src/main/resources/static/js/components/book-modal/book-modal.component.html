@@ -1,16 +1,16 @@
-<common-modal entity-label="książkę" on-close="$ctrl.close()">
+<common-modal entity-label="książkę" mode="$ctrl.resolve.mode" on-close="$ctrl.close()">
 
-<div ng-show="$ctrl.resolve.mode == 'C'">
+<form-slot>
 	<form id="myForm" ng-submit="$ctrl.resolve.callback(form)">
       <input class="form-control" placeholder="Tytuł" ng-model="form.title" required>
       <input class="form-control" placeholder="Autor" ng-model="form.author" required>
       <input class="form-control" type="number" placeholder="Rok publikacji" ng-model="form.yearOfPublication" required>
       <input class="form-control" placeholder="ISBN" ng-model="form.isbn" required>
     </form>
-</div>
+</form-slot>
 
-<div ng-show="$ctrl.resolve.mode == 'S'">
+<select-slot>
 	<common-select-modal entity-url="book" entity-label="książkę" resolve="$ctrl.resolve"/>
-</div>
+</select-slot>
     
 </common-modal>

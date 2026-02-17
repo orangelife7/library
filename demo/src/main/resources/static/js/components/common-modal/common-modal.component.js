@@ -1,8 +1,12 @@
 app.component('commonModal', {
 	bindings: {
 		entityLabel: '@',
-		onClose: '&'
+		onClose: '&',
+		mode: '<'
 	},
-		transclude: true,
+		transclude: {
+			formSlot: '?formSlot',
+			selectSlot: '?selectSlot'
+		},
 		templateUrl: getComponentPath('common-modal')
 });
