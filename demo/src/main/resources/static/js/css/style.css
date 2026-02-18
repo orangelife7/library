@@ -15,7 +15,6 @@ th { background-color: #e0e0e0;
     max-width: 1000px;
     overflow-wrap: break-word;
 }
-
 .create-button {
 	margin-bottom: 8px;
 }
@@ -41,7 +40,25 @@ th { background-color: #e0e0e0;
   margin-right: 8px;
 }
 
+/* Paginator */
+.paginator-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
 
+.paginator-page {
+  width: 65px;
+}
+
+.paginator-size {
+  width: 75px;
+}
+
+.paginator-sort {
+  width: 130px;
+}
 
 
 

@@ -1,0 +1,24 @@
+<div class="btn-toolbar paginator-toolbar">
+  <div class="btn-group">
+	<button class="btn btn-default btn-xs" ng-click="$ctrl.go(0)" ng-disabled="!$ctrl.tp || $ctrl.p==0">&laquo;</button>
+    <button class="btn btn-default btn-xs" ng-click="$ctrl.go($ctrl.p-1)" ng-disabled="!$ctrl.tp || $ctrl.p==0">&lsaquo;</button>
+    <button class="btn btn-default btn-xs" ng-click="$ctrl.go($ctrl.p+1)" ng-disabled="!$ctrl.tp || $ctrl.p>=$ctrl.tp-1">&rsaquo;</button>
+    <button class="btn btn-default btn-xs" ng-click="$ctrl.go($ctrl.tp-1)" ng-disabled="!$ctrl.tp || $ctrl.p>=$ctrl.tp-1">&raquo;</button>
+  </div>
+	
+<input type="number" class="form-control input-sm paginator-page" ng-model="$ctrl.pi" min="1" ng-attr-max="{{$ctrl.tp || 1}}" ng-change="$ctrl.go()">
+  <span>/ {{$ctrl.tp || 0}}</span>
+
+  <select 
+  	class="form-control input-sm paginator-size" ng-model="$ctrl.s" ng-options="s for s in $ctrl.sizes" ng-change="$ctrl.go(null, $ctrl.s)">
+  </select>
+
+  <select 
+  	class="form-control input-sm paginator-sort" ng-model="$ctrl.so"
+          ng-options="v as t for (v,t) in {'id,asc':'ID ↑','id,desc':'ID ↓','title,asc':'Tytuł ↑','title,desc':'Tytuł ↓'}"
+          ng-change="$ctrl.go(null, null, $ctrl.so)">
+  </select>
+
+  <span class="text-muted">({{$ctrl.te || 0}})</span>
+
+</div>
