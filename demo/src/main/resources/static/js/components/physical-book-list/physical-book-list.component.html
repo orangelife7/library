@@ -1,4 +1,8 @@
 <div> 
 	<h3><b>Lista egzemplarzy książek</b></h3>
 	<physical-book-table list="list" show-title="true" show-author="true" />
+	
+<paginator 
+	page="page" size="size" sort="sort" total-pages="totalPages" total-elements="totalElements" on-change="onPageChange(page, size, sort)">
+</paginator>
 </div>

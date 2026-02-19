@@ -15,7 +15,7 @@
 
   <select 
   	class="form-control input-sm paginator-sort" ng-model="$ctrl.so"
-          ng-options="v as t for (v,t) in {'id,asc':'ID ↑','id,desc':'ID ↓','title,asc':'Tytuł ↑','title,desc':'Tytuł ↓'}"
+          ng-options="v as t for (v,t) in {'id,asc':'ID ↑','id,desc':'ID ↓'}"
           ng-change="$ctrl.go(null, null, $ctrl.so)">
   </select>
 

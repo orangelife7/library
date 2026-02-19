@@ -2,4 +2,9 @@
 	<h3><b>Lista zamówień<b></b></h3>
 	<create-button entity-url="order" label="zamówienie"></create-button>
 	<order-table list="list" />
+	
+<paginator 
+	page="page" size="size" sort="sort" total-pages="totalPages" total-elements="totalElements" on-change="onPageChange(page, size, sort)">
+</paginator>
+
 </div>

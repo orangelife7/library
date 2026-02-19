@@ -4,4 +4,8 @@
 	<button class="btn btn-primary create-button" ng-click="createByModal()">Dodaj</button>
 
 	 <customer-table list="list" />
+	 
+<paginator 
+	page="page" size="size" sort="sort" total-pages="totalPages" total-elements="totalElements" on-change="onPageChange(page, size, sort)">
+</paginator>
 </div>
