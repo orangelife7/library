@@ -11,7 +11,7 @@ app.component('paginator', {
 	controller: function() {
 	
 		let vm = this;
-		vm.sizes = [10, 20, 50, 100];	
+		vm.sizes = [1, 2, 5, 10, 20, 50];	
 		
 		vm.$onChanges = function() {
 		  vm.p = vm.page != null ? vm.page : 0;

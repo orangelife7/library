@@ -33,7 +33,7 @@ public abstract class CrudController<T extends BaseEntity> {
 	@GetMapping("/list")
 	public String listJson(@RequestParam int page, @RequestParam int size, @RequestParam String sort)
 			throws JsonProcessingException {
-		return getService().getListJson();
+		return getService().getListJson(page, size, sort);
 	}
 
 	@GetMapping("/{id}")

@@ -1,13 +1,16 @@
 package com.example.demo.service;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.entity.BaseEntity;
@@ -45,6 +48,20 @@ public abstract class CrudService<T extends BaseEntity> {
 		List<T> list = findAll();
 		ObjectMapper mapper = getMapper();
 		return mapper.writeValueAsString(list);
+	}
+	
+	public String getListJson(int page, int size, String sort) throws JsonProcessingException {
+		Pageable pageable = PageRequest.of(
+					page,
+					size,
+					Sort.by(Sort.Order.by(sort.split(",")[0])
+                    .with("asc".equalsIgnoreCase(sort.split(",")[1])
+                            ? Sort.Direction.ASC
+                            : Sort.Direction.DESC))
+				);
+		Page<T> result = getRepository().findAll(pageable);
+		ObjectMapper mapper = getMapper();
+		return mapper.writeValueAsString(result);
 	}
 
 	public String getDetailsJson(Long id) throws JsonProcessingException {
