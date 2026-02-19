@@ -6,7 +6,7 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
 	
 
 	$scope.page = 0;
-	$scope,size = 20;
+	$scope.size = 20;
 	$scope.sort = 'id,asc';
 	$scope.totalPages = 50;
 	$scope.totalElements = 1000;
@@ -16,6 +16,7 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
 		$scope.page = page;
 		$scope.size = size;
 		$scope.sort = sort;
+		$scope.load();
 	};
 
 	$scope.init = function(entityUrl) {
@@ -26,9 +27,13 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
 
 	$scope.initList = function(url) {
 		$scope.load = function() {
-			HttpService.get(url).then(function(response) {
-				$scope.list = response;
-			})
+			HttpService.get(url, {
+			   params: { page: $scope.page, size: $scope.size, sort: $scope.sort }
+			}).then(function(response) {
+				$scope.list = response.content != null ? response.content : response;
+				//$scope.totalPages = response.totalPages != null ? response.totalPages : 0;
+				//$scope.totalElements = response.totalElements != null ? response.totalElements : ($scope.list ? $scope.list.length : 0);
+			});
 		};
 		
 		
