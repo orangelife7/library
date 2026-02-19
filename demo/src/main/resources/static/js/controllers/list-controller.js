@@ -30,9 +30,10 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
 			HttpService.get(url, {
 			   params: { page: $scope.page, size: $scope.size, sort: $scope.sort }
 			}).then(function(response) {
+				console.log(response);
 				$scope.list = response.content != null ? response.content : response;
-				//$scope.totalPages = response.totalPages != null ? response.totalPages : 0;
-				//$scope.totalElements = response.totalElements != null ? response.totalElements : ($scope.list ? $scope.list.length : 0);
+				$scope.totalPages = response.totalPages != null ? response.totalPages : 0;
+				$scope.totalElements = response.totalElements != null ? response.totalElements : ($scope.list ? $scope.list.length : 0);
 			});
 		};
 		
