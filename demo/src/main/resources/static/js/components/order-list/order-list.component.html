@@ -1,7 +1,7 @@
 <div>
 	<h3><b>Lista zamówień<b></b></h3>
 	<create-button entity-url="order" label="zamówienie"></create-button>
-	<order-table list="list" />
+	<order-table list="list" sort="sort" on-sort="sortBy(field)" />
 	
 <paginator 
 	page="page" size="size" sort="sort" total-pages="totalPages" total-elements="totalElements" on-change="onPageChange(page, size, sort)">

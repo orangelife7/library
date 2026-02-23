@@ -50,18 +50,27 @@ public abstract class CrudService<T extends BaseEntity> {
 		return mapper.writeValueAsString(list);
 	}
 	
-	public String getListJson(int page, int size, String sort) throws JsonProcessingException {
-		Pageable pageable = PageRequest.of(
-					page,
-					size,
-					Sort.by(Sort.Order.by(sort.split(",")[0])
-                    .with("asc".equalsIgnoreCase(sort.split(",")[1])
-                            ? Sort.Direction.ASC
-                            : Sort.Direction.DESC))
-				);
-		Page<T> result = getRepository().findAll(pageable);
-		ObjectMapper mapper = getMapper();
-		return mapper.writeValueAsString(result);
+	public String getListJson(int page, int size, List<String> sort) throws JsonProcessingException {
+		Sort s = Sort.unsorted();
+
+	    if (sort != null)
+	        for (String x : sort) {
+	            String[] p = x.split(",", 2);
+	            s = s.and(Sort.by(new Sort.Order(
+	                p.length > 1 && "asc".equalsIgnoreCase(p[1])
+	                    ? Sort.Direction.ASC
+	                    : Sort.Direction.DESC,
+	                p[0]
+	            )));
+	        }
+
+	    if (sort == null || sort.stream().noneMatch(v -> v.startsWith("id,")))
+	        s = s.and(Sort.by("id"));
+
+	    Pageable pageable = PageRequest.of(page, size, s);
+	    Page<T> result = getRepository().findAll(pageable);
+
+	    return getMapper().writeValueAsString(result);
 	}
 
 	public String getDetailsJson(Long id) throws JsonProcessingException {

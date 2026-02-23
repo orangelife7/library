@@ -1,8 +1,10 @@
 package com.example.demo.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,8 +33,11 @@ public abstract class CrudController<T extends BaseEntity> {
 	 */
 
 	@GetMapping("/list")
-	public String listJson(@RequestParam int page, @RequestParam int size, @RequestParam String sort)
+	public String listJson(@RequestParam int page,
+						   @RequestParam int size, 
+						   @RequestParam MultiValueMap<String, String> params)
 			throws JsonProcessingException {
+		 List<String> sort = params.get("sort");
 		return getService().getListJson(page, size, sort);
 	}
 

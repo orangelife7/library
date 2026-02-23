@@ -1,4 +1,8 @@
 app.component('orderTable', {
-	bindings: {list: '<'},
+	bindings: {
+		list: '<',
+		sort: '=',
+		onSort: '&'
+	},
 	templateUrl: getComponentPath('order-table'),
 });

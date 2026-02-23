@@ -2,22 +2,22 @@
 <table >
   <thead>
     <tr>
-      <th>Id</th>
-      <th>Data wypożyczenia</th>
-      <th>Termin zwrotu</th>
-      <th>Maksymalny termin zwrotu</th>
-      <th>Data zwrotu</th>
-      <th>Anulowane</th>
-      <th>Przygotowane</th>
-      <th>Zniszczone</th>
-      <th> Płatność
-      <br>
-  	  <small>(jeśli wymagane)</small>
-	  </th>
-      <th>Kwota</th>
-      <th>Status</th>
-      <th>Klient</th>
-      <th>Pracownik</th>
+      <th sort-header="id" sort="$ctrl.sort" on-sort="$ctrl.onSort({field:field})">Id</th>
+      <th sort-header="loanDate" sort="$ctrl.sort" on-sort="$ctrl.onSort({field:field})">Data wypożyczenia</th>
+      <th sort-header="deadline" sort="$ctrl.sort" on-sort="$ctrl.onSort({field:field})">Termin zwrotu</th>
+      <th sort-header="maximumDeadline" sort="$ctrl.sort" on-sort="$ctrl.onSort({field:field})">Maksymalny termin zwrotu</th>
+      <th sort-header="returnDate" sort="$ctrl.sort" on-sort="$ctrl.onSort({field:field})">Data zwrotu</th>
+      <th sort-header="cancelled" sort="$ctrl.sort" on-sort="$ctrl.onSort({field:field})">Anulowane</th>
+      <th sort-header="prepared" sort="$ctrl.sort" on-sort="$ctrl.onSort({field:field})">Przygotowane</th>
+      <th sort-header="damaged" sort="$ctrl.sort" on-sort="$ctrl.onSort({field:field})">Zniszczone</th>
+      <th sort-header="paid" sort="$ctrl.sort" on-sort="$ctrl.onSort({field:field})">
+        Płatność<br>
+        <small>(jeśli wymagane)</small>
+      </th>
+      <th sort-header="amountToPay" sort="$ctrl.sort" on-sort="$ctrl.onSort({field:field})">Kwota</th>
+      <th sort-header="status" sort="$ctrl.sort" on-sort="$ctrl.onSort({field:field})">Status</th>
+      <th sort-header="customer" sort="$ctrl.sort" on-sort="$ctrl.onSort({field:field})">Klient</th>
+      <th sort-header="employee" sort="$ctrl.sort" on-sort="$ctrl.onSort({field:field})">Pracownik</th>
       <th>Detale</th>
       <th>Usuń</th>
     </tr>
@@ -26,49 +26,20 @@
   <tbody>
     <tr ng-repeat="order in $ctrl.list">
       <td>{{ order.id }}</td>
-     	<td>
-			<field entity-name="order" entity="order" field-name="loanDate"/>
-		</td>
-     	<td>
-			<field entity-name="order" entity="order" field-name="deadline" editable="false"/>
-		</td>
-		<td>
-			<field entity-name="order" entity="order" field-name="maximumDeadline" editable="false"/>
-		</td>
-     	<td>
-			<field entity-name="order" entity="order" field-name="returnDate"/>
-		</td>
-      	<td>
-			<field entity-name="order" entity="order" field-name="cancelled"/>
-		</td>
-      <td>
-			<field entity-name="order" entity="order" field-name="prepared"/>
-		</td>
-     <td>
-			<field entity-name="order" entity="order" field-name="damaged" />
-		</td>
-      <td>
-			<field entity-name="order" entity="order" field-name="paid"/>
-		</td>
-      <td>
-			<field entity-name="order" entity="order" field-name="amountToPay" editable="false"/>
-		</td>
-      <td>
-			<field entity-name="order" entity="order" field-name="status" editable="false"/>
-		</td>
-	   <td>
-			<field entity-name="order" entity="order" field-name="customer"/>
-		</td>
-		<td>
-			<field entity-name="order" entity="order" field-name="employee"/>
-		</td>
-		
-      <td>
-    	   <details-button url="order" id="order.id"/>
-	  </td>
-	  <td>
-          <delete-btn item-id="order.id" entity-url="order"/>
-      </td>
+     	<td><field entity-name="order" entity="order" field-name="loanDate"/></td>
+     	<td><field entity-name="order" entity="order" field-name="deadline" editable="false"/></td>
+		<td><field entity-name="order" entity="order" field-name="maximumDeadline" editable="false"/></td>
+     	<td><field entity-name="order" entity="order" field-name="returnDate"/></td>
+      	<td><field entity-name="order" entity="order" field-name="cancelled"/></td>
+      	<td><field entity-name="order" entity="order" field-name="prepared"/></td>
+    	<td><field entity-name="order" entity="order" field-name="damaged" /></td>
+      	<td><field entity-name="order" entity="order" field-name="paid"/></td>
+      	<td><field entity-name="order" entity="order" field-name="amountToPay" editable="false"/></td>
+      	<td><field entity-name="order" entity="order" field-name="status" editable="false"/></td>
+	   	<td><field entity-name="order" entity="order" field-name="customer"/></td>
+		<td><field entity-name="order" entity="order" field-name="employee"/></td>
+      	<td><details-button url="order" id="order.id"/></td>
+	  <td><delete-btn item-id="order.id" entity-url="order"/></td>
     </tr>
 
     <tr ng-if="!$ctrl.list || !$ctrl.list.length">

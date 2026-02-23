@@ -7,7 +7,7 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
 
 	$scope.page = 0;
 	$scope.size = 20;
-	$scope.sort = 'id,asc';
+	$scope.sort = ['id,asc'];
 	$scope.totalPages = 50;
 	$scope.totalElements = 1000;
 
@@ -27,8 +27,13 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
 
 	$scope.initList = function(url) {
 		$scope.load = function() {
+			const sortParam = (Array.isArray($scope.sort) ? $scope.sort : [$scope.sort])
+			  .filter(Boolean)
+			  .map(s => String(s).replace('.', ',')); 
+			  
 			HttpService.get(url, {
-			   params: { page: $scope.page, size: $scope.size, sort: $scope.sort }
+			  params: { page: $scope.page, size: $scope.size, sort: sortParam }
+		
 			}).then(function(response) {
 				console.log(response);
 				$scope.list = response.content != null ? response.content : response;
@@ -72,5 +77,19 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
 		ModalService.createByModal($scope.entityName, $scope.entityUrl, callback, 'C');
 	}
 
+	$scope.sortBy = function(field) {
+		const current = Array.isArray($scope.sort) ? ($scope.sort[0] || '') : ($scope.sort || '');
+		const parts = current.split(',');
+		const currentField = parts[0];
+		const currentDirection = parts[1];
+		
+		const direction = (currentField === field && currentDirection === 'asc') ? 'desc' : 'asc';
+		
+		$scope.sort = [field + ',' + direction, 'id,asc'];
+		
+		$scope.page = 0;
+		$scope.onPageChange($scope.page, $scope.size, $scope.sort);
+	}
+	
 });
 
