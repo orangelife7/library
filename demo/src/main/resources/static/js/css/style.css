@@ -61,4 +61,12 @@ th { background-color: #e0e0e0;
 }
 
 
+.cs-row{
+  display:flex; 
+  justify-content:space-between; 
+  padding:8px 10px; 
+  border-bottom:2px solid #eee;
+}
+
+
 

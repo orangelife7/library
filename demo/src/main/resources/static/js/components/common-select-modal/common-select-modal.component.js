@@ -13,12 +13,11 @@ app.component('commonSelectModal', {
 		vm.$onInit = function() {
 			$controller('ListController', { $scope: $scope });
 		 	$scope.init(vm.entityUrl);
-			vm.selectedId = null;
-					
-			vm.selectExisting = function() {
-				vm.resolve.select(vm.selectedId);
+			vm.pick = function(id) {
+				vm.resolve.select(id);
 			};
-		}
+			
+		};
 		
 	}
 });
