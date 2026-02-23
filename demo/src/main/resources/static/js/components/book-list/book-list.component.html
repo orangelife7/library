@@ -6,44 +6,31 @@
 	<table>
 	<thead>
 		<tr>
-			<th>Id</th>
-			<th>Tytuł</th>
-			<th>Autor</th>
-			<th>Rok publikacji</th>
-			<th>ISBN</th>
+			<th sort-header="id">Id</th>
+			<th sort-header="title">Tytuł</th>
+			<th sort-header="author">Autor</th>
+			<th sort-header="yearOfPublication">Rok publikacji</th>
+			<th sort-header="isbn">ISBN</th>
 			<th>Detale</th>
 			<th>Usuń</th>
 			</tr>
 	</thead>
 	
 	<tbody>
-		<tr ng-repeat="book in list">
-			<td>{{ book.id }}</td>
-		<td>
-			<field entity-name="book" entity="book" field-name="title"/>
-		</td>
-		<td>
-			<field entity-name="book" entity="book" field-name="author"/>
-		</td>
-		<td>
-			<field entity-name="book" entity="book" field-name="yearOfPublication"/>
-		</td>
-		<td>
-			<field entity-name="book" entity="book" field-name="isbn"/>
-		</td>	
-		<td>
-    			<details-button url="book" id="book.id"/>
-		</td>
-		<td>
-            <delete-btn item-id="book.id" entity-url="book"/>
-         </td>
+		<tr ng-repeat="book in list"><td>{{ book.id }}</td>
+		<td><field entity-name="book" entity="book" field-name="title"/></td>
+		<td><field entity-name="book" entity="book" field-name="author"/></td>
+		<td><field entity-name="book" entity="book" field-name="yearOfPublication"/></td>
+		<td><field entity-name="book" entity="book" field-name="isbn"/></td>	
+		<td><details-button url="book" id="book.id"/></td>
+		<td> <delete-btn item-id="book.id" entity-url="book"/></td>
 		</tr>
 	</tbody>
 	</table>
 	
-  <paginator 
+<paginator 
 	page="page" size="size" sort="sort" total-pages="totalPages" total-elements="totalElements" on-change="onPageChange(page, size, sort)">
-  </paginator>
+</paginator>
 	
 
 </div>

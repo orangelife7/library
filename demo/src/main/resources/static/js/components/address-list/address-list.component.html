@@ -7,12 +7,12 @@
 	
 	<thead>
 		<tr>
-			<th>Id</th>
-			<th>Kraj</th>
-			<th>Miasto</th>
-			<th>Ulica</th>
-			<th>Numer domu lub mieszkania</th>
-			<th>Kod pocztowy</th>
+			<th sort-header="id">Id</th>
+			<th sort-header="country">Kraj</th>
+			<th sort-header="city">Miasto</th>
+			<th sort-header="street">Ulica</th>
+			<th sort-header="numberOfHouseOrApartment">Numer domu lub mieszkania</th>
+			<th sort-header="zipCode">Kod pocztowy</th>
 			<th>Detale</th>
 			<th>Usuń</th>
 			</tr>
@@ -21,27 +21,13 @@
 	<tbody>
 		<tr ng-repeat="address in list">
 			<td>{{ address.id }}</td>
-		<td>
-			<field entity-name="address" entity="address" field-name="country"/>
-		</td>
-		<td>
-			<field entity-name="address" entity="address" field-name="city"/>
-		</td>
-		<td>
-			<field entity-name="address" entity="address" field-name="street"/>
-		</td>
-		<td>
-			<field entity-name="address" entity="address" field-name="numberOfHouseOrApartment"/>
-		</td>	
-		<td>
-			<field entity-name="address" entity="address" field-name="zipCode"/>
-		</td>	
-		<td>
-    		<details-button url="address" id="address.id"/>
-		</td> 
-		<td>
-            <delete-btn item-id="address.id" entity-url="address"/>
-         </td> 
+		<td><field entity-name="address" entity="address" field-name="country"/></td>
+		<td><field entity-name="address" entity="address" field-name="city"/></td>
+		<td><field entity-name="address" entity="address" field-name="street"/></td>
+		<td><field entity-name="address" entity="address" field-name="numberOfHouseOrApartment"/></td>	
+		<td><field entity-name="address" entity="address" field-name="zipCode"/></td>	
+		<td><details-button url="address" id="address.id"/></td> 
+		<td><delete-btn item-id="address.id" entity-url="address"/></td> 
 		</tr>
 	</tbody>
 	</table>   

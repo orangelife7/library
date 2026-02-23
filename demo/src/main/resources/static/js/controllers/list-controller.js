@@ -28,8 +28,7 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
 	$scope.initList = function(url) {
 		$scope.load = function() {
 			const sortParam = (Array.isArray($scope.sort) ? $scope.sort : [$scope.sort])
-			  .filter(Boolean)
-			  .map(s => String(s).replace('.', ',')); 
+			    .map(function(s) { return String(s); });
 			  
 			HttpService.get(url, {
 			  params: { page: $scope.page, size: $scope.size, sort: sortParam }
@@ -77,7 +76,13 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
 		ModalService.createByModal($scope.entityName, $scope.entityUrl, callback, 'C');
 	}
 
+	$scope.$on('sortHeaderClicked', function(event, sortHeader) {
+		$scope.sortBy(sortHeader);	
+	});
+	
+	
 	$scope.sortBy = function(field) {
+		console.log(field);
 		const current = Array.isArray($scope.sort) ? ($scope.sort[0] || '') : ($scope.sort || '');
 		const parts = current.split(',');
 		const currentField = parts[0];
@@ -86,6 +91,8 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
 		const direction = (currentField === field && currentDirection === 'asc') ? 'desc' : 'asc';
 		
 		$scope.sort = [field + ',' + direction, 'id,asc'];
+		
+		$scope.$broadcast('sortChanged', $scope.sort);
 		
 		$scope.page = 0;
 		$scope.onPageChange($scope.page, $scope.size, $scope.sort);

@@ -6,9 +6,9 @@
 	<table >
 		<thead>
 				<tr>
-				<th>Id</th>
-				<th>Imię</th>
-				<th>Nazwisko</th>
+				<th sort-header="id">Id</th>
+				<th sort-header="firstName">Imię</th>
+				<th sort-header="surname">Nazwisko</th>
 				<th>Detale</th>
 				<th>Usuń</th>
 				</tr>
@@ -16,18 +16,10 @@
 			<tbody>
 				<tr ng-repeat="employee in list">
 					<td >{{ employee.id }}</td>
-					<td>
-						<field entity-name="employee" entity="employee" field-name="firstName"/>
-					</td>
-					<td>
-						<field entity-name="employee" entity="employee" field-name="surname"/>
-					</td>
-					<td>
-    					<details-button url="employee" id="employee.id"/>
-					</td>
-					<td>
-            			<delete-btn item-id="employee.id" entity-url="employee"/>
-            		</td>
+					<td><field entity-name="employee" entity="employee" field-name="firstName"/></td>
+					<td><field entity-name="employee" entity="employee" field-name="surname"/></td>
+					<td><details-button url="employee" id="employee.id"/></td>
+					<td><delete-btn item-id="employee.id" entity-url="employee"/></td>
 				</tr>
 			</tbody>
 		</table>

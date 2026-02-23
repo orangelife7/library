@@ -3,11 +3,11 @@
 	
 	<thead>
 		<tr>
-			<th>Id</th>
-			<th>Numer katalogowy</th>
-			<th>Książka</th>
-			<th ng-if="$ctrl.showTitle">Tytuł</th>
-			<th ng-if="$ctrl.showAuthor">Autor</th>
+			<th sort-header="id">Id</th>
+			<th sort-header="catalogNumber">Numer katalogowy</th>
+			<th sort-header="book">Książka</th>
+			<th sort-header="book.title" ng-if="$ctrl.showTitle">Tytuł</th>
+			<th sort-header="book.author" ng-if="$ctrl.showAuthor">Autor</th>
 			<th>Opis</th>
 			<th>Detale egzemplarzy</th>
 			<th>Usuń</th>
