@@ -13,18 +13,14 @@
 	<tbody>
 		<tr>
 			<td>{{item.id}}</td>
-			<td>
-				<field entity-name="physicalBook" entity="item" field-name="catalogNumber"/>
-	  		</td>
-			<td>
-				<field entity-name="book" entity="item.book" field-name="title"/>
-	  		</td>
-			<td>
-				<field entity-name="book" entity="item.book" field-name="author"/>
-	 		</td>
-			<td>
-				<field entity-name="physicalBook" entity="item" field-name="description"/>
-	  		</td>
+			
+			<td><field entity-name="physicalBook" entity="item" field-name="catalogNumber"/></td>
+	  		
+			<td><field entity-name="book" entity="item.book" field-name="title"/></td>
+			
+			<td>{{item.book.author.firstName}} {{item.book.author.surname}}</td>
+			
+			<td><field entity-name="physicalBook" entity="item" field-name="description"/></td>
 		</tr>
 	</tbody>
 </table>

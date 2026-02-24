@@ -7,35 +7,28 @@
       <td>{{item.id}}</td>
     </tr>
     <tr>
-      <th>Tytuł</th>
-      <td>
-		<field entity-name="book" entity="item" field-name="title"/>
-	  </td>
+      	<th>Tytuł</th>
+      	<td><field entity-name="book" entity="item" field-name="title"/></td>
     </tr>
     <tr>
-      <th>Autor</th>
-      <td>
-		<field entity-name="book" entity="item" field-name="author"/>
-	  </td>
+   	 	<th>Autor</th>
+    	<td>{{item.author.firstName}} {{item.author.surname}}</td>
     </tr>
     <tr>
-      <th>Rok publikacji</th>
-      <td>
-		<field entity-name="book" entity="item" field-name="yearOfPublication"/>
-	  </td>
+    	<th>Rok publikacji</th>
+      	<td><field entity-name="book" entity="item" field-name="yearOfPublication"/></td>
     </tr>
     <tr>
-      <th>ISBN</th>
-      <td>
-		<field entity-name="book" entity="item" field-name="isbn"/>
-	  </td>
+     	 <th>ISBN</th>
+      	 <td><field entity-name="book" entity="item" field-name="isbn"/>
+	  	 </td>
     </tr>
   </table>
 
 
 <div>
 <h3><b>Lista egzemplarzy książki</b></h3>
-<button class="btn btn-primary create-button" ng-click="createPhysicalBook()">Dodaj</button>
+<button class="btn btn-primary create-button" ng-click="createByModal()">Dodaj</button>
 <physical-book-table list="item.physicalBooks" show-title="false" show-author="false"/>
 </div>
 

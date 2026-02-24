@@ -8,66 +8,46 @@
     </tr>
     <tr>
       <th>Data wypożyczenia</th>
-     <td>
-		<field entity-name="order" entity="item" field-name="loanDate"/>
-	 </td>
+     <td><field entity-name="order" entity="item" field-name="loanDate"/></td>
     </tr>
     <tr>
       <th>Termin zwrotu</th>
-     <td>
-		<field entity-name="order" entity="item" field-name="deadline" editable="false"/>
-	 </td>
+     <td><field entity-name="order" entity="item" field-name="deadline" editable="false"/></td>
     </tr>
     <tr>
       <th>Maksymalny termin zwrotu</th>
-      <td>
-		<field entity-name="order" entity="item" field-name="maximumDeadline" editable="false"/>
-	 </td>
+      <td><field entity-name="order" entity="item" field-name="maximumDeadline" editable="false"/></td>
     </tr>
     <tr>
       <th>Data zwrotu</th>
-      <td>
-		<field entity-name="order" entity="item" field-name="returnDate"/>
-	 </td>
+      <td><field entity-name="order" entity="item" field-name="returnDate"/></td>
     </tr>
     <tr>
       <th>Anulowane</th>
-      <td>
-		<field entity-name="order" entity="item" field-name="cancelled"/>
-	 </td>
+      <td><field entity-name="order" entity="item" field-name="cancelled"/></td>
     </tr>
      <tr>
       <th>Przygotowane</th>
-     <td>
-		<field entity-name="order" entity="item" field-name="prepared"/>
-	 </td>
+     <td><field entity-name="order" entity="item" field-name="prepared"/></td>
     </tr>
     <tr>
       <th>Zniszczone</th>
-      <td>
-		<field entity-name="order" entity="item" field-name="damaged"/>
-	 </td>
+      <td><field entity-name="order" entity="item" field-name="damaged"/></td>
     </tr>
     <tr>
      <th> Płatność
       <br>
   	  <small>(jeśli wymagane)</small>
 	  </th>
-      <td>
-		<field entity-name="order" entity="item" field-name="paid"/>
-	 </td>
+      <td><field entity-name="order" entity="item" field-name="paid"/></td>
     </tr>
     <tr>
       <th>Kwota do zapłaty</th>
-      <td>
-		<field entity-name="order" entity="item" field-name="amountToPay" editable="false"/>
-	 </td>
+      <td><field entity-name="order" entity="item" field-name="amountToPay" editable="false"/></td>
     </tr>
     <tr>
       <th>Status</th>
-      <td>
-		<field entity-name="order" entity="item" field-name="status" editable="false"/>
-	 </td>
+      <td><field entity-name="order" entity="item" field-name="status" editable="false"/></td>
     </tr>
   </table>
   
@@ -87,18 +67,14 @@
 			<tbody>
 				<tr>
 					<td >{{ item.customer.id }}</td>
-					<td>
-						<field entity-name="customer" entity="item.customer" field-name="firstName"/>
-	 				</td>
-					<td>
-						<field entity-name="customer" entity="item.customer" field-name="surname"/>
-	 				</td>
-					<td>
-						<field entity-name="customer" entity="item.customer" field-name="pesel"/>
-	 				</td>
-					<td>
-    					<details-button url="customer" id="item.customer.id"/>
-					</td>
+					
+					<td><field entity-name="customer" entity="item.customer" field-name="firstName"/></td>
+					
+					<td><field entity-name="customer" entity="item.customer" field-name="surname"/></td>
+					
+					<td><field entity-name="customer" entity="item.customer" field-name="pesel"/></td>
+					
+					<td><details-button url="customer" id="item.customer.id"/></td>
 				</tr>
 			</tbody>
 		</table>
@@ -118,19 +94,17 @@
 			<tbody>
 				<tr>
 					<td >{{ item.employee.id }}</td>
-					<td>
-						<field entity-name="employee" entity="item.employee" field-name="firstName"/>
-	 				</td>
-					<td>
-						<field entity-name="employee" entity="item.employee" field-name="surname"/>
-					</td>
-					<td>
-    					<details-button url="employee" id="item.employee.id"/>
-					</td>
+					<td><field entity-name="employee" entity="item.employee" field-name="firstName"/></td>
+					
+					<td><field entity-name="employee" entity="item.employee" field-name="surname"/></td>
+					
+					<td><details-button url="employee" id="item.employee.id"/></td>
 				</tr>
 			</tbody>
 		</table>
 </div>
+
+  <h3><b>Lista egzemplarzy książek</b></h3>
   
   <div>
 <physical-book-table list="item.physicalBooks" /> 

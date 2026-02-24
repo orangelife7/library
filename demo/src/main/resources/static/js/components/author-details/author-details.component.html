@@ -1,0 +1,54 @@
+<div>
+
+	<h3><strong>Detale autora</strong></h3>
+  <table>
+    <tr>
+      <th>Id</th>
+      <td>{{item.id}}</td>
+    </tr>
+    <tr>
+      	<th>Imię</th>
+      	<td><field entity-name="author" entity="item" field-name="firstName"/></td>
+    </tr>
+   
+    <tr>
+    	<th>Nazwisko</th>
+      	<td><field entity-name="author" entity="item" field-name="surname"/></td>
+    </tr>
+  </table>
+
+
+<div>
+  <h3><b>Książki autora</b></h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Tytuł</th>
+        <th>Rok publikacji</th>
+        <th>ISBN</th>
+        <th>Detale</th>
+        <th>Usuń</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="book in item.books">
+        <td>{{ book.id }}</td>
+        <td><field entity-name="book" entity="book" field-name="title"/></td>
+        <td><field entity-name="book" entity="book" field-name="yearOfPublication"/></td>
+        <td><field entity-name="book" entity="book" field-name="isbn"/></td>
+        <td><details-button url="book" id="book.id"/></td>
+        <td><delete-btn item-id="book.id" entity-url="book"/></td>
+      </tr>
+      <tr ng-if="!$ctrl.list || !$ctrl.list.length">
+      	<td colspan=12>Brak książek</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+</div>

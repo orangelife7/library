@@ -15,24 +15,20 @@
 	<tbody>
 		<tr ng-repeat="item in $ctrl.list">
 			<td>{{ item.id }}</td>
-			<td>
-				<field entity-name="customer" entity="item" field-name="firstName"/>
-			</td>
-			<td>
-				<field entity-name="customer" entity="item" field-name="surname"/>
-			</td>
-			<td>
-				<field entity-name="customer" entity="item" field-name="pesel"/>
-			</td>
-			<td>
-    			<details-button url="customer" id="item.id"/>
-			</td>
-			<td>
-            	<delete-btn item-id="item.id" entity-url="customer"/>
-            </td>
+			
+			<td><field entity-name="customer" entity="item" field-name="firstName"/></td>
+			
+			<td><field entity-name="customer" entity="item" field-name="surname"/></td>
+			
+			<td><field entity-name="customer" entity="item" field-name="pesel"/></td>
+			
+			<td><details-button url="customer" id="item.id"/></td>
+			
+			<td><delete-btn item-id="item.id" entity-url="customer"/></td>
 		</tr>
 		<tr ng-if="!$ctrl.list || !$ctrl.list.length">
       <td colspan=12>Brak przypisanych klientów</td>
+      </tr>
 	</tbody>
 
 </div>

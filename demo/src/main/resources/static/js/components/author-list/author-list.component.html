@@ -1,0 +1,31 @@
+<div>
+	<h3><b>Lista autorów</b></h3>
+	
+<button class="btn btn-primary create-button" ng-click="createByModal()">Dodaj</button>
+	
+	<table >
+		<thead>
+				<tr>
+				<th sort-header="id">Id</th>
+				<th sort-header="firstName">Imię</th>
+				<th sort-header="surname">Nazwisko</th>
+				<th>Detale</th>
+				<th>Usuń</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="author in list">
+					<td >{{ author.id }}</td>
+					<td><field entity-name="author" entity="author" field-name="firstName"/></td>
+					<td><field entity-name="author" entity="author" field-name="surname"/></td>
+					<td><details-button url="author" id="author.id"/></td>
+					<td><delete-btn item-id="author.id" entity-url="author"/></td>
+				</tr>
+			</tbody>
+		</table>
+		
+ <paginator 
+	page="page" size="size" sort="sort" total-pages="totalPages" total-elements="totalElements" on-change="onPageChange(page, size, sort)">
+</paginator>	
+	
+</div>

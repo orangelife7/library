@@ -11,6 +11,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
@@ -22,14 +24,15 @@ public class Book extends BaseEntity {
 	@Column(name = "title")
 	private String title;
 
-	@Column(name = "author")
-	private String author;
-
 	@Column(name = "year_of_publication")
 	private Integer yearOfPublication;
 
 	@Column(name = "isbn")
 	private String isbn;
+	
+	@ManyToOne
+	@JoinColumn(name = "author_id")
+	private Author author;
 
 	@OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
 	private List<PhysicalBook> physicalBooks;
@@ -43,19 +46,17 @@ public class Book extends BaseEntity {
 	public Book() {
 	}
 
-	public Book(String title, String author, int yearOfPublication, String isbn) {
+	public Book(String title, int yearOfPublication, String isbn) {
 		this.title = title;
-		this.author = author;
 		this.yearOfPublication = yearOfPublication;
 		this.isbn = isbn;
 	}
 
 	public String getLabel() {
 		String t = title == null ? "" : title;
-		String a = author == null ? "" : author;
 		String yp = yearOfPublication == null ? "" : yearOfPublication.toString();
 		String in = isbn == null ? "" : isbn;
-		return (t + ", " + a + ", " + yp + ", " + in);
+		return (t + ", " + yp + ", " + in);
 	}
 	
 //	Gettery i Settery
@@ -66,14 +67,6 @@ public class Book extends BaseEntity {
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
 	}
 
 	public Integer getYearOfPublication() {
@@ -102,6 +95,14 @@ public class Book extends BaseEntity {
 
 	public void setPhysicalBooks(List<PhysicalBook> physicalBooks) {
 		this.physicalBooks = physicalBooks;
+	}
+	
+	public Author getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(Author author) {
+		this.author = author;
 	}
 
 	public BookState getState() {

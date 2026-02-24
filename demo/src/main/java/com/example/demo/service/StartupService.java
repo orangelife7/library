@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.entity.Address;
+import com.example.demo.entity.Author;
 import com.example.demo.entity.Book;
 import com.example.demo.entity.Customer;
 import com.example.demo.entity.Employee;
@@ -35,6 +36,9 @@ public class StartupService {
 
 	@Autowired
 	private EmployeeService employeeService;
+	
+	@Autowired
+	private AuthorService authorService;
 
 	public void createExampleData() {
 		// Address
@@ -63,12 +67,20 @@ public class StartupService {
 		System.out.println(customer2);
 		System.out.println(customer3);
 
+		Author author1 = createAuthor(new Author("Jennifer" , "L. Armentrout"));
+		Author author2 = createAuthor(new Author ("Emilia", "J.Lee"));
+		Author author3 = createAuthor(new Author("Diana", "Gabaldon"));
+		
 		// Book
 
-		Book book1 = createBook(new Book("Krew i popiół", "Jennifer L. Armentrout", 2021, "123948hB9"));
-		Book book2 = createBook(new Book("Królestwo ciała i ognia", "Jennifer L. Armentrout", 2022, "84784jH45"));
-		Book book3 = createBook(new Book("Księga upadłych aniołów", "Emilia J.Lee", 2024, "947362K06"));
-		Book book4 = createBook(new Book("Obca", "Diana Gabaldon", 1991, "763489W76"));
+		Book book1 = createBook(new Book("Krew i popiół", 2021, "123948hB9"));
+		book1.setAuthor(author1);
+		Book book2 = createBook(new Book("Królestwo ciała i ognia", 2022, "84784jH45"));
+		book2.setAuthor(author1);
+		Book book3 = createBook(new Book("Księga upadłych aniołów", 2024, "947362K06"));
+		book3.setAuthor(author2);
+		Book book4 = createBook(new Book("Obca", 1991, "763489W76"));
+		book4.setAuthor(author3);
 
 		PhysicalBook physicalBook1 = createPhysicalBook(new PhysicalBook(book1, "PB/13"));
 		createPhysicalBook(new PhysicalBook(book1, "PB/57", "zniszczona okładka"));
@@ -157,6 +169,10 @@ public class StartupService {
 
 	public Employee createEmployee(Employee employee) {
 		return employeeService.create(employee);
+	}
+	
+	public Author createAuthor(Author author) {
+		return authorService.create(author);
 	}
 
 }

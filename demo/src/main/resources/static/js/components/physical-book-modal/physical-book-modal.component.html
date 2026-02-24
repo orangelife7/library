@@ -1,6 +1,11 @@
-<common-modal entity-label="egzemplarz książki" on-close="$ctrl.close()">
+<common-modal entity-label="egzemplarz książki" mode="$ctrl.resolve.mode" on-close="$ctrl.close()">
+  <form-slot>
 	<form id="myForm" ng-submit="$ctrl.resolve.callback(form)">
 		<input class="form-control" placeholder="Numer katalogowy" ng-model="form.catalogNumber" required>
 		<input class="form-control" placeholder="Opis" ng-model="form.description" required>
 	</form>
+  </form-slot>
 </common-modal>
+
+
+

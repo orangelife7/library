@@ -1,6 +1,5 @@
 app.component('commonSelectModal', {
 	bindings: {
-		entityLabel: '@',
 		entityUrl: '@',
 		resolve: '<'
 	},

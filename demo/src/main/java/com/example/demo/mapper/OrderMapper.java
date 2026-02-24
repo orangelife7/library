@@ -2,6 +2,8 @@ package com.example.demo.mapper;
 
 import java.awt.print.Book;
 
+import com.example.demo.entity.Author;
+import com.example.demo.entity.Author_;
 import com.example.demo.entity.Book_;
 import com.example.demo.entity.Customer;
 import com.example.demo.entity.Customer_;
@@ -24,7 +26,8 @@ public class OrderMapper extends CoreMapper {
 		addFilter(Customer.class, filterOutAllExcept(Customer_.FIRST_NAME, Customer_.SURNAME, Customer_.PESEL));
 		addFilter(Employee.class, filterOutAllExcept(Employee_.FIRST_NAME, Employee_.SURNAME));
 		addFilter(PhysicalBook.class, filterOutAllExcept(PhysicalBook_.CATALOG_NUMBER, PhysicalBook_.DESCRIPTION, PhysicalBook_.BOOK));
-		 addFilter(Book.class, filterOutAllExcept(Book_.TITLE, Book_.AUTHOR));
+		addFilter(Book.class, filterOutAllExcept(Book_.TITLE, Book_.AUTHOR));
+		addFilter(Author.class, filterOutAllExcept(Author_.FIRST_NAME, Author_.SURNAME)); 
 	}
 	
 		

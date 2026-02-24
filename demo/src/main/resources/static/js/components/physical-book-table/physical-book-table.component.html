@@ -17,28 +17,25 @@
 	<tbody>
 		<tr ng-repeat="item in $ctrl.list">
 			<td>{{ item.id }}</td>
-			<td>
-				<field entity-name="physicalBook" entity="item" field-name="catalogNumber"/>
-			</td>
-			<td>
-				<field entity-name="physicalBook" entity="item" field-name="book"/>
-			</td>
-			<td ng-if="$ctrl.showTitle">
-				<field entity-name="book" entity="item.book" field-name="title"/>
-			</td>
-			<td ng-if="$ctrl.showAuthor">
-				<field entity-name="book" entity="item.book" field-name="author"/>
-			</td>
-			<td>
-				<field entity-name="physicalBook" entity="item" field-name="description"/>
-			</td>
-         <td>
-			<details-button url="physical-book" id="item.id"/>
-	  	</td>
-	  	<td>
-           	<delete-btn item-id="item.id" entity-url="physical-book"/>
-        </td>
+			
+			<td><field entity-name="physicalBook" entity="item" field-name="catalogNumber"/></td>
+			
+			<td><field entity-name="physicalBook" entity="item" field-name="book"/></td>
+			
+			<td ng-if="$ctrl.showTitle"><field entity-name="book" entity="item.book" field-name="title"/></td>
+			
+			<td ng-if="$ctrl.showAuthor">{{item.book.author.firstName}} {{item.book.author.surname}}</td>
+			
+			<td><field entity-name="physicalBook" entity="item" field-name="description"/></td>
+
+         <td><details-button url="physical-book" id="item.id"/></td>
+         
+	  	<td><delete-btn item-id="item.id" entity-url="physical-book"/></td>
 		</tr>
+		
+	<tr ng-if="!$ctrl.list || !$ctrl.list.length">
+      	<td colspan=12>Brak egzemplarzy książek</td>
+    </tr>
 	</tbody>
 
 </div>

@@ -57,6 +57,12 @@ app.config(function($routeProvider) {
 		.when('/book-details/:id', {
 			template: '<book-details />'	
 		})	
+		.when('/author-list', {
+			template: '<author-list />'
+		})	
+		.when('/author-details/:id', {
+			template: '<author-details />'	
+		})		
 		.when('/physical-book-list', {
 			template: '<physical-book-list />'
 		})	
