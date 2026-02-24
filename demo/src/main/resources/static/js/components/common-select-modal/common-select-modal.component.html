@@ -1,8 +1,6 @@
 <div ng-transclude></div>
 <hr>
-<paginator 
-	page="page" size="size" sort="sort" total-pages="totalPages" total-elements="totalElements" on-change="onPageChange(page, size, sort)">
-</paginator>
+
 <div class="form-group">
   <label>Wybierz {{$ctrl.entityLabel}}</label>
 
@@ -12,4 +10,7 @@
  		<button class="btn btn-primary btn-xs" ng-click="$ctrl.pick(it.id)">Wybierz</button>
  	</div>
   </div>
+  <paginator 
+	page="page" size="size" sort="sort" total-pages="totalPages" total-elements="totalElements" on-change="onPageChange(page, size, sort)">
+</paginator>
 </div>

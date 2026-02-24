@@ -15,7 +15,7 @@ app.component('paginator', {
 		
 		vm.$onChanges = function() {
 		  vm.p = vm.page != null ? vm.page : 0;
-		  vm.s = vm.size || 20;
+		  vm.s = vm.size || 5;
 		  vm.tp = vm.totalPages || 0;
 		  vm.te = vm.totalElements || 0;
 		  vm.so = vm.sort || 'id,asc';

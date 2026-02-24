@@ -6,7 +6,7 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
 	
 
 	$scope.page = 0;
-	$scope.size = 20;
+	$scope.size = 5;
 	$scope.sort = ['id,asc'];
 	$scope.totalPages = 50;
 	$scope.totalElements = 1000;
@@ -43,6 +43,7 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
 		
 		
 		$scope.load();
+		$scope.$broadcast('sortChanged', $scope.sort);
 		vm.interval = $interval($scope.load, $rootScope.INTERVAL_MS);
 	};
 	
@@ -80,6 +81,16 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
 		$scope.sortBy(sortHeader);	
 	});
 	
+	$scope.$on('sortClearClicked', function(event, field) {
+		if (field === 'id') {
+		   $scope.sort = []; 
+		 } else {
+		   $scope.sort = ['id,asc']; 
+		 }
+		$scope.$broadcast('sortChanged', $scope.sort);
+		$scope.page = 0;
+		$scope.onPageChange($scope.page, $scope.size, $scope.sort);
+	});
 	
 	$scope.sortBy = function(field) {
 		console.log(field);
