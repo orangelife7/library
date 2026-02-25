@@ -12,7 +12,7 @@ app.component('bookDetails', {
 					$scope.$emit('DATA_CHANGED');
 				});
 			};
-			ModalService.createByModal('physicalBook', 'physical-book', callback);
+			ModalService.createByModal('physicalBook', 'physical-book', callback, 'C');
 		}
 											 
 	}

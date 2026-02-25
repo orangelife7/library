@@ -24,7 +24,7 @@
 			
 			<td ng-if="$ctrl.showTitle"><field entity-name="book" entity="item.book" field-name="title"/></td>
 			
-			<td ng-if="$ctrl.showAuthor">{{item.book.author.firstName}} {{item.book.author.surname}}</td>
+			<td ng-if="$ctrl.showAuthor"><field entity-name="book" entity="item.book" field-name="author"/></td>
 			
 			<td><field entity-name="physicalBook" entity="item" field-name="description"/></td>
 

@@ -1,10 +1,8 @@
 <common-modal entity-label="autora" mode="$ctrl.resolve.mode" on-close="$ctrl.close()">
-
-<form-slot>
+  <form-slot>
 	<form id="myForm" ng-submit="$ctrl.resolve.callback(form)">
-      <input class="form-control" placeholder="Imię" ng-model="form.firstName" required>
-      <input class="form-control" placeholder="Nazwisko" ng-model="form.surname" required>
+      	<input class="form-control" placeholder="Imię" ng-model="form.firstName" required>
+      	<input class="form-control" placeholder="Nazwisko" ng-model="form.surname" required>
     </form>
-</form-slot>
-
+  </form-slot>
 </common-modal>

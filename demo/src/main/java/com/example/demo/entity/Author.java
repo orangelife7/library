@@ -3,7 +3,6 @@ package com.example.demo.entity;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -32,6 +31,13 @@ public class Author extends BaseEntity {
 		this.surname = surname;
 	}
 
+	public String getLabel() {
+		String fn = firstName == null ? "" : firstName;
+		String sn = surname == null ? "" : surname;
+		return (fn + " " + sn);
+	}
+	
+	
 	public String getFirstName() {
 		return firstName;
 	}

@@ -17,9 +17,10 @@
 	</thead>
 	
 	<tbody>
-		<tr ng-repeat="book in list"><td>{{ book.id }}</td>
+		<tr ng-repeat="book in list">
+		<td>{{ book.id }}</td>
 		<td><field entity-name="book" entity="book" field-name="title"/></td>
-		<td>{{book.author.firstName}} {{book.author.surname}}</td>
+		<td><field entity-name="book" entity="book" field-name="author"/></td>
 		<td><field entity-name="book" entity="book" field-name="yearOfPublication"/></td>
 		<td><field entity-name="book" entity="book" field-name="isbn"/></td>	
 		<td><details-button url="book" id="book.id"/></td>
