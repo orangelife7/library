@@ -3,8 +3,6 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
 	const vm = this;
 
 	$scope.list = [];
-	
-
 	$scope.page = 0;
 	$scope.size = 5;
 	$scope.sort = ['id,asc'];
@@ -27,12 +25,10 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
 
 	$scope.initList = function(url) {
 		$scope.load = function() {
-			const sortParam = (Array.isArray($scope.sort) ? $scope.sort : [$scope.sort])
-			    .map(function(s) { return String(s); });
-			  
+			const sortParam = (Array.isArray($scope.sort) ? $scope.sort : [$scope.sort]).map(String);
+			 
 			HttpService.get(url, {
 			  params: { page: $scope.page, size: $scope.size, sort: sortParam }
-		
 			}).then(function(response) {
 				console.log(response);
 				$scope.list = response.content != null ? response.content : response;
@@ -77,36 +73,32 @@ app.controller('ListController', function($scope, HttpService, $interval, $rootS
 		ModalService.createByModal($scope.entityName, $scope.entityUrl, callback, 'C');
 	}
 
-	$scope.$on('sortHeaderClicked', function(event, sortHeader) {
-		$scope.sortBy(sortHeader);	
+	$scope.$on('sortHeaderClicked', function(event, field) {
+		$scope.sortBy(field);	
 	});
 	
 	$scope.$on('sortClearClicked', function(event, field) {
-		if (field === 'id') {
-		   $scope.sort = []; 
-		 } else {
-		   $scope.sort = ['id,asc']; 
-		 }
+		const arr = (Array.isArray($scope.sort) ? $scope.sort : [$scope.sort]).filter(Boolean);
+		const filtered = arr.filter(s =>
+			!String(s).startsWith('id,') && String(s).split(',')[0] != field
+		);
+		$scope.sort = (filtered.length ? filtered : []).concat('id,asc');
 		$scope.$broadcast('sortChanged', $scope.sort);
-		$scope.page = 0;
-		$scope.onPageChange($scope.page, $scope.size, $scope.sort);
+		$scope.onPageChange(0, $scope.size, $scope.sort);
 	});
 	
 	$scope.sortBy = function(field) {
-		console.log(field);
-		const current = Array.isArray($scope.sort) ? ($scope.sort[0] || '') : ($scope.sort || '');
-		const parts = current.split(',');
-		const currentField = parts[0];
-		const currentDirection = parts[1];
 		
-		const direction = (currentField === field && currentDirection === 'asc') ? 'desc' : 'asc';
+		const arr = (Array.isArray($scope.sort) ? $scope.sort : [$scope.sort]).filter(Boolean);
+		const found = arr.find(s => s.split(',')[0] === field);
+		const direction = (found && found.split(',')[1] === 'asc') ? 'desc' : 'asc';
 		
-		$scope.sort = [field + ',' + direction, 'id,asc'];
-		
+		const rest = arr.filter (s =>
+			!s.startsWith('id') && s.split(',')[0] != field
+		);
+		$scope.sort = rest.concat(field + ',' + direction, 'id,asc');
 		$scope.$broadcast('sortChanged', $scope.sort);
-		
-		$scope.page = 0;
-		$scope.onPageChange($scope.page, $scope.size, $scope.sort);
+		$scope.onPageChange(0, $scope.size, $scope.sort);
 	}
 	
 });

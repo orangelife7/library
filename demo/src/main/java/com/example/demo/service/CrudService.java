@@ -56,14 +56,14 @@ public abstract class CrudService<T extends BaseEntity> {
 	    if (sort != null)
 	        for (String x : sort) {
 	            String[] p = x.split(",", 2);
-	            s = s.and(Sort.by(new Sort.Order(
-	                p.length > 1 && "asc".equalsIgnoreCase(p[1])
-	                    ? Sort.Direction.ASC
-	                    : Sort.Direction.DESC,
-	                p[0]
-	            )));
+	      Sort.Direction direction = 
+	    		  (p.length > 1 && "asc".equalsIgnoreCase(p[1]))
+	    		  		? Sort.Direction.ASC
+	    		  		: Sort.Direction.DESC;
+	      s = s.and(Sort.by(new Sort.Order(direction,  p[0])));
+	      
 	        }
-
+	
 	    if (sort == null || sort.stream().noneMatch(v -> v.startsWith("id,")))
 	        s = s.and(Sort.by("id"));
 

@@ -20,22 +20,31 @@ app.directive('sortHeader', function() {
 		event.stopPropagation();
 		scope.$emit('sortClearClicked', scope.sortHeader);
 	  });
-
+ 
       scope.$on('sortChanged', function(event, sort) {
+		sort = sort || [];
+		var entry = sort.find(function(s) {
+			return String(s).split(',')[0] === scope.sortHeader;
+		});
+		
+		
 		var parts = (sort[0] || '').split(',');
 		var fieldName = parts[0];
 		var direction = parts[1];
 			   
-		if (fieldName === scope.sortHeader) {
-		          arrow.text(direction === 'asc' ? '▲' : '▼');
-		          clearButton.show();
-		        } else {
-		          arrow.text('');
-		          clearButton.hide();
-		        }
-		      });
+		if (entry) {
+			var parts = String(entry).split(',');
+			var direction = parts[1];
+			
+		    arrow.text(direction === 'asc' ? '▲' : '▼');
+		    clearButton.show();
+		   } else {
+		    arrow.text('');
+		    clearButton.hide();
+		   }  
+		});
 
-		      clearButton.hide();
-		    }
+		clearButton.hide();
+	 }
   };
 });
