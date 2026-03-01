@@ -1,0 +1,8 @@
+<ng-transclude></ng-transclude>
+<span ng-if="orderNumber">
+	[{{orderNumber}}]
+</span>
+<span ng-if="direction">
+	{{direction === 'asc' ? ' ▲' : ' ▼'}}
+</span>
+<button ng-click="clear($event)" ng-if="orderNumber && direction != null">X</button>
